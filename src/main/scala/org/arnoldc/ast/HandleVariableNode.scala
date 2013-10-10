@@ -6,9 +6,9 @@ import org.objectweb.asm.Opcodes._
 
 case class HandleVariableNode(variable: String ,expressions: List[ExpressionNode]) extends StatementNode {
   def generate(mv: MethodVisitor) {
-    val variableNumber = SymbolTable.get(variable)
-    mv.visitVarInsn(ILOAD, variableNumber)
+    val variableAddress = SymbolTable.get(variable).varAddress
+    mv.visitVarInsn(ILOAD, variableAddress)
     expressions.foreach(it => it.generate(mv))
-    mv.visitVarInsn(ISTORE, variableNumber)
+    mv.visitVarInsn(ISTORE, variableAddress)
   }
 }

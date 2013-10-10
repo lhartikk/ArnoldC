@@ -3,18 +3,15 @@ package org.arnoldc
 import org.scalatest.{BeforeAndAfter, FlatSpec}
 import java.io.{ByteArrayOutputStream, PrintStream}
 import org.scalatest.matchers.ShouldMatchers
-import java.lang.RuntimeException
-import scala.RuntimeException
 import org.parboiled.errors.ParsingException
 
 class ArnoldGeneratorTest extends FlatSpec with ShouldMatchers with BeforeAndAfter {
 
-  var  arnoldGenerator: ArnoldGenerator = _
+  var  arnoldGenerator: ArnoldGenerator = new ArnoldGenerator()
   val template = new Template
   var className = "Hello"
 
   before {
-    arnoldGenerator = new ArnoldGenerator()
     SymbolTable.clear()
   }
   "ArnoldGenerator" should "function when a variable is declared" in {
@@ -34,7 +31,7 @@ class ArnoldGeneratorTest extends FlatSpec with ShouldMatchers with BeforeAndAft
     template.getOutput(code) should equal("123\n")
   }
 
-  it should "function when a variable is declared and printed" in {
+  it should "function when a Int is declared and printed" in {
     val code: String =
       "ITS SHOWTIME\n" +
         "HEY CHRISTMAS TREE A\n" +
@@ -47,7 +44,7 @@ class ArnoldGeneratorTest extends FlatSpec with ShouldMatchers with BeforeAndAft
     template.getOutput(code) should equal("999\n555\n")
   }
 
-  it should "function when a variable is incremented and printed" in {
+  it should "function when a Int is incremented and printed" in {
     val code =
       "ITS SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
@@ -60,7 +57,7 @@ class ArnoldGeneratorTest extends FlatSpec with ShouldMatchers with BeforeAndAft
     template.getOutput(code) should equal("66\n")
   }
 
-  it should "function when a variable is decremented and printed" in {
+  it should "function when a Int is decremented and printed" in {
     val code =
       "ITS SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
@@ -71,6 +68,19 @@ class ArnoldGeneratorTest extends FlatSpec with ShouldMatchers with BeforeAndAft
         "TALK TO THE HAND VAR\n" +
         "YOU HAVE BEEN TERMINATED\n"
     template.getOutput(code) should equal("-22\n")
+  }
+
+  it should "function when printing booleans" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "RIGHT? WRONG! VARTRUE\n" +
+        "YOU SET US UP NO PROBLEMO\n" +
+        "RIGHT? WRONG! VARFALSE\n" +
+        "YOU SET US UP I LIED\n" +
+        "TALK TO THE HAND VARTRUE\n" +
+        "TALK TO THE HAND VARFALSE\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    template.getOutput(code) should equal("1\n0\n")
   }
   it should "detect duplicate variable declarations" in {
     val code =
@@ -95,7 +105,7 @@ class ArnoldGeneratorTest extends FlatSpec with ShouldMatchers with BeforeAndAft
       System.setOut(new PrintStream(outputRedirectionStream))
 
       invokeMainMethod(bytecode)
-      System.setOut(originalOutputStream);
+      System.setOut(originalOutputStream)
       outputRedirectionStream.toString
     }
 

@@ -7,9 +7,9 @@
  */
 public class myClass {
 
-    void asdf(int a){
-       while(true){
-           a = a + 1;
-       }
+    void asdf(boolean a, boolean b) {
+        a = true;
+        b = false;
+
     }
 }
