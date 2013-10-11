@@ -50,6 +50,7 @@ class ArnoldGeneratorTest extends FlatSpec with ShouldMatchers with BeforeAndAft
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
+        "HERE IS MY INVITATION VAR\n" +
         "GET UP 44\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND VAR\n" +
@@ -63,11 +64,48 @@ class ArnoldGeneratorTest extends FlatSpec with ShouldMatchers with BeforeAndAft
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
+        "HERE IS MY INVITATION VAR\n" +
         "GET DOWN 44\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND VAR\n" +
         "YOU HAVE BEEN TERMINATED\n"
     template.getOutput(code) should equal("-22\n")
+  }
+
+  it should "work using arithmetic operations" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "HEY CHRISTMAS TREE VAR\n" +
+        "YOU SET US UP 22\n" +
+        "GET TO THE CHOPPER VAR\n" +
+        "HERE IS MY INVITATION 11\n" +
+        "GET DOWN 43\n" +
+        "GET UP 54\n" +
+        "GET UP 44\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND VAR\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    template.getOutput(code) should equal("66\n")
+  }
+
+  it should "work using arithmetic operations vol2" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "HEY CHRISTMAS TREE VAR\n" +
+        "YOU SET US UP 22\n" +
+        "GET TO THE CHOPPER VAR\n" +
+        "HERE IS MY INVITATION 11\n" +
+        "GET DOWN 55\n" +
+        "GET UP 11\n" +
+        "GET UP 22\n" +
+        "GET UP 23\n" +
+        "GET DOWN 0\n" +
+        "GET UP 0\n" +
+        "GET UP 1\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND VAR\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    template.getOutput(code) should equal("13\n")
   }
 
   it should "function when printing booleans" in {

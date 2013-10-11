@@ -7,9 +7,8 @@
  */
 public class myClass {
 
-    void asdf(boolean a, boolean b) {
-        a = true;
-        b = false;
+    void asdf(boolean a, int b) {
+        a = (b==4);
 
     }
 }

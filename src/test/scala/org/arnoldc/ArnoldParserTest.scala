@@ -92,11 +92,13 @@ class ArnoldParserTest extends FlatSpec with BeforeAndAfter with ShouldMatchers 
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
+        "HERE IS MY INVITATION VAR\n" +
         "GET UP 44\n" +
+        "GET UP 43\n" +
         "ENOUGH TALK\n" +
         "YOU HAVE BEEN TERMINATED\n"
 
-    arnoldParser.parse(input)
+   println( arnoldParser.parse(input) )
   }
 
   it should "parse when decrementing a variable" in {
@@ -105,6 +107,7 @@ class ArnoldParserTest extends FlatSpec with BeforeAndAfter with ShouldMatchers 
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
+        "HERE IS MY INVITATION VAR\n" +
         "GET DOWN 44\n" +
         "ENOUGH TALK\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -137,6 +140,7 @@ class ArnoldParserTest extends FlatSpec with BeforeAndAfter with ShouldMatchers 
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
+        "HERE IS MY INVITATION VAR\n" +
         "GET UP 44\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND VAR\n" +

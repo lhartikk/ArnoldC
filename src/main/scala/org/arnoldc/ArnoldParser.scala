@@ -17,10 +17,12 @@ class ArnoldParser extends Parser {
   val MinusOperator = "GET DOWN"
   val EndProgram = "YOU HAVE BEEN TERMINATED"
   val Print = "TALK TO THE HAND"
-  val HandleVariable = "GET TO THE CHOPPER"
-  val EndHandleVariable = "ENOUGH TALK"
+  val AssignVariable = "GET TO THE CHOPPER"
+  val SetValue = "HERE IS MY INVITATION"
+  val EndAssignVariable = "ENOUGH TALK"
   val False = "I LIED"
   val True = "NO PROBLEMO"
+  val EqualTo = "YOU ARE OUT NOT YOU YOU ARE ME"
 
 
   val EOL = oneOrMore("\n")
@@ -30,7 +32,7 @@ class ArnoldParser extends Parser {
   }
 
   def Statement: Rule1[StatementNode] = rule {
-    DeclareIntStatement | DeclareBooleanStatement | PrintStatement | HandleVariableStatement
+    DeclareIntStatement | DeclareBooleanStatement | PrintStatement | AssignVariableStatement
   }
 
   def PrintStatement: Rule1[PrintNode] = rule {
@@ -45,24 +47,29 @@ class ArnoldParser extends Parser {
     DeclareBoolean ~ " " ~ VariableName ~> (m => m) ~ EOL ~ SetInitialValue ~ " " ~ Operand ~~> DeclareBooleanNode ~ EOL
   }
 
-  def HandleVariableStatement: Rule1[HandleVariableNode] = rule {
-    HandleVariable ~ " " ~ VariableName ~> (m => m) ~ EOL ~ oneOrMore(Expression) ~~> HandleVariableNode ~ EndHandleVariable ~ EOL
+  def AssignVariableStatement: Rule1[AssignVariableNode] = rule {
+    AssignVariable ~ " " ~ VariableName ~> (m => m) ~ EOL ~ Expression ~ EndAssignVariable ~ EOL ~~> AssignVariableNode
   }
 
   def Operand: Rule1[OperandNode] = rule {
     Boolean | Number | Variable
   }
 
-  def Expression: Rule1[ExpressionNode] = rule {
-    (PlusExpression | MinusExpression) ~ EOL
+  def Expression: Rule1[AstNode] = rule {
+    SetValueExpression ~ (PlusExpression ~~> PlusExpressionNode | MinusExpression ~~> MinusExpressionNode) ~ zeroOrMore(PlusExpression ~~> PlusExpressionNode | MinusExpression ~~> MinusExpressionNode)
   }
 
-  def PlusExpression: Rule1[PlusExpressionNode] = rule {
-    PlusOperator ~ " " ~ Operand ~~> PlusExpressionNode
+  def SetValueExpression: Rule1[AstNode] = rule {
+    SetValue ~ " " ~ Operand ~ EOL
   }
 
-  def MinusExpression: Rule1[MinusExpressionNode] = rule {
-    MinusOperator ~ " " ~ Operand ~~> MinusExpressionNode
+
+  def PlusExpression: Rule1[AstNode] = rule {
+    PlusOperator ~ " " ~ Operand ~ EOL
+  }
+
+  def MinusExpression: Rule1[AstNode] = rule {
+    MinusOperator ~ " " ~ Operand ~ EOL
   }
 
   def Variable: Rule1[VariableNode] = rule {
@@ -74,8 +81,9 @@ class ArnoldParser extends Parser {
   }
 
   def Boolean: Rule1[BooleanNode] = rule {
-    (False | True)~> (matchedBoolean =>
-      if (matchedBoolean == True) BooleanNode(value = true) else BooleanNode(value = false))
+    (False | True) ~> (matchedBoolean =>
+      if (matchedBoolean == True) BooleanNode(value = true)
+      else BooleanNode(value = false))
   }
 
   def Number: Rule1[NumberNode] = rule {
