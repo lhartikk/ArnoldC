@@ -10,6 +10,7 @@ case class DeclareBooleanNode(variable: String, value: OperandNode) extends Stat
   def generate(mv: MethodVisitor) = {
     SymbolTable.put(variable, VariableType.boolean)
     value.generate(mv)
+    //TODO: CHECK VARIABLE IS BOOLEAN
     mv.visitVarInsn(ISTORE, SymbolTable.get(variable).varAddress)
   }
 

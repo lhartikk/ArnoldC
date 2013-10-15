@@ -22,8 +22,10 @@ class ArnoldParser extends Parser {
   val EndAssignVariable = "ENOUGH TALK"
   val False = "I LIED"
   val True = "NO PROBLEMO"
-  val EqualTo = "YOU ARE OUT NOT YOU YOU ARE ME"
-
+  val EqualTo = "YOU ARE NOT YOU YOU ARE ME"
+  val GreaterThan = "GREATER"
+  val Or = "HE HAD TO SPLIT"
+  val And = "KNOCK KNOCK"
 
   val EOL = oneOrMore("\n")
 
@@ -56,10 +58,37 @@ class ArnoldParser extends Parser {
   }
 
   def Expression: Rule1[AstNode] = rule {
-    SetValueExpression ~ (PlusExpression ~~> PlusExpressionNode | MinusExpression ~~> MinusExpressionNode) ~ zeroOrMore(PlusExpression ~~> PlusExpressionNode | MinusExpression ~~> MinusExpressionNode)
+    (SetValueExpression | Boolean ~ EOL) ~
+      (oneOrMore(ArithmeticOperation) | zeroOrMore(LogicalOperation))
   }
 
-  def SetValueExpression: Rule1[AstNode] = rule {
+  val LogicalOperation: ReductionRule1[AstNode, AstNode] = rule {
+    Or ~ EOL ~ (SetValueExpression ~ RelationalExpression | Boolean ~ EOL) ~~> OrNode |
+      And ~ EOL ~ (SetValueExpression ~ RelationalExpression | Boolean ~ EOL) ~~> AndNode |
+      RelationalExpression
+
+  }
+
+  def RelationalExpression: ReductionRule1[AstNode, AstNode] = {
+    EqualToExpression ~~> EqualToNode |
+      GreaterThanExpression ~~> GreaterThanNode
+  }
+
+
+  def EqualToExpression: Rule1[OperandNode] = {
+    EqualTo ~ " " ~ Operand ~ EOL
+  }
+
+  def GreaterThanExpression: Rule1[OperandNode] = {
+    GreaterThan ~ " " ~ Operand ~ EOL
+  }
+
+  def ArithmeticOperation: ReductionRule1[AstNode, AstNode] = rule {
+    PlusExpression ~~> PlusExpressionNode |
+      MinusExpression ~~> MinusExpressionNode
+  }
+
+  def SetValueExpression: Rule1[OperandNode] = rule {
     SetValue ~ " " ~ Operand ~ EOL
   }
 
