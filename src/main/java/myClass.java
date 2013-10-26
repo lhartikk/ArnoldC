@@ -1,8 +1,12 @@
 
 public class myClass {
 
-    void asdf(boolean a, boolean b) {
-        a = (a == b);
+
+    void asdf(boolean a) {
+
+        if (a) {
+            int b = 0;
+        }
 
     }
 }

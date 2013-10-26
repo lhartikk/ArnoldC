@@ -26,6 +26,11 @@ class ArnoldParser extends Parser {
   val GreaterThan = "GREATER"
   val Or = "HE HAD TO SPLIT"
   val And = "KNOCK KNOCK"
+  val If = "BECAUSE IM GOING TO SAY PLEASE"
+  val Else = "BULLSHIT"
+  val EndIf = "YOU HAVE NO RESPECT FOR LOGIC"
+  val While = "STICK AROUND"
+  val EndWhile = "CHILL"
 
   val EOL = oneOrMore("\n")
 
@@ -34,11 +39,23 @@ class ArnoldParser extends Parser {
   }
 
   def Statement: Rule1[StatementNode] = rule {
-    DeclareIntStatement | DeclareBooleanStatement | PrintStatement | AssignVariableStatement
+    DeclareIntStatement | DeclareBooleanStatement | PrintStatement |
+      AssignVariableStatement | ConditionStatement
   }
 
+  def ConditionStatement: Rule1[ConditionNode] = rule {
+    If ~ " " ~ Operand ~ EOL ~ zeroOrMore(Statement) ~
+      (Else ~ EOL ~ zeroOrMore(Statement) ~~> ConditionNode
+        | zeroOrMore(Statement) ~~> ConditionNode) ~ EndIf ~ EOL
+
+  }
+
+  /*def WhileStatement: Rule1[WhileNode] = rule {
+
+  } */
+
   def PrintStatement: Rule1[PrintNode] = rule {
-    Print ~ " " ~ Operand ~~> PrintNode ~ EOL
+    Print ~ " " ~ (Operand ~~> PrintNode | "\"" ~ String ~ "\"" ~~> PrintNode) ~ EOL
   }
 
   def DeclareIntStatement: Rule1[DeclareIntNode] = rule {
@@ -117,6 +134,12 @@ class ArnoldParser extends Parser {
 
   def Number: Rule1[NumberNode] = rule {
     oneOrMore("0" - "9") ~> ((matched: String) => NumberNode(matched.toInt))
+  }
+
+  def String: Rule1[StringNode] = rule {
+    zeroOrMore(rule {
+      !anyOf("\"\\") ~ ANY
+    }) ~> StringNode
   }
 
   def parse(expression: String): RootNode = {

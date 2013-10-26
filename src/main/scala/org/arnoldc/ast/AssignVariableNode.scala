@@ -5,9 +5,9 @@ import org.arnoldc.SymbolTable
 import org.objectweb.asm.Opcodes._
 
 case class AssignVariableNode(variable: String ,expression: AstNode) extends StatementNode {
-  def generate(mv: MethodVisitor) {
-    val variableAddress = SymbolTable.get(variable).varAddress
-    expression.generate(mv)
+  def generate(mv: MethodVisitor, symbolTable: SymbolTable) {
+    val variableAddress = symbolTable.get(variable).varAddress
+    expression.generate(mv, symbolTable)
     mv.visitVarInsn(ISTORE, variableAddress)
   }
 }

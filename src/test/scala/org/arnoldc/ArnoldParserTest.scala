@@ -116,6 +116,16 @@ class ArnoldParserTest extends FlatSpec with BeforeAndAfter with ShouldMatchers 
     arnoldParser.parse(input)
   }
 
+  it should "parse when printing a string" in {
+    val input =
+      "ITS SHOWTIME\n" +
+        "HEY CHRISTMAS TREE VAR\n" +
+        "YOU SET US UP 123\n" +
+        "TALK TO THE HAND \"this should be printed\"\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    arnoldParser.parse(input)
+  }
+
   it should "parse when assigning a variable" in {
     val input =
       "ITS SHOWTIME\n" +
@@ -183,6 +193,19 @@ class ArnoldParserTest extends FlatSpec with BeforeAndAfter with ShouldMatchers 
         "TALK TO THE HAND VAR\n" +
         "YOU HAVE BEEN TERMINATED\n"
    arnoldParser.parse(input)
+  }
+
+
+  it should "parse if statement" in {
+    val input =
+      "ITS SHOWTIME\n" +
+        "RIGHT? WRONG! TRUE\n" +
+        "YOU SET US UP I LIED\n" +
+        "BECAUSE IM GOING TO SAY PLEASE TRUE\n" +
+        "YOU HAVE NO RESPECT FOR LOGIC\n" +
+        "TALK TO THE HAND VAR\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+   println(arnoldParser.parse(input))
   }
 
 }

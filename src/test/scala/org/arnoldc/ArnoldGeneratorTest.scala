@@ -12,7 +12,7 @@ class ArnoldGeneratorTest extends FlatSpec with ShouldMatchers with BeforeAndAft
   var className = "Hello"
 
   before {
-    SymbolTable.clear()
+
   }
   "ArnoldGenerator" should "function when a variable is declared" in {
     val code: String =
@@ -29,6 +29,32 @@ class ArnoldGeneratorTest extends FlatSpec with ShouldMatchers with BeforeAndAft
         "TALK TO THE HAND 123\n" +
         "YOU HAVE BEEN TERMINATED\n"
     template.getOutput(code) should equal("123\n")
+  }
+
+  it should "function when a boolean is printed" in {
+    val code: String =
+      "ITS SHOWTIME\n" +
+      "RIGHT? WRONG! VARTRUE\n" +
+      "YOU SET US UP I LIED\n" +
+        "TALK TO THE HAND VARTRUE\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    template.getOutput(code) should equal("0\n")
+  }
+
+  it should "function when a String is printed" in {
+    val code: String =
+      "ITS SHOWTIME\n" +
+        "TALK TO THE HAND \"this should be printed\"\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    template.getOutput(code) should equal("this should be printed\n")
+  }
+
+  it should "function when a more exotic String is printed" in {
+    val code: String =
+      "ITS SHOWTIME\n" +
+        "TALK TO THE HAND \"!!! ??? äöäöäöä@#0123=+-,.\"\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    template.getOutput(code) should equal("!!! ??? äöäöäöä@#0123=+-,.\n")
   }
 
   it should "function when a Int is declared and printed" in {
@@ -146,20 +172,20 @@ class ArnoldGeneratorTest extends FlatSpec with ShouldMatchers with BeforeAndAft
     template.getOutput(code) should equal("13\n")
   }
 
-  it should "False Or True Evaluate True" in {
-    val code = "ITS SHOWTIME\n" +
-      "RIGHT? WRONG! VAR\n" +
-      "YOU SET US UP I LIED\n" +
-      "GET TO THE CHOPPER VAR\n" +
+   it should "False Or True Evaluate True" in {
+     val code = "ITS SHOWTIME\n" +
+       "RIGHT? WRONG! VAR\n" +
+       "YOU SET US UP I LIED\n" +
+       "GET TO THE CHOPPER VAR\n" +
       "I LIED\n" +
-      "HE HAD TO SPLIT\n" +
-      "NO PROBLEMO\n" +
-      "ENOUGH TALK\n" +
-      "TALK TO THE HAND VAR\n" +
-      "YOU HAVE BEEN TERMINATED\n"
-    template.getOutput(code) should equal("1\n")
-  }
-
+       "HE HAD TO SPLIT\n" +
+       "NO PROBLEMO\n" +
+       "ENOUGH TALK\n" +
+     "TALK TO THE HAND VAR\n" +
+       "YOU HAVE BEEN TERMINATED\n"
+     template.getOutput(code) should equal("0\n")
+   }
+      /*
   it should "True Or False Evaluate True" in {
     val code = "ITS SHOWTIME\n" +
       "RIGHT? WRONG! VAR\n" +
@@ -306,10 +332,58 @@ class ArnoldGeneratorTest extends FlatSpec with ShouldMatchers with BeforeAndAft
     template.getOutput(code) should equal("0\n")
   }
 
-  it should "function when printing booleans" in {
-    //TODO:
+  it should "function using simple if statements" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "RIGHT? WRONG! VARTRUE\n" +
+        "YOU SET US UP NO PROBLEMO\n" +
+        "BECAUSE IM GOING TO SAY PLEASE VARTRUE\n" +
+        "TALK TO THE HAND \"this branch should be reached\"\n" +
+        "YOU HAVE NO RESPECT FOR LOGIC\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    template.getOutput(code) should equal("this branch should be reached\n")
   }
 
+  it should "function using simple if statements vol2" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "RIGHT? WRONG! VARTRUE\n" +
+        "YOU SET US UP I LIED\n" +
+        "BECAUSE IM GOING TO SAY PLEASE VARTRUE\n" +
+        "TALK TO THE HAND \"this branch should not be reached\"\n" +
+        "YOU HAVE NO RESPECT FOR LOGIC\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    template.getOutput(code) should equal("")
+  }
+
+  it should "function using simple if else statements" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "RIGHT? WRONG! VARTRUE\n" +
+        "YOU SET US UP NO PROBLEMO\n" +
+        "BECAUSE IM GOING TO SAY PLEASE VARTRUE\n" +
+        "TALK TO THE HAND \"this branch should be reached\"\n" +
+        "BULLSHIT\n" +
+        "TALK TO THE HAND \"this branch should not be reached\"\n" +
+        "YOU HAVE NO RESPECT FOR LOGIC\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    template.getOutput(code) should equal("this branch should be reached\n")
+  }
+
+  it should "function using simple if else statements vol2" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "RIGHT? WRONG! VARFALSE\n" +
+        "YOU SET US UP I LIED\n" +
+        "BECAUSE IM GOING TO SAY PLEASE VARFALSE\n" +
+        "TALK TO THE HAND \"this branch should not be reached\"\n" +
+        "BULLSHIT\n" +
+        "TALK TO THE HAND \"this branch should be reached\"\n" +
+        "YOU HAVE NO RESPECT FOR LOGIC\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    template.getOutput(code) should equal("this branch should be reached\n")
+  }
+                                    */
   it should "detect if int is assigned to boolean" in {
     val code =
       "ITS SHOWTIME\n" +

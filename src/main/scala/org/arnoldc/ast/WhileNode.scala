@@ -2,10 +2,14 @@ package org.arnoldc.ast
 
 import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes._
+import org.objectweb.asm.Label
 import org.arnoldc.SymbolTable
 
-case class VariableNode(variable: String) extends OperandNode{
+case class WhileNode(condition: OperandNode, statements: List[AstNode]) extends StatementNode {
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) {
-    mv.visitVarInsn(ILOAD, symbolTable.get(variable).varAddress)
+    val conclude = new Label()
+    val falseLabel = new Label()
+
+
   }
 }

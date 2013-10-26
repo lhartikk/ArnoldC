@@ -2,23 +2,25 @@ package org.arnoldc.ast
 
 import org.objectweb.asm.Opcodes._
 import org.objectweb.asm.{MethodVisitor, ClassWriter}
+import org.arnoldc.SymbolTable
 
 case class RootNode(statements: List[StatementNode]) extends AstNode {
 
   val cw = new ClassWriter(0);
+  val symbolTable = new SymbolTable(null)
 
   def generateByteCode(filename: String): Array[Byte] = {
     generateClass(filename)
     cw.toByteArray
   }
 
-  def generate(mv: MethodVisitor) {
+  def generate(mv: MethodVisitor, symbolTable: SymbolTable) {
     val mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC,
       "main",
       "([Ljava/lang/String;)V",
       null,
       null);
-    statements.foreach(it => it.generate(mv))
+    statements.foreach(it => it.generate(mv, symbolTable))
     mv.visitInsn(RETURN);
     mv.visitMaxs(100, 100);
     mv.visitEnd()
@@ -36,7 +38,7 @@ case class RootNode(statements: List[StatementNode]) extends AstNode {
     mv.visitInsn(RETURN);
     mv.visitMaxs(100, 100);
     mv.visitEnd();
-    generate(mv)
+    generate(mv, symbolTable)
     cw.visitEnd()
   }
 
