@@ -2,11 +2,11 @@
 public class myClass {
 
 
-    void asdf(boolean a) {
+    public void asdf() {
 
-        if (a) {
-            int b = 0;
-        }
+        boolean a = true;
+        boolean b = false;
+        boolean c = a || b;
 
     }
 }

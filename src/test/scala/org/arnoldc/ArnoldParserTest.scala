@@ -1,11 +1,9 @@
 package org.arnoldc
 
-import org.scalatest.FlatSpec
 import org.parboiled.errors.ParsingException
-import org.scalatest.matchers.ShouldMatchers
-import org.scalatest.BeforeAndAfter
+import org.scalatest._
 
-class ArnoldParserTest extends FlatSpec with BeforeAndAfter with ShouldMatchers {
+class ArnoldParserTest extends FlatSpec with Matchers {
 
 
   var arnoldParser = new ArnoldParser
@@ -41,7 +39,7 @@ class ArnoldParserTest extends FlatSpec with BeforeAndAfter with ShouldMatchers 
         "RIGHT? WRONG! VAR\n" +
         "YOU SET US UP I LIED\n" +
         "YOU HAVE BEEN TERMINATED\n"
-   arnoldParser.parse(input)
+    arnoldParser.parse(input)
   }
 
   it should "parse when a boolean with true is declared" in {
@@ -54,28 +52,28 @@ class ArnoldParserTest extends FlatSpec with BeforeAndAfter with ShouldMatchers 
   }
 
   it should "parse when logical operations are executed" in {
-   val input =  "ITS SHOWTIME\n" +
-    "RIGHT? WRONG! VAR\n" +
-    "YOU SET US UP I LIED\n" +
-    "GET TO THE CHOPPER VAR\n" +
-    "I LIED\n" +
-    "HE HAD TO SPLIT\n" +
-    "NO PROBLEMO\n"+
-    "ENOUGH TALK\n"+
-    "YOU HAVE BEEN TERMINATED\n"
+    val input = "ITS SHOWTIME\n" +
+      "RIGHT? WRONG! VAR\n" +
+      "YOU SET US UP I LIED\n" +
+      "GET TO THE CHOPPER VAR\n" +
+      "I LIED\n" +
+      "HE HAD TO SPLIT\n" +
+      "NO PROBLEMO\n" +
+      "ENOUGH TALK\n" +
+      "YOU HAVE BEEN TERMINATED\n"
     arnoldParser.parse(input)
   }
 
   it should "detect faulty logical operations" in {
-   val input = "ITS SHOWTIME\n" +
+    val input = "ITS SHOWTIME\n" +
       "RIGHT? WRONG! VAR\n" +
       "YOU SET US UP I LIED\n" +
       "GET TO THE CHOPPER VAR\n" +
       "I LIED\n" +
       "I LIED\n" +
       "HE HAD TO SPLIT\n" +
-      "NO PROBLEMO\n"+
-      "ENOUGH TALK\n"+
+      "NO PROBLEMO\n" +
+      "ENOUGH TALK\n" +
       "YOU HAVE BEEN TERMINATED\n"
     intercept[ParsingException] {
       arnoldParser.parse(input)
@@ -178,7 +176,7 @@ class ArnoldParserTest extends FlatSpec with BeforeAndAfter with ShouldMatchers 
         "TALK TO THE HAND A\n" +
         "TALK TO THE HAND B\n" +
         "YOU HAVE BEEN TERMINATED\n"
-   arnoldParser.parse(input)
+    arnoldParser.parse(input)
   }
 
   it should "function when a variable is incremented and printed" in {
@@ -192,20 +190,22 @@ class ArnoldParserTest extends FlatSpec with BeforeAndAfter with ShouldMatchers 
         "ENOUGH TALK\n" +
         "TALK TO THE HAND VAR\n" +
         "YOU HAVE BEEN TERMINATED\n"
-   arnoldParser.parse(input)
+    arnoldParser.parse(input)
   }
 
 
-  it should "parse if statement" in {
-    val input =
-      "ITS SHOWTIME\n" +
-        "RIGHT? WRONG! TRUE\n" +
-        "YOU SET US UP I LIED\n" +
-        "BECAUSE IM GOING TO SAY PLEASE TRUE\n" +
-        "YOU HAVE NO RESPECT FOR LOGIC\n" +
-        "TALK TO THE HAND VAR\n" +
-        "YOU HAVE BEEN TERMINATED\n"
-   println(arnoldParser.parse(input))
+  it should "False Or True Evaluate True" in {
+    val code = "ITS SHOWTIME\n" +
+      "RIGHT? WRONG! VAR\n" +
+      "YOU SET US UP I LIED\n" +
+      "GET TO THE CHOPPER VAR\n" +
+      "I LIED\n" +
+      "HE HAD TO SPLIT\n" +
+      "NO PROBLEMO\n" +
+      "ENOUGH TALK\n" +
+      "TALK TO THE HAND VAR\n" +
+      "YOU HAVE BEEN TERMINATED\n"
+    println(arnoldParser.parse(code))
   }
 
 }

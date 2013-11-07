@@ -19,11 +19,11 @@ case class AndNode(operand1: AstNode, operand2: AstNode) extends ExpressionNode{
     mv.visitJumpInsn(GOTO, conclude)
     //jompikumpi false
     mv.visitLabel(eitherFalse)
-    mv.visitFrame(F_SAME, 0, null, 0, null)
+    mv.visitFrame(F_FULL, 0, null, 0, null)
     mv.visitInsn(ICONST_0)
     mv.visitJumpInsn(GOTO, conclude)
     //lopuksi
     mv.visitLabel(conclude)
-    mv.visitFrame(F_SAME1, 0, null, 1, Array(INTEGER))
+    mv.visitFrame(F_FULL, 0, null, 1, Array(INTEGER))
   }
 }
