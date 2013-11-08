@@ -23,7 +23,7 @@ class ArnoldParser extends Parser {
   val False = "I LIED"
   val True = "NO PROBLEMO"
   val EqualTo = "YOU ARE NOT YOU YOU ARE ME"
-  val GreaterThan = "GREATER"
+  val GreaterThan = "LET OF SOME STEAM BENNET"
   val Or = "HE HAD TO SPLIT"
   val And = "KNOCK KNOCK"
   val If = "BECAUSE IM GOING TO SAY PLEASE"
@@ -32,7 +32,7 @@ class ArnoldParser extends Parser {
   val While = "STICK AROUND"
   val EndWhile = "CHILL"
 
-  val EOL = oneOrMore("\n")
+  val EOL = zeroOrMore( "\t" | " ") ~ "\n" ~ zeroOrMore("\t" | " " | "\n")
 
   def Root: Rule1[RootNode] = rule {
     BeginProgram ~ EOL ~ zeroOrMore(Statement) ~ EndProgram ~ EOL ~ EOI ~~> RootNode
@@ -40,7 +40,7 @@ class ArnoldParser extends Parser {
 
   def Statement: Rule1[StatementNode] = rule {
     DeclareIntStatement | DeclareBooleanStatement | PrintStatement |
-      AssignVariableStatement | ConditionStatement
+      AssignVariableStatement | ConditionStatement | WhileStatement
   }
 
   def ConditionStatement: Rule1[ConditionNode] = rule {
@@ -50,9 +50,9 @@ class ArnoldParser extends Parser {
 
   }
 
-  /*def WhileStatement: Rule1[WhileNode] = rule {
-
-  } */
+  def WhileStatement: Rule1[WhileNode] = rule {
+    While ~ " " ~ Operand ~ EOL ~ zeroOrMore(Statement) ~ EndWhile ~ EOL ~~> WhileNode
+  }
 
   def PrintStatement: Rule1[PrintNode] = rule {
     Print ~ " " ~ (Operand ~~> PrintNode | "\"" ~ String ~ "\"" ~~> PrintNode) ~ EOL
@@ -123,7 +123,7 @@ class ArnoldParser extends Parser {
   }
 
   def VariableName: Rule0 = rule {
-    rule("A" - "Z") ~ zeroOrMore("A" - "Z" | "0" - "9")
+    rule("A" - "Z" | "a" - "z") ~ zeroOrMore("A" - "Z" | "a" - "z" | "0" - "9")
   }
 
   def Boolean: Rule1[BooleanNode] = rule {
@@ -133,7 +133,8 @@ class ArnoldParser extends Parser {
   }
 
   def Number: Rule1[NumberNode] = rule {
-    oneOrMore("0" - "9") ~> ((matched: String) => NumberNode(matched.toInt))
+    oneOrMore("0" - "9") ~> ((matched: String) => NumberNode(matched.toInt)) |
+      "-" ~ oneOrMore("0" - "9") ~> ((matched: String) => NumberNode(-matched.toInt))
   }
 
   def String: Rule1[StringNode] = rule {

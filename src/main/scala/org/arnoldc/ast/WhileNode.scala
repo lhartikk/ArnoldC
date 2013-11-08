@@ -7,9 +7,16 @@ import org.arnoldc.SymbolTable
 
 case class WhileNode(condition: OperandNode, statements: List[AstNode]) extends StatementNode {
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) {
-    val conclude = new Label()
-    val falseLabel = new Label()
+    val loopStart = new Label()
+    val loopEnd = new Label()
 
-
+    mv.visitLabel(loopStart)
+    mv.visitFrame(F_FULL, symbolTable.size(), symbolTable.stackFrame(), 0, null)
+    condition.generate(mv, symbolTable)
+    mv.visitJumpInsn(IFEQ, loopEnd)
+    statements.foreach(_.generate(mv, symbolTable))
+    mv.visitJumpInsn(GOTO, loopStart)
+    mv.visitLabel(loopEnd)
+    mv.visitFrame(F_SAME, 0, null, 0, null)
   }
 }

@@ -1,6 +1,6 @@
 package org.arnoldc
 
-import java.io.{FileOutputStream}
+import java.io.FileOutputStream
 
 object ArnoldC {
   def main(args: Array[String]) {
@@ -13,8 +13,8 @@ object ArnoldC {
 
     val a = new ArnoldGenerator()
     val bytecode = a.generate(sourceCode, filename)
-    val out = new FileOutputStream(filename+".class");
-    out.write(bytecode);
-    out.close();
+    val out = new FileOutputStream(filename+".class")
+    out.write(bytecode)
+    out.close()
   }
 }

@@ -2,15 +2,29 @@ package org.arnoldc
 
 import scala.collection.mutable
 import org.parboiled.errors.ParsingException
+import org.objectweb.asm.Opcodes._
 
+case class SymbolTable(upperLevel: Option[SymbolTable]) {
 
-case class SymbolTable(upperLevel: SymbolTable) {
+  val FirstSymbolTableAddress = 0
   private val table = new mutable.HashMap[String, VariableInformation]()
   val initialNextVarAddress: Int =
-    if (upperLevel == null)
-      0
-    else
-      upperLevel.initialNextVarAddress + 1
+    if (upperLevel.isEmpty) {
+      FirstSymbolTableAddress
+    }
+    else {
+      upperLevel.get.initialNextVarAddress + 1
+    }
+
+  def size(): Int = {
+    initialNextVarAddress + table.size
+  }
+
+  def stackFrame(): Array[AnyRef] = {
+    Stream.iterate(INTEGER: AnyRef) {
+      i => i
+    }.take(size()).toArray
+  }
 
   def put(variableName: String, variableType: VariableType.value) = {
     val newVarAddress = initialNextVarAddress + table.size
@@ -21,15 +35,12 @@ case class SymbolTable(upperLevel: SymbolTable) {
   }
 
   def get(variableName: String): VariableInformation = {
-//    upperLevel.get(variableName)
     table.getOrElse(variableName, {
-    //  if (upperLevel == null) {
-        throw new ParsingException("VARIABLE:" + variableName + "NOT DECLARED!")
-      //}
-    //  return upperLevel.get(variableName)
+      if (upperLevel.isEmpty) {
+        throw new ParsingException("VARIABLE: " + variableName + "NOT DECLARED!")
+      }
+      upperLevel.get.get(variableName)
     })
   }
-
-  case class VariableInformation(varAddress: Int, varType: VariableType.value)
 
 }

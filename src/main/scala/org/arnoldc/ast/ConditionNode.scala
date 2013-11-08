@@ -11,16 +11,14 @@ case class ConditionNode(condition: OperandNode, ifBranch: List[AstNode], elseBr
     val falseLabel = new Label()
     condition.generate(mv, symbolTable)
     mv.visitJumpInsn(IFEQ, falseLabel)
-    //true
     ifBranch.foreach(_.generate(mv, symbolTable))
     mv.visitJumpInsn(GOTO, conclude)
-    //false
     mv.visitLabel(falseLabel)
-    mv.visitFrame(F_FULL, 0, null, 0, null)
+    mv.visitFrame(F_FULL, symbolTable.size(), symbolTable.stackFrame(), 0, null)
     elseBranch.foreach(_.generate(mv, symbolTable))
     mv.visitJumpInsn(GOTO, conclude)
     mv.visitLabel(conclude)
-    mv.visitFrame(F_FULL, 0, null, 0, null)
+    mv.visitFrame(F_SAME, 0, null, 0, null)
 
   }
 }

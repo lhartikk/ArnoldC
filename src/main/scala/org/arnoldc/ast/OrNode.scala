@@ -16,14 +16,14 @@ case class OrNode(operand1: AstNode, operand2: AstNode) extends ExpressionNode {
     mv.visitJumpInsn(IFNE, eitherTrue)
 
     //both false
-    mv.visitInsn(ICONST_0);
-    mv.visitJumpInsn(GOTO, conclude);
+    mv.visitInsn(ICONST_0)
+    mv.visitJumpInsn(GOTO, conclude)
 
     //either true
-    mv.visitLabel(eitherTrue);
-    mv.visitFrame(Opcodes.F_FULL, 0, null, 0, null)
-    mv.visitInsn(ICONST_1);
-    mv.visitJumpInsn(GOTO, conclude);
+    mv.visitLabel(eitherTrue)
+    mv.visitFrame(Opcodes.F_FULL, symbolTable.size(), symbolTable.stackFrame(), 0, null)
+    mv.visitInsn(ICONST_1)
+    mv.visitJumpInsn(GOTO, conclude)
     mv.visitLabel(conclude)
     mv.visitFrame(Opcodes.F_FULL, 0, null, 1, Array(INTEGER))
   }
