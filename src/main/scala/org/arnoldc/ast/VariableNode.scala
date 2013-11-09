@@ -6,6 +6,6 @@ import org.arnoldc.SymbolTable
 
 case class VariableNode(variable: String) extends OperandNode{
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) {
-    mv.visitVarInsn(ILOAD, symbolTable.getVariable(variable).varAddress)
+    mv.visitVarInsn(ILOAD, symbolTable.getVariable(variable))
   }
 }

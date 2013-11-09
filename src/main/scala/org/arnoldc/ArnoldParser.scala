@@ -37,7 +37,7 @@ class ArnoldParser extends Parser {
   val Return = "I'LL BE BACK"
   val EndMethodDeclaration = "THE HELL WITH YOU"
   val CallMethod = "DO IT NOW"
-  val IntegerReturnType = "IN TO THE TUNNEL"
+  val NonVoidMethod = "IN TO THE TUNNEL"
 
   val EOL = zeroOrMore("\t" | " ") ~ "\n" ~ zeroOrMore("\t" | " " | "\n")
   val WhiteSpace = oneOrMore(" " | "\t")

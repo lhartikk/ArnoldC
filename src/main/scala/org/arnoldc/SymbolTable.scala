@@ -7,7 +7,7 @@ import org.objectweb.asm.Opcodes._
 case class SymbolTable(upperLevel: Option[SymbolTable]) {
 
   val FirstSymbolTableAddress = 0
-  private val variableTable = new mutable.HashMap[String, VariableInformation]()
+  private val variableTable = new mutable.HashMap[String, Integer]()
   private val methodTable = new mutable.HashMap[String, MethodInformation]()
   
   val initialNextVarAddress: Int =
@@ -28,15 +28,15 @@ case class SymbolTable(upperLevel: Option[SymbolTable]) {
     }.take(size()).toArray
   }
 
-  def putVariable(variableName: String, variableType: VariableType.value) = {
+  def putVariable(variableName: String) = {
     val newVarAddress = initialNextVarAddress + variableTable.size
     if (variableTable.contains(variableName)) {
       throw new ParsingException("DUPLICATE VARIABLE: " + variableName)
     }
-    variableTable += (variableName -> VariableInformation(newVarAddress, variableType))
+    variableTable += (variableName -> newVarAddress)
   }
 
-  def getVariable(variableName: String): VariableInformation = {
+  def getVariable(variableName: String): Integer = {
     variableTable.getOrElse(variableName, {
       if (upperLevel.isEmpty) {
         throw new ParsingException("VARIABLE: " + variableName + " NOT DECLARED!")
