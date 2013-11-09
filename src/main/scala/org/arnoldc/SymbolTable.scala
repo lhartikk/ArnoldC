@@ -39,7 +39,7 @@ case class SymbolTable(upperLevel: Option[SymbolTable]) {
   def getVariable(variableName: String): VariableInformation = {
     variableTable.getOrElse(variableName, {
       if (upperLevel.isEmpty) {
-        throw new ParsingException("VARIABLE: " + variableName + "NOT DECLARED!")
+        throw new ParsingException("VARIABLE: " + variableName + " NOT DECLARED!")
       }
       upperLevel.get.getVariable(variableName)
     })

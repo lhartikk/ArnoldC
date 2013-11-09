@@ -2,17 +2,16 @@ package org.arnoldc
 
 import org.parboiled.errors.ParsingException
 
-class LogicalTest extends ArnoldGeneratorTest{
+class LogicalTest extends ArnoldGeneratorTest {
   it should "False Or True Evaluate True" in {
     val code = "ITS SHOWTIME\n" +
-      "RIGHT? WRONG! VAR\n" +
-      "YOU SET US UP I LIED\n" +
-      "GET TO THE CHOPPER VAR\n" +
-      "I LIED\n" +
-      "CONSIDER THAT A DIVORCE\n" +
-      "NO PROBLEMO\n" +
+      "HEY CHRISTMAS TREE var\n" +
+      "YOU SET US UP 0\n" +
+      "GET TO THE CHOPPER var\n" +
+      "HERE IS MY INVITATION 0\n" +
+      "CONSIDER THAT A DIVORCE 1\n" +
       "ENOUGH TALK\n" +
-      "TALK TO THE HAND VAR\n" +
+      "TALK TO THE HAND var\n" +
       "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("1\n")
   }
@@ -20,97 +19,90 @@ class LogicalTest extends ArnoldGeneratorTest{
 
   it should "True Or False Evaluate True" in {
     val code = "ITS SHOWTIME\n" +
-      "RIGHT? WRONG! VAR\n" +
-      "YOU SET US UP I LIED\n" +
-      "GET TO THE CHOPPER VAR\n" +
-      "NO PROBLEMO\n" +
-      "CONSIDER THAT A DIVORCE\n" +
-      "I LIED\n" +
+      "HEY CHRISTMAS TREE var\n" +
+      "YOU SET US UP @I LIED\n" +
+      "GET TO THE CHOPPER var\n" +
+      "HERE IS MY INVITATION @NO PROBLEMO\n" +
+      "CONSIDER THAT A DIVORCE @I LIED\n" +
       "ENOUGH TALK\n" +
-      "TALK TO THE HAND VAR\n" +
+      "TALK TO THE HAND var\n" +
       "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("1\n")
   }
 
   it should "True Or True Evaluate True" in {
     val code = "ITS SHOWTIME\n" +
-      "RIGHT? WRONG! VAR\n" +
-      "YOU SET US UP I LIED\n" +
-      "GET TO THE CHOPPER VAR\n" +
-      "NO PROBLEMO\n" +
-      "CONSIDER THAT A DIVORCE\n" +
-      "NO PROBLEMO\n" +
+      "HEY CHRISTMAS TREE var\n" +
+      "YOU SET US UP @I LIED\n" +
+      "GET TO THE CHOPPER var\n" +
+      "HERE IS MY INVITATION @NO PROBLEMO\n" +
+      "CONSIDER THAT A DIVORCE @NO PROBLEMO\n" +
       "ENOUGH TALK\n" +
-      "TALK TO THE HAND VAR\n" +
+      "TALK TO THE HAND var\n" +
       "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("1\n")
   }
 
   it should "False Or False Evaluate False" in {
     val code = "ITS SHOWTIME\n" +
-      "RIGHT? WRONG! VAR\n" +
-      "YOU SET US UP I LIED\n" +
-      "GET TO THE CHOPPER VAR\n" +
-      "I LIED\n" +
-      "CONSIDER THAT A DIVORCE\n" +
-      "I LIED\n" +
+      "HEY CHRISTMAS TREE var\n" +
+      "YOU SET US UP @I LIED\n" +
+      "GET TO THE CHOPPER var\n" +
+      "HERE IS MY INVITATION @I LIED\n" +
+      "CONSIDER THAT A DIVORCE @I LIED\n" +
       "ENOUGH TALK\n" +
-      "TALK TO THE HAND VAR\n" +
+      "TALK TO THE HAND var\n" +
       "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("0\n")
   }
 
   it should "False And True Evaluate False" in {
     val code = "ITS SHOWTIME\n" +
-      "RIGHT? WRONG! VAR\n" +
-      "YOU SET US UP I LIED\n" +
-      "GET TO THE CHOPPER VAR\n" +
-      "I LIED\n" +
-      "KNOCK KNOCK\n" +
-      "NO PROBLEMO\n" +
+      "HEY CHRISTMAS TREE var\n" +
+      "YOU SET US UP @I LIED\n" +
+      "GET TO THE CHOPPER var\n" +
+      "HERE IS MY INVITATION @I LIED\n" +
+      "KNOCK KNOCK @NO PROBLEMO\n" +
       "ENOUGH TALK\n" +
-      "TALK TO THE HAND VAR\n" +
+      "TALK TO THE HAND var\n" +
       "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("0\n")
   }
 
   it should "True And False Evaluate False" in {
     val code = "ITS SHOWTIME\n" +
-      "RIGHT? WRONG! VAR\n" +
-      "YOU SET US UP I LIED\n" +
-      "GET TO THE CHOPPER VAR\n" +
-      "NO PROBLEMO\n" +
-      "KNOCK KNOCK\n" +
-      "I LIED\n" +
+      "HEY CHRISTMAS TREE var\n" +
+      "YOU SET US UP @I LIED\n" +
+      "GET TO THE CHOPPER var\n" +
+      "HERE IS MY INVITATION @NO PROBLEMO\n" +
+      "KNOCK KNOCK @I LIED\n" +
       "ENOUGH TALK\n" +
-      "TALK TO THE HAND VAR\n" +
+      "TALK TO THE HAND var\n" +
       "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("0\n")
   }
 
   it should "True And True Evaluate True" in {
     val code = "ITS SHOWTIME\n" +
-      "RIGHT? WRONG! VAR\n" +
-      "YOU SET US UP I LIED\n" +
-      "GET TO THE CHOPPER VAR\n" +
-      "NO PROBLEMO\n" +
-      "KNOCK KNOCK\n" +
-      "NO PROBLEMO\n" +
+      "HEY CHRISTMAS TREE var\n" +
+      "YOU SET US UP @I LIED\n" +
+      "GET TO THE CHOPPER var\n" +
+      "HERE IS MY INVITATION @NO PROBLEMO\n" +
+      "KNOCK KNOCK @NO PROBLEMO\n" +
       "ENOUGH TALK\n" +
-      "TALK TO THE HAND VAR\n" +
+      "TALK TO THE HAND var\n" +
       "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("1\n")
   }
   it should "False And False Evaluate False" in {
     val code = "ITS SHOWTIME\n" +
-      "RIGHT? WRONG! VAR\n" +
-      "YOU SET US UP I LIED\n" +
-      "GET TO THE CHOPPER VAR\n" +
-      "I LIED\n" +
-      "KNOCK KNOCK\n" +
-      "I LIED\n" +
+      "HEY CHRISTMAS TREE var\n" +
+      "YOU SET US UP @I LIED\n" +
+      "GET TO THE CHOPPER var\n" +
+      "HERE IS MY INVITATION @I LIED\n" +
+      "KNOCK KNOCK @I LIED\n" +
       "ENOUGH TALK\n" +
-      "TALK TO THE HAND VAR\n" +
+      "TALK TO THE HAND var\n" +
       "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("0\n")
   }
@@ -118,30 +110,30 @@ class LogicalTest extends ArnoldGeneratorTest{
   it should "False Equals False evaluates True" in {
     val code =
       "ITS SHOWTIME\n" +
-        "RIGHT? WRONG! VARFALSE\n" +
-        "YOU SET US UP I LIED\n" +
-        "RIGHT? WRONG! VARFALSE2\n" +
-        "YOU SET US UP I LIED\n" +
-        "GET TO THE CHOPPER VARFALSE\n" +
-        "I LIED\n" +
-        "YOU ARE NOT YOU YOU ARE ME VARFALSE2\n" +
+        "HEY CHRISTMAS TREE varfalse\n" +
+        "YOU SET US UP @I LIED\n" +
+        "HEY CHRISTMAS TREE varfalse2\n" +
+        "YOU SET US UP @I LIED\n" +
+        "GET TO THE CHOPPER varfalse\n" +
+        "HERE IS MY INVITATION @I LIED\n" +
+        "YOU ARE NOT YOU YOU ARE ME varfalse2\n" +
         "ENOUGH TALK\n" +
-        "TALK TO THE HAND VARFALSE\n" +
+        "TALK TO THE HAND varfalse\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("1\n")
   }
   it should "True Equals False evaluates False" in {
     val code =
       "ITS SHOWTIME\n" +
-        "RIGHT? WRONG! VARFALSE\n" +
-        "YOU SET US UP I LIED\n" +
-        "RIGHT? WRONG! VARFALSE2\n" +
-        "YOU SET US UP I LIED\n" +
-        "GET TO THE CHOPPER VARFALSE\n" +
-        "NO PROBLEMO\n" +
-        "YOU ARE NOT YOU YOU ARE ME VARFALSE2\n" +
+        "HEY CHRISTMAS TREE varfalse\n" +
+        "YOU SET US UP @I LIED\n" +
+        "HEY CHRISTMAS TREE result\n" +
+        "YOU SET US UP @I LIED\n" +
+        "GET TO THE CHOPPER result\n" +
+        "HERE IS MY INVITATION @NO PROBLEMO\n" +
+        "YOU ARE NOT YOU YOU ARE ME varfalse\n" +
         "ENOUGH TALK\n" +
-        "TALK TO THE HAND VARFALSE\n" +
+        "TALK TO THE HAND result\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("0\n")
   }
@@ -149,17 +141,17 @@ class LogicalTest extends ArnoldGeneratorTest{
   it should "1 Equals 2 evaluates False" in {
     val code =
       "ITS SHOWTIME\n" +
-        "HEY CHRISTMAS TREE ONE\n" +
+        "HEY CHRISTMAS TREE one\n" +
         "YOU SET US UP 1\n" +
-        "HEY CHRISTMAS TREE TWO\n" +
+        "HEY CHRISTMAS TREE two\n" +
         "YOU SET US UP 2\n" +
-        "RIGHT? WRONG! RESULT\n" +
-        "YOU SET US UP NO PROBLEMO\n" +
-        "GET TO THE CHOPPER RESULT\n" +
-        "HERE IS MY INVITATION ONE\n" +
-        "YOU ARE NOT YOU YOU ARE ME TWO\n" +
+        "HEY CHRISTMAS TREE result\n" +
+        "YOU SET US UP @NO PROBLEMO\n" +
+        "GET TO THE CHOPPER result\n" +
+        "HERE IS MY INVITATION one\n" +
+        "YOU ARE NOT YOU YOU ARE ME two\n" +
         "ENOUGH TALK\n" +
-        "TALK TO THE HAND RESULT\n" +
+        "TALK TO THE HAND result\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("0\n")
   }
@@ -167,17 +159,17 @@ class LogicalTest extends ArnoldGeneratorTest{
   it should "2 is greater than 1 evaluates True" in {
     val code =
       "ITS SHOWTIME\n" +
-        "HEY CHRISTMAS TREE ONE\n" +
+        "HEY CHRISTMAS TREE one\n" +
         "YOU SET US UP 1\n" +
-        "HEY CHRISTMAS TREE TWO\n" +
+        "HEY CHRISTMAS TREE two\n" +
         "YOU SET US UP 2\n" +
-        "RIGHT? WRONG! RESULT\n" +
-        "YOU SET US UP NO PROBLEMO\n" +
-        "GET TO THE CHOPPER RESULT\n" +
-        "HERE IS MY INVITATION TWO\n" +
-        "LET OF SOME STEAM BENNET ONE\n" +
+        "HEY CHRISTMAS TREE result\n" +
+        "YOU SET US UP @NO PROBLEMO\n" +
+        "GET TO THE CHOPPER result\n" +
+        "HERE IS MY INVITATION two\n" +
+        "LET OF SOME STEAM BENNET one\n" +
         "ENOUGH TALK\n" +
-        "TALK TO THE HAND RESULT\n" +
+        "TALK TO THE HAND result\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("1\n")
   }
@@ -185,17 +177,17 @@ class LogicalTest extends ArnoldGeneratorTest{
   it should "1 is greater than 2 evaluates False" in {
     val code =
       "ITS SHOWTIME\n" +
-        "HEY CHRISTMAS TREE ONE\n" +
+        "HEY CHRISTMAS TREE one\n" +
         "YOU SET US UP 1\n" +
-        "HEY CHRISTMAS TREE TWO\n" +
+        "HEY CHRISTMAS TREE two\n" +
         "YOU SET US UP 2\n" +
-        "RIGHT? WRONG! RESULT\n" +
-        "YOU SET US UP NO PROBLEMO\n" +
-        "GET TO THE CHOPPER RESULT\n" +
-        "HERE IS MY INVITATION ONE\n" +
-        "LET OF SOME STEAM BENNET TWO\n" +
+        "HEY CHRISTMAS TREE result\n" +
+        "YOU SET US UP @NO PROBLEMO\n" +
+        "GET TO THE CHOPPER result\n" +
+        "HERE IS MY INVITATION one\n" +
+        "LET OF SOME STEAM BENNET two\n" +
         "ENOUGH TALK\n" +
-        "TALK TO THE HAND RESULT\n" +
+        "TALK TO THE HAND result\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("0\n")
   }
@@ -203,17 +195,17 @@ class LogicalTest extends ArnoldGeneratorTest{
   it should "3 is greater than 3 evaluates False" in {
     val code =
       "ITS SHOWTIME\n" +
-        "HEY CHRISTMAS TREE THREE\n" +
+        "HEY CHRISTMAS TREE three\n" +
         "YOU SET US UP 3\n" +
-        "HEY CHRISTMAS TREE THREE2\n" +
+        "HEY CHRISTMAS TREE three2\n" +
         "YOU SET US UP 3\n" +
-        "RIGHT? WRONG! RESULT\n" +
-        "YOU SET US UP NO PROBLEMO\n" +
-        "GET TO THE CHOPPER RESULT\n" +
-        "HERE IS MY INVITATION THREE\n" +
-        "LET OF SOME STEAM BENNET THREE2\n" +
+        "HEY CHRISTMAS TREE result\n" +
+        "YOU SET US UP @NO PROBLEMO\n" +
+        "GET TO THE CHOPPER result\n" +
+        "HERE IS MY INVITATION three\n" +
+        "LET OF SOME STEAM BENNET three2\n" +
         "ENOUGH TALK\n" +
-        "TALK TO THE HAND RESULT\n" +
+        "TALK TO THE HAND result\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("0\n")
   }
@@ -221,12 +213,12 @@ class LogicalTest extends ArnoldGeneratorTest{
   it should "detect faulty logical operations" in {
     val code = "ITS SHOWTIME\n" +
       "RIGHT? WRONG! VAR\n" +
-      "YOU SET US UP I LIED\n" +
+      "YOU SET US UP @I LIED\n" +
       "GET TO THE CHOPPER VAR\n" +
-      "I LIED\n" +
-      "I LIED\n" +
+      "@I LIED\n" +
+      "@I LIED\n" +
       "CONSIDER THAT A DIVORCE\n" +
-      "NO PROBLEMO\n" +
+      "@NO PROBLEMO\n" +
       "ENOUGH TALK\n" +
       "YOU HAVE BEEN TERMINATED\n"
     intercept[ParsingException] {

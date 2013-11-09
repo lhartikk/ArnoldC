@@ -10,8 +10,8 @@ class FeatureTest extends ArnoldGeneratorTest{
       "YOU SET US UP 1\n" +
       "HEY CHRISTMAS TREE sum\n" +
       "YOU SET US UP 0\n" +
-      "RIGHT? WRONG! loop\n" +
-      "YOU SET US UP NO PROBLEMO\n" +
+      "HEY CHRISTMAS TREE loop\n" +
+      "YOU SET US UP @NO PROBLEMO\n" +
       "HEY CHRISTMAS TREE index\n" +
       "YOU SET US UP 0\n" +
       "HEY CHRISTMAS TREE limit\n" +
@@ -50,8 +50,8 @@ class FeatureTest extends ArnoldGeneratorTest{
        "YOU SET US UP 1\n" +
        "HEY CHRISTMAS TREE squared\n" +
        "YOU SET US UP 1\n" +
-       "RIGHT? WRONG! loop\n" +
-       "YOU SET US UP NO PROBLEMO \n\n" +
+       "HEY CHRISTMAS TREE loop\n" +
+       "YOU SET US UP @NO PROBLEMO \n\n" +
        "STICK AROUND loop\n\n" +
        "\tGET TO THE CHOPPER squared\n" +
        "\tHERE IS MY INVITATION index\n" +

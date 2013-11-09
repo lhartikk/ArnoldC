@@ -29,12 +29,12 @@ class ArithmeticTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("-111\n")
   }
 
-  it should "evaluate when a boolean is printed" in {
+  it should "evaluate when a 'boolean' is printed" in {
     val code: String =
       "ITS SHOWTIME\n" +
-        "RIGHT? WRONG! VARTRUE\n" +
-        "YOU SET US UP I LIED\n" +
-        "TALK TO THE HAND VARTRUE\n" +
+        "HEY CHRISTMAS TREE varfalse\n" +
+        "YOU SET US UP @I LIED\n" +
+        "TALK TO THE HAND varfalse\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("0\n")
   }
@@ -348,26 +348,6 @@ class ArithmeticTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("12\n")
   }
 
-  it should "detect if int is assigned to boolean" in {
-    val code =
-      "ITS SHOWTIME\n" +
-        "RIGHT? WRONG! BOOLEAN\n" +
-        "YOU SET US UP 2\n" +
-        "YOU HAVE BEEN TERMINATED\n"
-    intercept[ParsingException] {
-      getOutput(code)
-    }
-  }
-  it should "detect if boolean is assigned to int" in {
-    val code =
-      "ITS SHOWTIME\n" +
-        "HEY CHRISTMAS TREE BOOLEAN\n" +
-        "YOU SET US UP I LIED\n" +
-        "YOU HAVE BEEN TERMINATED\n"
-    intercept[ParsingException] {
-      getOutput(code)
-    }
-  }
   it should "detect duplicate variable declarations" in {
     val code =
       "ITS SHOWTIME\n" +

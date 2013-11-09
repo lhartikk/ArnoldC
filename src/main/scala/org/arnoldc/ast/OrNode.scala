@@ -5,14 +5,14 @@ import org.objectweb.asm.Opcodes._
 import org.arnoldc.SymbolTable
 
 
-case class OrNode(operand1: AstNode, operand2: AstNode) extends ExpressionNode {
+case class OrNode(expression: AstNode, operand: AstNode) extends ExpressionNode {
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) {
 
     val eitherTrue = new Label()
     val conclude = new Label()
-    operand1.generate(mv, symbolTable)
+    expression.generate(mv, symbolTable)
     mv.visitJumpInsn(IFNE, eitherTrue)
-    operand2.generate(mv, symbolTable)
+    operand.generate(mv, symbolTable)
     mv.visitJumpInsn(IFNE, eitherTrue)
 
     //both false
