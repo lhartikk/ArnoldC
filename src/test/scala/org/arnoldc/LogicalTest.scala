@@ -9,7 +9,7 @@ class LogicalTest extends ArnoldGeneratorTest{
       "YOU SET US UP I LIED\n" +
       "GET TO THE CHOPPER VAR\n" +
       "I LIED\n" +
-      "HE HAD TO SPLIT\n" +
+      "CONSIDER THAT A DIVORCE\n" +
       "NO PROBLEMO\n" +
       "ENOUGH TALK\n" +
       "TALK TO THE HAND VAR\n" +
@@ -24,7 +24,7 @@ class LogicalTest extends ArnoldGeneratorTest{
       "YOU SET US UP I LIED\n" +
       "GET TO THE CHOPPER VAR\n" +
       "NO PROBLEMO\n" +
-      "HE HAD TO SPLIT\n" +
+      "CONSIDER THAT A DIVORCE\n" +
       "I LIED\n" +
       "ENOUGH TALK\n" +
       "TALK TO THE HAND VAR\n" +
@@ -38,7 +38,7 @@ class LogicalTest extends ArnoldGeneratorTest{
       "YOU SET US UP I LIED\n" +
       "GET TO THE CHOPPER VAR\n" +
       "NO PROBLEMO\n" +
-      "HE HAD TO SPLIT\n" +
+      "CONSIDER THAT A DIVORCE\n" +
       "NO PROBLEMO\n" +
       "ENOUGH TALK\n" +
       "TALK TO THE HAND VAR\n" +
@@ -52,7 +52,7 @@ class LogicalTest extends ArnoldGeneratorTest{
       "YOU SET US UP I LIED\n" +
       "GET TO THE CHOPPER VAR\n" +
       "I LIED\n" +
-      "HE HAD TO SPLIT\n" +
+      "CONSIDER THAT A DIVORCE\n" +
       "I LIED\n" +
       "ENOUGH TALK\n" +
       "TALK TO THE HAND VAR\n" +
@@ -225,7 +225,7 @@ class LogicalTest extends ArnoldGeneratorTest{
       "GET TO THE CHOPPER VAR\n" +
       "I LIED\n" +
       "I LIED\n" +
-      "HE HAD TO SPLIT\n" +
+      "CONSIDER THAT A DIVORCE\n" +
       "NO PROBLEMO\n" +
       "ENOUGH TALK\n" +
       "YOU HAVE BEEN TERMINATED\n"

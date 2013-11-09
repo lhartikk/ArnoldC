@@ -14,7 +14,7 @@ case class ConditionNode(condition: OperandNode, ifBranch: List[AstNode], elseBr
     ifBranch.foreach(_.generate(mv, symbolTable))
     mv.visitJumpInsn(GOTO, conclude)
     mv.visitLabel(falseLabel)
-    mv.visitFrame(F_FULL, symbolTable.size(), symbolTable.stackFrame(), 0, null)
+    mv.visitFrame(F_FULL, symbolTable.size(), symbolTable.getStackFrame, 0, null)
     elseBranch.foreach(_.generate(mv, symbolTable))
     mv.visitJumpInsn(GOTO, conclude)
     mv.visitLabel(conclude)

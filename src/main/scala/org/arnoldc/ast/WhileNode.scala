@@ -11,7 +11,7 @@ case class WhileNode(condition: OperandNode, statements: List[AstNode]) extends 
     val loopEnd = new Label()
 
     mv.visitLabel(loopStart)
-    mv.visitFrame(F_FULL, symbolTable.size(), symbolTable.stackFrame(), 0, null)
+    mv.visitFrame(F_FULL, symbolTable.size(), symbolTable.getStackFrame, 0, null)
     condition.generate(mv, symbolTable)
     mv.visitJumpInsn(IFEQ, loopEnd)
     statements.foreach(_.generate(mv, symbolTable))

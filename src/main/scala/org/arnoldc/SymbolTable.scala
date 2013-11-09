@@ -7,7 +7,9 @@ import org.objectweb.asm.Opcodes._
 case class SymbolTable(upperLevel: Option[SymbolTable]) {
 
   val FirstSymbolTableAddress = 0
-  private val table = new mutable.HashMap[String, VariableInformation]()
+  private val variableTable = new mutable.HashMap[String, VariableInformation]()
+  private val methodTable = new mutable.HashMap[String, MethodInformation]()
+  
   val initialNextVarAddress: Int =
     if (upperLevel.isEmpty) {
       FirstSymbolTableAddress
@@ -17,30 +19,43 @@ case class SymbolTable(upperLevel: Option[SymbolTable]) {
     }
 
   def size(): Int = {
-    initialNextVarAddress + table.size
+    initialNextVarAddress + variableTable.size
   }
 
-  def stackFrame(): Array[AnyRef] = {
+  def getStackFrame: Array[AnyRef] = {
     Stream.iterate(INTEGER: AnyRef) {
       i => i
     }.take(size()).toArray
   }
 
-  def put(variableName: String, variableType: VariableType.value) = {
-    val newVarAddress = initialNextVarAddress + table.size
-    if (table.contains(variableName)) {
+  def putVariable(variableName: String, variableType: VariableType.value) = {
+    val newVarAddress = initialNextVarAddress + variableTable.size
+    if (variableTable.contains(variableName)) {
       throw new ParsingException("DUPLICATE VARIABLE: " + variableName)
     }
-    table += (variableName -> VariableInformation(newVarAddress, variableType))
+    variableTable += (variableName -> VariableInformation(newVarAddress, variableType))
   }
 
-  def get(variableName: String): VariableInformation = {
-    table.getOrElse(variableName, {
+  def getVariable(variableName: String): VariableInformation = {
+    variableTable.getOrElse(variableName, {
       if (upperLevel.isEmpty) {
         throw new ParsingException("VARIABLE: " + variableName + "NOT DECLARED!")
       }
-      upperLevel.get.get(variableName)
+      upperLevel.get.getVariable(variableName)
     })
+  }
+
+  def putMethod(methodName: String, methodInformation: MethodInformation) = {
+         methodTable.put(methodName, methodInformation)
+  }
+
+  def getMethodDescription(methodName: String): String = {
+    if(methodName.equals("main")){
+      "([Ljava/lang/String;)V"
+    }
+    else{
+      "()V"
+    }
   }
 
 }

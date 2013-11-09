@@ -16,7 +16,7 @@ case class EqualToNode(operand1: AstNode, operand2: AstNode) extends ExpressionN
     mv.visitInsn(ICONST_1)
     mv.visitJumpInsn(GOTO, conclude)
     mv.visitLabel(notEqual)
-    mv.visitFrame(F_FULL, symbolTable.size(), symbolTable.stackFrame(), 0, null)
+    mv.visitFrame(F_FULL, symbolTable.size(), symbolTable.getStackFrame, 0, null)
     mv.visitInsn(ICONST_0)
     mv.visitLabel(conclude)
     mv.visitFrame(F_FULL, 0, null, 1, Array(INTEGER))

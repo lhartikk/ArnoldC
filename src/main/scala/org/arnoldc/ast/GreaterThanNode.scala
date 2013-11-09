@@ -15,7 +15,7 @@ case class GreaterThanNode(operand1: AstNode, operand2: AstNode) extends Express
     mv.visitInsn(ICONST_0)
     mv.visitJumpInsn(GOTO, concludeLabel)
     mv.visitLabel(greaterThanLabel)
-    mv.visitFrame(F_FULL, symbolTable.size(), symbolTable.stackFrame(), 0, null)
+    mv.visitFrame(F_FULL, symbolTable.size(), symbolTable.getStackFrame, 0, null)
     mv.visitInsn(ICONST_1)
     mv.visitJumpInsn(GOTO, concludeLabel)
     mv.visitLabel(concludeLabel)

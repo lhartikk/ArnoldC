@@ -4,8 +4,10 @@ import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes._
 import org.arnoldc.SymbolTable
 
-case class VariableNode(variable: String) extends OperandNode{
+case class MultiplicationExpressionNode(expression: AstNode ,operand: AstNode ) extends AstNode{
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) {
-    mv.visitVarInsn(ILOAD, symbolTable.getVariable(variable).varAddress)
+    expression.generate(mv, symbolTable)
+    operand.generate(mv, symbolTable)
+    mv.visitInsn(IMUL)
   }
 }

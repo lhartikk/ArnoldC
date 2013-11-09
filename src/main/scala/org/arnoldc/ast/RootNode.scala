@@ -4,7 +4,7 @@ import org.objectweb.asm.Opcodes._
 import org.objectweb.asm.{MethodVisitor, ClassWriter}
 import org.arnoldc.SymbolTable
 
-case class RootNode(statements: List[StatementNode]) extends AstNode {
+case class RootNode(methods: List[AbstractMethodNode]) extends AstNode {
 
   val cw = new ClassWriter(0)
   val symbolTable = new SymbolTable(None)
@@ -15,15 +15,11 @@ case class RootNode(statements: List[StatementNode]) extends AstNode {
   }
 
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) {
-    val mv = cw.visitMethod(ACC_PUBLIC + ACC_STATIC,
-      "main",
-      "([Ljava/lang/String;)V",
-      null,
-      null)
-    statements.foreach(it => it.generate(mv, symbolTable))
-    mv.visitInsn(RETURN)
-    mv.visitMaxs(100, 100)
-    mv.visitEnd()
+    methods.foreach(it =>
+      it.generate(cw.visitMethod(
+        ACC_PUBLIC + ACC_STATIC, it.methodName,
+        symbolTable.getMethodDescription(it.methodName), null, null),
+        symbolTable))
   }
 
   def generateClass(className: String) = {

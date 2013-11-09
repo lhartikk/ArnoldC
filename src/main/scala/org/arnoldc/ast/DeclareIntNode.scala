@@ -9,10 +9,10 @@ import org.parboiled.errors.ParsingException
 case class DeclareIntNode(variable: String, value: OperandNode) extends StatementNode {
 
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) = {
-    symbolTable.put(variable, VariableType.int)
+    symbolTable.putVariable(variable, VariableType.int)
     value.generate(mv, symbolTable)
     if (value.isInstanceOf[NumberNode] || value.isInstanceOf[VariableNode]) {
-      mv.visitVarInsn(ISTORE, symbolTable.get(variable).varAddress)
+      mv.visitVarInsn(ISTORE, symbolTable.getVariable(variable).varAddress)
     }
     else throw new ParsingException("CANNOT INITIALIZE INT WITH BOOLEAN VALUE")
   }
