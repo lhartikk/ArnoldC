@@ -5,5 +5,7 @@ abstract class AbstractMethodNode extends AstNode {
   val arguments: List[VariableNode]
   val methodName: String
 
-  def signature
+  def signature = MethodSignature(methodName, arguments)
 }
+
+case class MethodSignature(name: String, args: List[VariableNode])
