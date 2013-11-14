@@ -2,7 +2,7 @@ package org.arnoldc.ast
 
 import org.objectweb.asm.Opcodes._
 import org.objectweb.asm.{MethodVisitor, ClassWriter}
-import org.arnoldc.SymbolTable
+import org.arnoldc.{MethodInformation, SymbolTable}
 
 case class RootNode(methods: List[AbstractMethodNode]) extends AstNode {
 
@@ -15,11 +15,24 @@ case class RootNode(methods: List[AbstractMethodNode]) extends AstNode {
   }
 
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) {
-    methods.foreach(it =>
-      it.generate(cw.visitMethod(
-        ACC_PUBLIC + ACC_STATIC, it.methodName,
-        symbolTable.getMethodDescription(it.methodName), null, null),
-        symbolTable))
+    storeMethodSignatures(symbolTable)
+    generateMethods(symbolTable)
+  }
+
+  def generateMethods(symbolTable: SymbolTable) {
+    methods.foreach {
+      it =>
+        it.generate(cw.visitMethod(
+          ACC_PUBLIC + ACC_STATIC, it.methodName,
+          symbolTable.getMethodDescription(it.methodName), null, null),
+          symbolTable)
+    }
+  }
+
+  def storeMethodSignatures(symbolTable: SymbolTable) {
+    methods.foreach(
+      it => symbolTable.putMethod(it.methodName, new MethodInformation(false, it.arguments.size))
+    )
   }
 
   def generateClass(className: String) = {

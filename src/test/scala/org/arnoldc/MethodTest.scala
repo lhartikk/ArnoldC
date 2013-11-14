@@ -7,7 +7,7 @@ class MethodTest extends ArnoldGeneratorTest {
   it should "evalute method other than main" in {
     val code =
       "LISTEN TO ME VERY CAREFULLY mymethod\n" +
-        "THE HELL WITH YOU\n" +
+        "HASTA LA VISTA, BABY\n" +
         "ITS SHOWTIME\n" +
         "TALK TO THE HAND \"Hello\"\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -17,7 +17,7 @@ class MethodTest extends ArnoldGeneratorTest {
   it should "evalute method other than main2" in {
     val code =
       "LISTEN TO ME VERY CAREFULLY mymethod\n" +
-        "THE HELL WITH YOU\n" +
+        "HASTA LA VISTA, BABY\n" +
         "ITS SHOWTIME\n" +
         "TALK TO THE HAND \"Hello\"\n" +
         "YOU HAVE BEEN TERMINATED"
@@ -30,7 +30,7 @@ class MethodTest extends ArnoldGeneratorTest {
         "TALK TO THE HAND \"Hello\"\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY mymethod\n" +
-        "THE HELL WITH YOU\n"
+        "HASTA LA VISTA, BABY\n"
     getOutput(code) should equal("Hello\n")
   }
   it should "evalute method other than main4" in {
@@ -39,20 +39,35 @@ class MethodTest extends ArnoldGeneratorTest {
         "TALK TO THE HAND \"Hello\"\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY mymethod\n" +
-        "THE HELL WITH YOU"
+        "HASTA LA VISTA, BABY"
     getOutput(code) should equal("Hello\n")
   }
 
-  it should "evalute method call" in {
+  it should "evalute a plain method call" in {
     val code =
       "ITS SHOWTIME\n" +
         "DO IT NOW printHello\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY printHello\n" +
         "TALK TO THE HAND \"Hello\"\n" +
-        "THE HELL WITH YOU"
+        "HASTA LA VISTA, BABY"
     getOutput(code) should equal("Hello\n")
   }
+
+  it should "evalute a method call that takes an argument" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "HEY CHRISTMAS TREE argument\n" +
+        "YOU SET US UP 123\n" +
+        "DO IT NOW printInteger argument\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY printInteger\n" +
+        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+        "TALK TO THE HAND value\n" +
+        "HASTA LA VISTA, BABY"
+    getOutput(code) should equal("123\n")
+  }
+
   it should "evalute multiple method calls" in {
     val code =
       "ITS SHOWTIME\n" +
@@ -61,10 +76,10 @@ class MethodTest extends ArnoldGeneratorTest {
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY printHello\n" +
         "TALK TO THE HAND \"Hello\"\n" +
-        "THE HELL WITH YOU\n" +
+        "HASTA LA VISTA, BABY\n" +
         "LISTEN TO ME VERY CAREFULLY printCheers\n" +
         "TALK TO THE HAND \"Cheers\"\n" +
-        "THE HELL WITH YOU"
+        "HASTA LA VISTA, BABY"
     getOutput(code) should equal("Hello\nCheers\n")
   }
 
@@ -77,13 +92,13 @@ class MethodTest extends ArnoldGeneratorTest {
         "TALK TO THE HAND \"Hello\"\n" +
         "DO IT NOW printCheers\n" +
         "DO IT NOW printHejsan\n" +
-        "THE HELL WITH YOU\n" +
+        "HASTA LA VISTA, BABY\n" +
         "LISTEN TO ME VERY CAREFULLY printCheers\n" +
         "TALK TO THE HAND \"Cheers\"\n" +
-        "THE HELL WITH YOU\n" +
+        "HASTA LA VISTA, BABY\n" +
         "LISTEN TO ME VERY CAREFULLY printHejsan\n" +
         "TALK TO THE HAND \"Hejsan\"\n" +
-        "THE HELL WITH YOU"
+        "HASTA LA VISTA, BABY"
     getOutput(code) should equal("Hello\nCheers\nHejsan\n")
   }
 
@@ -102,6 +117,16 @@ class MethodTest extends ArnoldGeneratorTest {
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY printHello\n" +
         "TALK TO THE HAND \"Hello\"\n"
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect calls to methods that are not declared" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "DO IT NOW noSuchMethod\n" +
+        "YOU HAVE BEEN TERMINATED\n"
     intercept[ParsingException] {
       getOutput(code)
     }

@@ -1,12 +1,25 @@
-
 public class myClass {
 
 
-    public void asdf() {
 
+    public static void main(String args[]){
         boolean a = true;
-        boolean b = false;
-        boolean c = a || b;
+        int b = 2;
+
+        jepajee(a);
+    }
+
+     static void jepajee(boolean a){
+         if(a){
+             return ;
+         }
+         else{
+             return;
+         }
+
+     }
+
+    void a(){
 
     }
 }

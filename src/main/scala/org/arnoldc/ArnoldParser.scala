@@ -3,6 +3,7 @@ package org.arnoldc
 import org.parboiled.scala._
 import org.parboiled.errors.{ErrorUtils, ParsingException}
 import org.arnoldc.ast._
+import com.sun.org.apache.xpath.internal.operations
 
 class ArnoldParser extends Parser {
 
@@ -33,9 +34,9 @@ class ArnoldParser extends Parser {
   val While = "STICK AROUND"
   val EndWhile = "CHILL"
   val DeclareMethod = "LISTEN TO ME VERY CAREFULLY"
-  val MethodArguments = "I WANT YOUR BOOTS CAR AND MOTORCYCLE"
+  val MethodArguments = "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE"
   val Return = "I'LL BE BACK"
-  val EndMethodDeclaration = "THE HELL WITH YOU"
+  val EndMethodDeclaration = "HASTA LA VISTA, BABY"
   val CallMethod = "DO IT NOW"
   val NonVoidMethod = "IN TO THE TUNNEL"
 
@@ -55,8 +56,12 @@ class ArnoldParser extends Parser {
   }
 
   def Method: Rule1[AbstractMethodNode] = rule {
-    DeclareMethod ~ WhiteSpace ~ VariableName ~> (s => s) ~
-      EOL ~ zeroOrMore(Statement) ~ EndMethodDeclaration ~~> MethodNode
+    DeclareMethod ~ WhiteSpace ~ VariableName ~> (s => s) ~ EOL ~
+      zeroOrMore((MethodArguments ~ WhiteSpace ~ Variable ~ EOL) ) ~
+      optional(NonVoidMethod) ~> (k => "int") ~
+      zeroOrMore(Statement) ~ EndMethodDeclaration ~~> MethodNode
+
+
   }
 
   def Statement: Rule1[StatementNode] = rule {

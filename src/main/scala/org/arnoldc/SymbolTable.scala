@@ -9,7 +9,7 @@ case class SymbolTable(upperLevel: Option[SymbolTable]) {
   val FirstSymbolTableAddress = 0
   private val variableTable = new mutable.HashMap[String, Integer]()
   private val methodTable = new mutable.HashMap[String, MethodInformation]()
-  
+
   val initialNextVarAddress: Int =
     if (upperLevel.isEmpty) {
       FirstSymbolTableAddress
@@ -46,16 +46,22 @@ case class SymbolTable(upperLevel: Option[SymbolTable]) {
   }
 
   def putMethod(methodName: String, methodInformation: MethodInformation) = {
-         methodTable.put(methodName, methodInformation)
+    methodTable.put(methodName, methodInformation)
   }
 
   def getMethodDescription(methodName: String): String = {
-    if(methodName.equals("main")){
+    if (methodName.equals("main")) {
       "([Ljava/lang/String;)V"
     }
-    else{
-      "()V"
+    else {
+      val numberOfArguments = getMethodInformation(methodName).numberOfArguments
+      "(" + "Z" * numberOfArguments + ")V"
     }
   }
 
+  def getMethodInformation(methodName: String): MethodInformation = {
+    methodTable.getOrElse(methodName, {
+      throw new ParsingException("METHOD: " + methodName + " NOT DECLARED!")
+    })
+  }
 }

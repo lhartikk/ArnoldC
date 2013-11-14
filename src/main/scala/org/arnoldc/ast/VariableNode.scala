@@ -4,8 +4,8 @@ import org.objectweb.asm.MethodVisitor
 import org.objectweb.asm.Opcodes._
 import org.arnoldc.SymbolTable
 
-case class VariableNode(variable: String) extends OperandNode{
+case class VariableNode(variableName: String) extends OperandNode{
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) {
-    mv.visitVarInsn(ILOAD, symbolTable.getVariable(variable))
+    mv.visitVarInsn(ILOAD, symbolTable.getVariable(variableName))
   }
 }

@@ -7,6 +7,7 @@ import org.arnoldc.SymbolTable
 case class MainMethodNode(statements: List[StatementNode]) extends AbstractMethodNode {
 
   val methodName: String = "main"
+  val arguments = Nil
 
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) = {
     mv.visitCode()
