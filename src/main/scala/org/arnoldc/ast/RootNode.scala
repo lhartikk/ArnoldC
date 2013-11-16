@@ -19,7 +19,7 @@ case class RootNode(methods: List[AbstractMethodNode]) extends AstNode {
     def storeTo(symbols: SymbolTable)(s: MethodSignature) = {
       symbols.putMethod(s.name, new MethodInformation(s.returnsValue, s.args.size))
     }
-    val globalSymbols = new SymbolTable(None)
+    val globalSymbols = new SymbolTable(None, "")
     val methodSignatures = methods.map(_.signature)
     methodSignatures.foreach(storeTo(globalSymbols))
     globalSymbols
@@ -47,7 +47,6 @@ case class RootNode(methods: List[AbstractMethodNode]) extends AstNode {
           method.methodName,
           globalSymbols.getMethodDescription(method.methodName), null, null),
           globalSymbols)
-
       }
       methods.foreach(generateBytecode)
     }

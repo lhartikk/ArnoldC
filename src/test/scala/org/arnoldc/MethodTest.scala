@@ -188,7 +188,7 @@ class MethodTest extends ArnoldGeneratorTest {
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY minustwo\n" +
         "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
-        "IN TO THE TUNNEL\n" +
+        "GIVE THESE PEOPLE AIR\n" +
         "GET TO THE CHOPPER value\n" +
         "HERE IS MY INVITATION value\n" +
         "GET DOWN 2\n" +
@@ -236,19 +236,23 @@ class MethodTest extends ArnoldGeneratorTest {
       "I'LL BE BACK 0\n" +
       "HASTA LA VISTA, BABY\n"
 
-    getOutput(code) should equal("reached codeblock\n")
+    intercept[ParsingException] {
+      getOutput(code)
+    }
   }
 
   it should "detect if a non-void method tries to return a without a parameter" in {
     val code = "ITS SHOWTIME\n" +
-      "DO IT NOW method\n" +
+      "DO IT NOW method 0\n" +
       "YOU HAVE BEEN TERMINATED\n" +
       "LISTEN TO ME VERY CAREFULLY method\n" +
+      "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+      "GIVE THESE PEOPLE AIR\n" +
       "I'LL BE BACK\n" +
       "HASTA LA VISTA, BABY\n"
 
-    getOutput(code) should equal("reached codeblock\n")
+    intercept[ParsingException] {
+      getOutput(code)
+    }
   }
-
-
 }

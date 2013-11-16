@@ -37,7 +37,7 @@ class ArnoldParser extends Parser {
   val Return = "I'LL BE BACK"
   val EndMethodDeclaration = "HASTA LA VISTA, BABY"
   val CallMethod = "DO IT NOW"
-  val NonVoidMethod = "IN TO THE TUNNEL"
+  val NonVoidMethod = "GIVE THESE PEOPLE AIR"
 
   val EOL = zeroOrMore("\t" | " ") ~ "\n" ~ zeroOrMore("\t" | " " | "\n")
   val WhiteSpace = oneOrMore(" " | "\t")
@@ -64,12 +64,16 @@ class ArnoldParser extends Parser {
   def Statement: Rule1[StatementNode] = rule {
     DeclareIntStatement | PrintStatement |
       AssignVariableStatement | ConditionStatement |
-      WhileStatement | CallMethodStatement | ReturnStatement
+      WhileStatement | CallMethodStatement | CallMethodAndAssignStatement | ReturnStatement
   }
 
   def CallMethodStatement: Rule1[StatementNode] = rule {
     CallMethod ~ WhiteSpace ~ VariableName ~> (s => s) ~
       zeroOrMore(WhiteSpace ~ Operand) ~ EOL ~~> CallMethodNode
+  }
+
+  def CallMethodAndAssignStatement: Rule1[StatementNode] = rule {
+    CallMethodStatement
   }
 
   def ConditionStatement: Rule1[ConditionNode] = rule {

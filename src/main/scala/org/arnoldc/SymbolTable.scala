@@ -4,7 +4,7 @@ import scala.collection.mutable
 import org.parboiled.errors.ParsingException
 import org.objectweb.asm.Opcodes._
 
-case class SymbolTable(upperLevel: Option[SymbolTable]) {
+case class SymbolTable(upperLevel: Option[SymbolTable], currentMethod: String) {
 
   val FirstSymbolTableAddress = 0
   private val variableTable = new mutable.HashMap[String, Integer]()
@@ -53,6 +53,10 @@ case class SymbolTable(upperLevel: Option[SymbolTable]) {
       val returnValue = if(method.returnsValue) "I" else "V"
       "(" + "I" * numberOfArguments + ")" + returnValue
     }
+  }
+
+  def getCurrentMethod(): MethodInformation = {
+    getMethodInformation(currentMethod)
   }
 
   def getMethodInformation(methodName: String): MethodInformation = {
