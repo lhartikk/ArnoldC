@@ -7,8 +7,7 @@ import org.arnoldc.SymbolTable
 case class MethodNode(methodName: String, arguments: List[VariableNode], s: String, statements: List[StatementNode]) extends AbstractMethodNode {
 
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) = {
-    val methodSymbolTable = new SymbolTable(None)
-
+    val methodSymbolTable = new SymbolTable(Some(symbolTable))
     mv.visitCode()
     arguments.foreach {
       a =>

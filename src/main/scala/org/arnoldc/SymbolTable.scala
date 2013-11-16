@@ -10,13 +10,7 @@ case class SymbolTable(upperLevel: Option[SymbolTable]) {
   private val variableTable = new mutable.HashMap[String, Integer]()
   private val methodTable = new mutable.HashMap[String, MethodInformation]()
 
-  val initialNextVarAddress: Int =
-    if (upperLevel.isEmpty) {
-      FirstSymbolTableAddress
-    }
-    else {
-      upperLevel.get.initialNextVarAddress + 1
-    }
+  val initialNextVarAddress: Int = FirstSymbolTableAddress
 
   def size(): Int = {
     initialNextVarAddress + variableTable.size
@@ -61,7 +55,10 @@ case class SymbolTable(upperLevel: Option[SymbolTable]) {
 
   def getMethodInformation(methodName: String): MethodInformation = {
     methodTable.getOrElse(methodName, {
-      throw new ParsingException("METHOD: " + methodName + " NOT DECLARED!")
+      if (upperLevel.isEmpty) {
+        throw new ParsingException("METHOD: " + methodName + " NOT DECLARED!")
+      }
+      upperLevel.get.getMethodInformation(methodName)
     })
   }
 }
