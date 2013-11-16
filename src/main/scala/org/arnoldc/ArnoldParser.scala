@@ -3,7 +3,6 @@ package org.arnoldc
 import org.parboiled.scala._
 import org.parboiled.errors.{ErrorUtils, ParsingException}
 import org.arnoldc.ast._
-import com.sun.org.apache.xpath.internal.operations
 
 class ArnoldParser extends Parser {
 
@@ -57,16 +56,15 @@ class ArnoldParser extends Parser {
 
   def Method: Rule1[AbstractMethodNode] = rule {
     DeclareMethod ~ WhiteSpace ~ VariableName ~> (s => s) ~ EOL ~
-      zeroOrMore((MethodArguments ~ WhiteSpace ~ Variable ~ EOL) ) ~
-      optional(NonVoidMethod) ~> (k => "int") ~
+      zeroOrMore((MethodArguments ~ WhiteSpace ~ Variable ~ EOL)) ~
+      (NonVoidMethod | "") ~> ((m: String) => m == NonVoidMethod) ~ optional(EOL) ~
       zeroOrMore(Statement) ~ EndMethodDeclaration ~~> MethodNode
-
-
   }
 
   def Statement: Rule1[StatementNode] = rule {
     DeclareIntStatement | PrintStatement |
-      AssignVariableStatement | ConditionStatement | WhileStatement | CallMethodStatement
+      AssignVariableStatement | ConditionStatement |
+      WhileStatement | CallMethodStatement | ReturnStatement
   }
 
   def CallMethodStatement: Rule1[StatementNode] = rule {
@@ -75,26 +73,30 @@ class ArnoldParser extends Parser {
   }
 
   def ConditionStatement: Rule1[ConditionNode] = rule {
-    If ~ " " ~ Operand ~ EOL ~ zeroOrMore(Statement) ~
+    If ~ WhiteSpace ~ Operand ~ EOL ~ zeroOrMore(Statement) ~
       (Else ~ EOL ~ zeroOrMore(Statement) ~~> ConditionNode
         | zeroOrMore(Statement) ~~> ConditionNode) ~ EndIf ~ EOL
 
   }
 
   def WhileStatement: Rule1[WhileNode] = rule {
-    While ~ " " ~ Operand ~ EOL ~ zeroOrMore(Statement) ~ EndWhile ~ EOL ~~> WhileNode
+    While ~ WhiteSpace ~ Operand ~ EOL ~ zeroOrMore(Statement) ~ EndWhile ~ EOL ~~> WhileNode
   }
 
   def PrintStatement: Rule1[PrintNode] = rule {
-    Print ~ " " ~ (Operand ~~> PrintNode | "\"" ~ String ~ "\"" ~~> PrintNode) ~ EOL
+    Print ~ WhiteSpace ~ (Operand ~~> PrintNode | "\"" ~ String ~ "\"" ~~> PrintNode) ~ EOL
   }
 
   def DeclareIntStatement: Rule1[DeclareIntNode] = rule {
-    DeclareInt ~ " " ~ VariableName ~> (s => s) ~ EOL ~ SetInitialValue ~ " " ~ Operand ~~> DeclareIntNode ~ EOL
+    DeclareInt ~ WhiteSpace ~ VariableName ~> (s => s) ~ EOL ~ SetInitialValue ~ WhiteSpace ~ Operand ~~> DeclareIntNode ~ EOL
   }
 
   def AssignVariableStatement: Rule1[AssignVariableNode] = rule {
-    AssignVariable ~ " " ~ VariableName ~> (s => s) ~ EOL ~ Expression ~ EndAssignVariable ~ EOL ~~> AssignVariableNode
+    AssignVariable ~ WhiteSpace ~ VariableName ~> (s => s) ~ EOL ~ Expression ~ EndAssignVariable ~ EOL ~~> AssignVariableNode
+  }
+
+  def ReturnStatement: Rule1[StatementNode] = rule {
+    Return ~ ((WhiteSpace ~ Operand ~~> (o => ReturnNode(Some(o)))) | "" ~> (s => ReturnNode(None))) ~ EOL
   }
 
   def Operand: Rule1[OperandNode] = rule {
@@ -121,11 +123,11 @@ class ArnoldParser extends Parser {
 
 
   def EqualToExpression: Rule1[OperandNode] = {
-    EqualTo ~ " " ~ Operand ~ EOL
+    EqualTo ~ WhiteSpace ~ Operand ~ EOL
   }
 
   def GreaterThanExpression: Rule1[OperandNode] = {
-    GreaterThan ~ " " ~ Operand ~ EOL
+    GreaterThan ~ WhiteSpace ~ Operand ~ EOL
   }
 
   def ArithmeticOperation: ReductionRule1[AstNode, AstNode] = rule {
@@ -136,24 +138,24 @@ class ArnoldParser extends Parser {
   }
 
   def SetValueExpression: Rule1[OperandNode] = rule {
-    SetValue ~ " " ~ Operand ~ EOL
+    SetValue ~ WhiteSpace ~ Operand ~ EOL
   }
 
 
   def PlusExpression: Rule1[AstNode] = rule {
-    PlusOperator ~ " " ~ Operand ~ EOL
+    PlusOperator ~ WhiteSpace ~ Operand ~ EOL
   }
 
   def MinusExpression: Rule1[AstNode] = rule {
-    MinusOperator ~ " " ~ Operand ~ EOL
+    MinusOperator ~ WhiteSpace ~ Operand ~ EOL
   }
 
   def MultiplicationExpression: Rule1[AstNode] = rule {
-    MultiplicationOperator ~ " " ~ Operand ~ EOL
+    MultiplicationOperator ~ WhiteSpace ~ Operand ~ EOL
   }
 
   def DivisionExpression: Rule1[AstNode] = rule {
-    DivisionOperator ~ " " ~ Operand ~ EOL
+    DivisionOperator ~ WhiteSpace ~ Operand ~ EOL
   }
 
   def Variable: Rule1[VariableNode] = rule {

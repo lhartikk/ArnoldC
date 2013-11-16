@@ -48,8 +48,10 @@ case class SymbolTable(upperLevel: Option[SymbolTable]) {
       "([Ljava/lang/String;)V"
     }
     else {
-      val numberOfArguments = getMethodInformation(methodName).numberOfArguments
-      "(" + "Z" * numberOfArguments + ")V"
+      val method = getMethodInformation(methodName)
+      val numberOfArguments = method.numberOfArguments
+      val returnValue = if(method.returnsValue) "I" else "V"
+      "(" + "I" * numberOfArguments + ")" + returnValue
     }
   }
 

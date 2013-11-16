@@ -8,6 +8,7 @@ case class MainMethodNode(statements: List[StatementNode]) extends AbstractMetho
 
   val methodName: String = "main"
   val arguments = Nil
+  val returnsValue = false
 
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) = {
     mv.visitCode()

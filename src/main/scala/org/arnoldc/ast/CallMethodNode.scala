@@ -14,7 +14,10 @@ case class CallMethodNode(methodName: String, arguments: List[OperandNode]) exte
         "EXPECTED: " + argumentsExpected + ", GOT: " + arguments.size)
     }
     arguments.foreach(_.generate(mv, symbolTable))
-    mv.visitMethodInsn(INVOKESTATIC, "Hello", methodName, "(" + "Z" * arguments.size + ")V")
+    mv.visitMethodInsn(INVOKESTATIC, "Hello", methodName, symbolTable.getMethodDescription(methodName))
+    if (symbolTable.getMethodInformation(methodName).returnsValue) {
+      mv.visitInsn(POP)
+    }
   }
 
 }

@@ -102,6 +102,102 @@ class MethodTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("Hello\nCheers\nHejsan\n")
   }
 
+  it should "evalute a return statement in void calls" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "DO IT NOW method\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY method\n" +
+        "I'LL BE BACK\n" +
+        "HASTA LA VISTA, BABY\n"
+
+    getOutput(code) should equal("")
+  }
+
+  it should "evalute multiple return statemenents in void calls" in {
+    val code = "ITS SHOWTIME\n" +
+      "DO IT NOW printboolean @NO PROBLEMO\n" +
+      "DO IT NOW printboolean @I LIED\n" +
+      "YOU HAVE BEEN TERMINATED\n" +
+      "LISTEN TO ME VERY CAREFULLY printboolean\n" +
+      "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+      "BECAUSE IM GOING TO SAY PLEASE value\n" +
+      "TALK TO THE HAND \"true\"\n" +
+      "I'LL BE BACK\n" +
+      "BULLSHIT\n" +
+      "TALK TO THE HAND \"false\"\n" +
+      "I'LL BE BACK\n" +
+      "YOU HAVE NO RESPECT FOR LOGIC\n" +
+      "HASTA LA VISTA, BABY\n"
+
+    getOutput(code) should equal("true\nfalse\n")
+  }
+
+  it should "evalute multiple return statemenents in void calls permutation2" in {
+    val code = "ITS SHOWTIME\n" +
+      "DO IT NOW printboolean @NO PROBLEMO\n" +
+      "DO IT NOW printboolean @I LIED\n" +
+      "YOU HAVE BEEN TERMINATED\n" +
+      "LISTEN TO ME VERY CAREFULLY printboolean\n" +
+      "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+      "BECAUSE IM GOING TO SAY PLEASE value\n" +
+      "TALK TO THE HAND \"true\"\n" +
+      "BULLSHIT\n" +
+      "TALK TO THE HAND \"false\"\n" +
+      "YOU HAVE NO RESPECT FOR LOGIC\n" +
+      "HASTA LA VISTA, BABY\n"
+    getOutput(code) should equal("true\nfalse\n")
+  }
+
+  it should "evalute multiple return statemenents in void calls permutation3" in {
+    val code = "ITS SHOWTIME\n" +
+      "DO IT NOW printboolean @NO PROBLEMO\n" +
+      "DO IT NOW printboolean @I LIED\n" +
+      "YOU HAVE BEEN TERMINATED\n" +
+      "LISTEN TO ME VERY CAREFULLY printboolean\n" +
+      "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+      "BECAUSE IM GOING TO SAY PLEASE value\n" +
+      "TALK TO THE HAND \"true\"\n" +
+      "BULLSHIT\n" +
+      "TALK TO THE HAND \"false\"\n" +
+      "YOU HAVE NO RESPECT FOR LOGIC\n" +
+      "I'LL BE BACK\n" +
+      "I'LL BE BACK\n" +
+      "HASTA LA VISTA, BABY\n"
+    getOutput(code) should equal("true\nfalse\n")
+  }
+
+
+  it should "evalute multiple return statemenents in void calls with unreachable code" in {
+    val code = "ITS SHOWTIME\n" +
+      "DO IT NOW method\n" +
+      "YOU HAVE BEEN TERMINATED\n" +
+      "LISTEN TO ME VERY CAREFULLY method\n" +
+      "TALK TO THE HAND \"reached codeblock\"\n" +
+      "I'LL BE BACK\n" +
+      "TALK TO THE HAND \"unreached codeblock\"\n" +
+      "HASTA LA VISTA, BABY\n"
+
+    getOutput(code) should equal("reached codeblock\n")
+  }
+
+  it should "evalute method non void calls" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "DO IT NOW minustwo 10\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY minustwo\n" +
+        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+        "IN TO THE TUNNEL\n" +
+        "GET TO THE CHOPPER value\n" +
+        "HERE IS MY INVITATION value\n" +
+        "GET DOWN 2\n" +
+        "ENOUGH TALK\n" +
+        "I'LL BE BACK value\n" +
+        "HASTA LA VISTA, BABY\n"
+    getOutput(code) should equal("")
+  }
+
   it should "detect unclosed main method" in {
     val code =
       "ITS SHOWTIME\n" +
@@ -130,6 +226,28 @@ class MethodTest extends ArnoldGeneratorTest {
     intercept[ParsingException] {
       getOutput(code)
     }
+  }
+
+  it should "detect if void method tries to return a parameter" in {
+    val code = "ITS SHOWTIME\n" +
+      "DO IT NOW method\n" +
+      "YOU HAVE BEEN TERMINATED\n" +
+      "LISTEN TO ME VERY CAREFULLY method\n" +
+      "I'LL BE BACK 0\n" +
+      "HASTA LA VISTA, BABY\n"
+
+    getOutput(code) should equal("reached codeblock\n")
+  }
+
+  it should "detect if a non-void method tries to return a without a parameter" in {
+    val code = "ITS SHOWTIME\n" +
+      "DO IT NOW method\n" +
+      "YOU HAVE BEEN TERMINATED\n" +
+      "LISTEN TO ME VERY CAREFULLY method\n" +
+      "I'LL BE BACK\n" +
+      "HASTA LA VISTA, BABY\n"
+
+    getOutput(code) should equal("reached codeblock\n")
   }
 
 
