@@ -6,7 +6,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
       "ITS SHOWTIME\n" +
         "HEY CHRISTMAS TREE vartrue\n" +
         "YOU SET US UP @NO PROBLEMO\n" +
-        "BECAUSE IM GOING TO SAY PLEASE vartrue\n" +
+        "BECAUSE I'M GOING TO SAY PLEASE vartrue\n" +
         "TALK TO THE HAND \"this branch should be reached\"\n" +
         "YOU HAVE NO RESPECT FOR LOGIC\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -18,7 +18,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
       "ITS SHOWTIME\n" +
         "HEY CHRISTMAS TREE vartrue\n" +
         "YOU SET US UP @I LIED\n" +
-        "BECAUSE IM GOING TO SAY PLEASE vartrue\n" +
+        "BECAUSE I'M GOING TO SAY PLEASE vartrue\n" +
         "TALK TO THE HAND \"this branch should not be reached\"\n" +
         "YOU HAVE NO RESPECT FOR LOGIC\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -30,7 +30,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
       "ITS SHOWTIME\n" +
         "HEY CHRISTMAS TREE vartrue\n" +
         "YOU SET US UP @NO PROBLEMO\n" +
-        "BECAUSE IM GOING TO SAY PLEASE vartrue\n" +
+        "BECAUSE I'M GOING TO SAY PLEASE vartrue\n" +
         "TALK TO THE HAND \"this branch should be reached\"\n" +
         "BULLSHIT\n" +
         "TALK TO THE HAND \"this branch should not be reached\"\n" +
@@ -44,7 +44,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
       "ITS SHOWTIME\n" +
         "HEY CHRISTMAS TREE varfalse\n" +
         "YOU SET US UP @I LIED\n" +
-        "BECAUSE IM GOING TO SAY PLEASE varfalse\n" +
+        "BECAUSE I'M GOING TO SAY PLEASE varfalse\n" +
         "TALK TO THE HAND \"this branch should not be reached\"\n" +
         "BULLSHIT\n" +
         "TALK TO THE HAND \"this branch should be reached\"\n" +
@@ -60,7 +60,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
         "YOU SET US UP 0\n" +
         "HEY CHRISTMAS TREE vartrue\n" +
         "YOU SET US UP @NO PROBLEMO\n" +
-        "BECAUSE IM GOING TO SAY PLEASE vartrue\n" +
+        "BECAUSE I'M GOING TO SAY PLEASE vartrue\n" +
         "GET TO THE CHOPPER var\n" +
         "HERE IS MY INVITATION 3\n" +
         "ENOUGH TALK\n" +

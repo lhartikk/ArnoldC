@@ -2,20 +2,17 @@ public class myClass {
 
 
     public static void main(String args[]) {
-        boolean a = true;
-        int b = 2;
 
-        jepajee(3);
+        fib(8);
     }
 
-    static void jepajee(int a) {
-        if(a  == 0){
-         return ;
+    static int fib(int a) {
+        if (a < 2) return a;
+        else if(a == 2)
+        {
+            return a;
         }
-
+        return fib(a - 1) + fib(a - 2);
     }
 
-    void a() {
-
-    }
 }

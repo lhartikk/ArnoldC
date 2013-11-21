@@ -121,7 +121,7 @@ class MethodTest extends ArnoldGeneratorTest {
       "YOU HAVE BEEN TERMINATED\n" +
       "LISTEN TO ME VERY CAREFULLY printboolean\n" +
       "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
-      "BECAUSE IM GOING TO SAY PLEASE value\n" +
+      "BECAUSE I'M GOING TO SAY PLEASE value\n" +
       "TALK TO THE HAND \"true\"\n" +
       "I'LL BE BACK\n" +
       "BULLSHIT\n" +
@@ -140,7 +140,7 @@ class MethodTest extends ArnoldGeneratorTest {
       "YOU HAVE BEEN TERMINATED\n" +
       "LISTEN TO ME VERY CAREFULLY printboolean\n" +
       "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
-      "BECAUSE IM GOING TO SAY PLEASE value\n" +
+      "BECAUSE I'M GOING TO SAY PLEASE value\n" +
       "TALK TO THE HAND \"true\"\n" +
       "BULLSHIT\n" +
       "TALK TO THE HAND \"false\"\n" +
@@ -156,7 +156,7 @@ class MethodTest extends ArnoldGeneratorTest {
       "YOU HAVE BEEN TERMINATED\n" +
       "LISTEN TO ME VERY CAREFULLY printboolean\n" +
       "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
-      "BECAUSE IM GOING TO SAY PLEASE value\n" +
+      "BECAUSE I'M GOING TO SAY PLEASE value\n" +
       "TALK TO THE HAND \"true\"\n" +
       "BULLSHIT\n" +
       "TALK TO THE HAND \"false\"\n" +
@@ -181,7 +181,7 @@ class MethodTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("reached codeblock\n")
   }
 
-  it should "evalute method non void calls" in {
+ /* it should "evalute method non void calls" in {
     val code =
       "ITS SHOWTIME\n" +
         "DO IT NOW minustwo 10\n" +
@@ -193,9 +193,67 @@ class MethodTest extends ArnoldGeneratorTest {
         "HERE IS MY INVITATION value\n" +
         "GET DOWN 2\n" +
         "ENOUGH TALK\n" +
+        "TALK TO THE HAND value\n" +
         "I'LL BE BACK value\n" +
         "HASTA LA VISTA, BABY\n"
-    getOutput(code) should equal("")
+    getOutput(code) should equal("8\n")
+  }
+      */
+  it should "evalute void method calls returning from branched statements" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "DO IT NOW reverse @NO PROBLEMO\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY reverse\n" +
+        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+        "BECAUSE I'M GOING TO SAY PLEASE value\n" +
+        "TALK TO THE HAND \"evaluated\"\n" +
+        "I'LL BE BACK\n" +
+        "YOU HAVE NO RESPECT FOR LOGIC\n" +
+        "TALK TO THE HAND \"not evaluated\"\n"+
+        "I'LL BE BACK\n" +
+        "HASTA LA VISTA, BABY\n"
+    getOutput(code) should equal("evaluated\n")
+  }
+
+  it should "evalute non void method calls returning from branched statements" in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "DO IT NOW reverse @NO PROBLEMO\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY reverse\n" +
+        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+        "GIVE THESE PEOPLE AIR\n" +
+        "BECAUSE I'M GOING TO SAY PLEASE value\n" +
+        "TALK TO THE HAND \"evaluated\"\n" +
+        "I'LL BE BACK 0\n" +
+        "TALK TO THE HAND \"evaluated\"\n" +
+        "YOU HAVE NO RESPECT FOR LOGIC\n" +
+        "TALK TO THE HAND \"not evaluated\"\n"+
+        "I'LL BE BACK 0\n" +
+        "HASTA LA VISTA, BABY\n"
+    getOutput(code) should equal("evaluated\n")
+  }
+
+  it should "evalute assignments to variables from method calls " in {
+    val code =
+      "ITS SHOWTIME\n" +
+        "HEY CHRISTMAS TREE result\n" +
+        "YOU SET US UP 0\n" +
+        "GET YOUR ASS TO MARS result\n" +
+        "DO IT NOW square 7\n" +
+        "TALK TO THE HAND result\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY square\n" +
+        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+        "GIVE THESE PEOPLE AIR\n" +
+        "GET TO THE CHOPPER value\n" +
+        "HERE IS MY INVITATION value\n" +
+        "YOU'RE FIRED value\n" +
+        "ENOUGH TALK\n" +
+        "I'LL BE BACK value\n" +
+        "HASTA LA VISTA, BABY\n"
+    getOutput(code) should equal("49\n")
   }
 
   it should "detect unclosed main method" in {

@@ -19,7 +19,8 @@ class FeatureTest extends ArnoldGeneratorTest{
       "\nSTICK AROUND loop\n" +
       "\tGET TO THE CHOPPER sum\n" +
       "\tHERE IS MY INVITATION result\n" +
-      "\tGET UP prev\n\tENOUGH TALK\n" +
+      "\tGET UP prev\n" +
+      "\tENOUGH TALK\n" +
       "\n\tGET TO THE CHOPPER prev\n" +
       "\tHERE IS MY INVITATION result\n" +
       "\tENOUGH TALK\n\t" +
@@ -41,6 +42,53 @@ class FeatureTest extends ArnoldGeneratorTest{
     getOutput(code) should equal("0\n1\n1\n2\n3\n5\n8\n13\n21\n34\n")
   }
 
+
+  it should "print fibonacci when using recursion" in {
+    val code = "ITS SHOWTIME\n" +
+      "HEY CHRISTMAS TREE result\n" +
+      "YOU SET US UP 0\n" +
+      "GET YOUR ASS TO MARS result\n" +
+      "DO IT NOW fib 9\n" +
+      "TALK TO THE HAND result\n" +
+      "YOU HAVE BEEN TERMINATED\n" +
+      "\nLISTEN TO ME VERY CAREFULLY fib\n" +
+      "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE val\n" +
+      "GIVE THESE PEOPLE AIR\n" +
+      "\tHEY CHRISTMAS TREE endrecursion\n" +
+      "\tYOU SET US UP @I LIED\n" +
+      "\tGET TO THE CHOPPER endrecursion\n" +
+      "\tHERE IS MY INVITATION 2\n" +
+      "\tLET OF SOME STEAM BENNET val\n" +
+      "\tENOUGH TALK\n\n" +
+      "\tBECAUSE I'M GOING TO SAY PLEASE endrecursion\n" +
+      "\t\tI'LL BE BACK val\t\n" +
+      "\tBULLSHIT\n" +
+      "\t\tHEY CHRISTMAS TREE temp1\n" +
+      "\t\tYOU SET US UP 0\n" +
+      "\t\tHEY CHRISTMAS TREE temp2\n" +
+      "\t\tYOU SET US UP 0\n\n" +
+      "\t\tGET TO THE CHOPPER val\n" +
+      "\t\tHERE IS MY INVITATION val\n"+
+      "\t\tGET DOWN 1\n" +
+      "\t\tENOUGH TALK\n" +
+      "\t\tGET YOUR ASS TO MARS temp1\n" +
+      "\t\tDO IT NOW fib val\n" +
+      "\t\tGET TO THE CHOPPER val\n" +
+      "\t\tHERE IS MY INVITATION val\n"+
+      "\t\tGET DOWN 1\n" +
+      "\t\tENOUGH TALK\n" +
+      "\t\tGET YOUR ASS TO MARS temp2\n" +
+      "\t\tDO IT NOW fib val\n" +
+      "\t\tGET TO THE CHOPPER val\n" +
+      "\t\tHERE IS MY INVITATION temp1\n" +
+      "\t\tGET UP temp2\n" +
+      "\t\tENOUGH TALK\n" +
+      "\t\tI'LL BE BACK val\n" +
+      "\t\tYOU HAVE NO RESPECT FOR LOGIC\n\n" +
+     "\nHASTA LA VISTA, BABY"
+
+    getOutput(code) should equal("34\n")
+  }
 
   it should "print squares from 1 to 10" in {
      val code = "ITS SHOWTIME\n" +

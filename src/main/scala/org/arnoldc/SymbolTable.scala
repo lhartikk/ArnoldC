@@ -30,12 +30,12 @@ case class SymbolTable(upperLevel: Option[SymbolTable], currentMethod: String) {
     variableTable += (variableName -> newVarAddress)
   }
 
-  def getVariable(variableName: String): Integer = {
+  def getVariableAddress(variableName: String): Integer = {
     variableTable.getOrElse(variableName, {
       if (upperLevel.isEmpty) {
         throw new ParsingException("VARIABLE: " + variableName + " NOT DECLARED!")
       }
-      upperLevel.get.getVariable(variableName)
+      upperLevel.get.getVariableAddress(variableName)
     })
   }
 

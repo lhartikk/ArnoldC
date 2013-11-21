@@ -9,7 +9,7 @@ class ByteCodeExecutor extends ClassLoader {
 
     val outputRedirectionStream = new ByteArrayOutputStream()
 
-    System.setOut(new PrintStream(outputRedirectionStream))
+   System.setOut(new PrintStream(outputRedirectionStream))
 
     invokeMainMethod(bytecode, className)
     System.setOut(originalOutputStream)

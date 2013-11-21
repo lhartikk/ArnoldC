@@ -1,5 +1,9 @@
 package org.arnoldc.ast
 
+import org.objectweb.asm.MethodVisitor
+import org.arnoldc.SymbolTable
+import org.objectweb.asm.Opcodes._
+import org.objectweb.asm.Label
 
 case class ConditionNode(condition: OperandNode, ifBranch: List[AstNode], elseBranch: List[AstNode]) extends StatementNode {
   def generate(mv: MethodVisitor, symbolTable: SymbolTable) {

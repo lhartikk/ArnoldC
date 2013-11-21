@@ -27,7 +27,7 @@ class ArnoldParser extends Parser {
   val GreaterThan = "LET OF SOME STEAM BENNET"
   val Or = "CONSIDER THAT A DIVORCE"
   val And = "KNOCK KNOCK"
-  val If = "BECAUSE IM GOING TO SAY PLEASE"
+  val If = "BECAUSE I'M GOING TO SAY PLEASE"
   val Else = "BULLSHIT"
   val EndIf = "YOU HAVE NO RESPECT FOR LOGIC"
   val While = "STICK AROUND"
@@ -38,6 +38,7 @@ class ArnoldParser extends Parser {
   val EndMethodDeclaration = "HASTA LA VISTA, BABY"
   val CallMethod = "DO IT NOW"
   val NonVoidMethod = "GIVE THESE PEOPLE AIR"
+  val AssignVariableFromMethodCall = "GET YOUR ASS TO MARS"
 
   val EOL = zeroOrMore("\t" | " ") ~ "\n" ~ zeroOrMore("\t" | " " | "\n")
   val WhiteSpace = oneOrMore(" " | "\t")
@@ -64,16 +65,13 @@ class ArnoldParser extends Parser {
   def Statement: Rule1[StatementNode] = rule {
     DeclareIntStatement | PrintStatement |
       AssignVariableStatement | ConditionStatement |
-      WhileStatement | CallMethodStatement | CallMethodAndAssignStatement | ReturnStatement
+      WhileStatement | CallMethodStatement | ReturnStatement
   }
 
   def CallMethodStatement: Rule1[StatementNode] = rule {
-    CallMethod ~ WhiteSpace ~ VariableName ~> (s => s) ~
+    (AssignVariableFromMethodCall ~ WhiteSpace ~ VariableName ~> (v => v) ~ EOL  | "" ~> (v => v)) ~
+      CallMethod ~ WhiteSpace ~ VariableName ~> (v => v) ~
       zeroOrMore(WhiteSpace ~ Operand) ~ EOL ~~> CallMethodNode
-  }
-
-  def CallMethodAndAssignStatement: Rule1[StatementNode] = rule {
-    CallMethodStatement
   }
 
   def ConditionStatement: Rule1[ConditionNode] = rule {

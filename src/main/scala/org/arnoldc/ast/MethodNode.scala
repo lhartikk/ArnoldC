@@ -17,6 +17,10 @@ case class MethodNode(methodName: String, arguments: List[VariableNode], returns
     if (!returnsValue) {
       mv.visitInsn(RETURN)
     }
+    else{
+      mv.visitInsn(ICONST_1)
+      mv.visitInsn(IRETURN)
+    }
     mv.visitMaxs(100, 100)
     mv.visitEnd()
   }
