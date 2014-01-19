@@ -8,7 +8,7 @@ class MethodTest extends ArnoldGeneratorTest {
     val code =
       "LISTEN TO ME VERY CAREFULLY mymethod\n" +
         "HASTA LA VISTA, BABY\n" +
-        "ITS SHOWTIME\n" +
+        "IT'S SHOWTIME\n" +
         "TALK TO THE HAND \"Hello\"\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("Hello\n")
@@ -18,7 +18,7 @@ class MethodTest extends ArnoldGeneratorTest {
     val code =
       "LISTEN TO ME VERY CAREFULLY mymethod\n" +
         "HASTA LA VISTA, BABY\n" +
-        "ITS SHOWTIME\n" +
+        "IT'S SHOWTIME\n" +
         "TALK TO THE HAND \"Hello\"\n" +
         "YOU HAVE BEEN TERMINATED"
     getOutput(code) should equal("Hello\n")
@@ -26,7 +26,7 @@ class MethodTest extends ArnoldGeneratorTest {
 
   it should "evalute method other than main3" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "TALK TO THE HAND \"Hello\"\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY mymethod\n" +
@@ -35,7 +35,7 @@ class MethodTest extends ArnoldGeneratorTest {
   }
   it should "evalute method other than main4" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "TALK TO THE HAND \"Hello\"\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY mymethod\n" +
@@ -45,7 +45,7 @@ class MethodTest extends ArnoldGeneratorTest {
 
   it should "evalute a plain method call" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "DO IT NOW printHello\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY printHello\n" +
@@ -56,7 +56,7 @@ class MethodTest extends ArnoldGeneratorTest {
 
   it should "evalute a method call that takes an argument" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE argument\n" +
         "YOU SET US UP 123\n" +
         "DO IT NOW printInteger argument\n" +
@@ -70,7 +70,7 @@ class MethodTest extends ArnoldGeneratorTest {
 
   it should "evalute multiple method calls" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "DO IT NOW printHello\n" +
         "DO IT NOW printCheers\n" +
         "YOU HAVE BEEN TERMINATED\n" +
@@ -85,7 +85,7 @@ class MethodTest extends ArnoldGeneratorTest {
 
   it should "evalute method calls inside method calls" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "DO IT NOW printHello\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY printHello\n" +
@@ -104,7 +104,7 @@ class MethodTest extends ArnoldGeneratorTest {
 
   it should "evalute a return statement in void calls" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "DO IT NOW method\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY method\n" +
@@ -115,7 +115,7 @@ class MethodTest extends ArnoldGeneratorTest {
   }
 
   it should "evalute multiple return statemenents in void calls" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "DO IT NOW printboolean @NO PROBLEMO\n" +
       "DO IT NOW printboolean @I LIED\n" +
       "YOU HAVE BEEN TERMINATED\n" +
@@ -134,7 +134,7 @@ class MethodTest extends ArnoldGeneratorTest {
   }
 
   it should "evalute multiple return statemenents in void calls permutation2" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "DO IT NOW printboolean @NO PROBLEMO\n" +
       "DO IT NOW printboolean @I LIED\n" +
       "YOU HAVE BEEN TERMINATED\n" +
@@ -150,7 +150,7 @@ class MethodTest extends ArnoldGeneratorTest {
   }
 
   it should "evalute multiple return statemenents in void calls permutation3" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "DO IT NOW printboolean @NO PROBLEMO\n" +
       "DO IT NOW printboolean @I LIED\n" +
       "YOU HAVE BEEN TERMINATED\n" +
@@ -169,7 +169,7 @@ class MethodTest extends ArnoldGeneratorTest {
 
 
   it should "evalute multiple return statemenents in void calls with unreachable code" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "DO IT NOW method\n" +
       "YOU HAVE BEEN TERMINATED\n" +
       "LISTEN TO ME VERY CAREFULLY method\n" +
@@ -183,7 +183,7 @@ class MethodTest extends ArnoldGeneratorTest {
 
  /* it should "evalute method non void calls" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "DO IT NOW minustwo 10\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY minustwo\n" +
@@ -201,7 +201,7 @@ class MethodTest extends ArnoldGeneratorTest {
       */
   it should "evalute void method calls returning from branched statements" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "DO IT NOW reverse @NO PROBLEMO\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY reverse\n" +
@@ -218,7 +218,7 @@ class MethodTest extends ArnoldGeneratorTest {
 
   it should "evalute non void method calls returning from branched statements" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "DO IT NOW reverse @NO PROBLEMO\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY reverse\n" +
@@ -237,7 +237,7 @@ class MethodTest extends ArnoldGeneratorTest {
 
   it should "evalute assignments to variables from method calls " in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE result\n" +
         "YOU SET US UP 0\n" +
         "GET YOUR ASS TO MARS result\n" +
@@ -258,7 +258,7 @@ class MethodTest extends ArnoldGeneratorTest {
 
   it should "detect unclosed main method" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "LISTEN TO ME VERY CAREFULLY printHello\n" +
         "TALK TO THE HAND \"Hello\"\n"
     intercept[ParsingException] {
@@ -267,7 +267,7 @@ class MethodTest extends ArnoldGeneratorTest {
   }
   it should "detect unclosed methods" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY printHello\n" +
         "TALK TO THE HAND \"Hello\"\n"
@@ -278,7 +278,7 @@ class MethodTest extends ArnoldGeneratorTest {
 
   it should "detect calls to methods that are not declared" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "DO IT NOW noSuchMethod\n" +
         "YOU HAVE BEEN TERMINATED\n"
     intercept[ParsingException] {
@@ -287,7 +287,7 @@ class MethodTest extends ArnoldGeneratorTest {
   }
 
   it should "detect if void method tries to return a parameter" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "DO IT NOW method\n" +
       "YOU HAVE BEEN TERMINATED\n" +
       "LISTEN TO ME VERY CAREFULLY method\n" +
@@ -300,7 +300,7 @@ class MethodTest extends ArnoldGeneratorTest {
   }
 
   it should "detect if a non-void method tries to return a without a parameter" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "DO IT NOW method 0\n" +
       "YOU HAVE BEEN TERMINATED\n" +
       "LISTEN TO ME VERY CAREFULLY method\n" +

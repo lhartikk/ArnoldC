@@ -3,7 +3,7 @@ package org.arnoldc
 class BranchStatementTest extends ArnoldGeneratorTest {
   it should "function using simple if statements" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE vartrue\n" +
         "YOU SET US UP @NO PROBLEMO\n" +
         "BECAUSE I'M GOING TO SAY PLEASE vartrue\n" +
@@ -15,7 +15,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
 
   it should "function using simple if statements vol2" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE vartrue\n" +
         "YOU SET US UP @I LIED\n" +
         "BECAUSE I'M GOING TO SAY PLEASE vartrue\n" +
@@ -27,7 +27,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
 
   it should "function using simple if else statements" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE vartrue\n" +
         "YOU SET US UP @NO PROBLEMO\n" +
         "BECAUSE I'M GOING TO SAY PLEASE vartrue\n" +
@@ -41,7 +41,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
 
   it should "function using simple if else statements vol2" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE varfalse\n" +
         "YOU SET US UP @I LIED\n" +
         "BECAUSE I'M GOING TO SAY PLEASE varfalse\n" +
@@ -55,7 +55,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
 
   it should "function using assigning variables in if statements" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE var\n" +
         "YOU SET US UP 0\n" +
         "HEY CHRISTMAS TREE vartrue\n" +
@@ -73,7 +73,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
 
   it should "function using stub while statement" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE varfalse\n" +
         "YOU SET US UP @I LIED\n" +
         "STICK AROUND varfalse\n" +
@@ -85,7 +85,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
 
   it should "function using stub while statement vol2" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "STICK AROUND @I LIED\n" +
         "CHILL\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -96,7 +96,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
 
   it should "function when while loop executed once" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE varfalse\n" +
         "YOU SET US UP @NO PROBLEMO\n" +
         "STICK AROUND varfalse\n" +
@@ -111,7 +111,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
 
   it should "function when while loop executed consequently" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE isLessThan10\n" +
         "YOU SET US UP @NO PROBLEMO\n" +
         "HEY CHRISTMAS TREE n\n" +

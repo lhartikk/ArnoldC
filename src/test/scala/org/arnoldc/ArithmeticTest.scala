@@ -6,7 +6,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "function when a variable is declared" in {
     val code: String =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE var\n" +
         "YOU SET US UP 123\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -15,7 +15,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "function when an integer is printed" in {
     val code: String =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "TALK TO THE HAND 123\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("123\n")
@@ -23,7 +23,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when a negative integer is printed" in {
     val code: String =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "TALK TO THE HAND -111\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("-111\n")
@@ -31,7 +31,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when a 'boolean' is printed" in {
     val code: String =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE varfalse\n" +
         "YOU SET US UP @I LIED\n" +
         "TALK TO THE HAND varfalse\n" +
@@ -41,7 +41,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when a string is printed" in {
     val code: String =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "TALK TO THE HAND \"this should be printed\"\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("this should be printed\n")
@@ -49,7 +49,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when a more exotic string is printed" in {
     val code: String =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "TALK TO THE HAND \"!!! ??? äöäöäöä@#0123=+-,.\"\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("!!! ??? äöäöäöä@#0123=+-,.\n")
@@ -57,7 +57,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when an integer is declared and printed" in {
     val code: String =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE A\n" +
         "YOU SET US UP 999\n" +
         "HEY CHRISTMAS TREE B\n" +
@@ -69,7 +69,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
   }
   it should "evaluate when a negative integer is declared and printed" in {
     val code: String =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE a\n" +
         "YOU SET US UP -999\n" +
         "HEY CHRISTMAS TREE b\n" +
@@ -82,7 +82,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when assigning a variable" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE var\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER var\n" +
@@ -97,7 +97,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when assigning multiple variables " in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE var\n" +
         "YOU SET US UP 22\n" +
         "HEY CHRISTMAS TREE var2\n" +
@@ -120,7 +120,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when an integer is incremented and printed" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -134,7 +134,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when an integer is decremented and printed" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -148,7 +148,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when an integer is decremented with a negative value" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -163,7 +163,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when an integer is incremented with a negative value" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -177,7 +177,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when multiplying variables" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -191,7 +191,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when multiplying variables with different signs" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -205,7 +205,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when multiplying variables with zero" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -219,7 +219,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when multiplying assigned variables" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 7\n" +
         "HEY CHRISTMAS TREE VAR2\n" +
@@ -237,7 +237,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when dividing variables" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 100\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -251,7 +251,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when dividing variables with different signs" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 99\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -265,7 +265,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when dividing variables with one" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -279,7 +279,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate when dividing assigned variables" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 9\n" +
         "HEY CHRISTMAS TREE VAR2\n" +
@@ -295,7 +295,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate using different arithmetic operations" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -311,7 +311,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate using different arithmetic operations vol2" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -331,7 +331,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "evaluate using different arithmetic operations vol3" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
@@ -350,7 +350,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "detect duplicate variable declarations" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE VAR\n" +
         "YOU SET US UP 22\n" +
         "HEY CHRISTMAS TREE VAR\n" +
@@ -363,7 +363,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
 
   it should "detect faulty variable names" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE 1VAR\n" +
         "YOU SET US UP 123\n" +
         "YOU HAVE BEEN TERMINATED\n"

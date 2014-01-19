@@ -11,7 +11,7 @@ class ArnoldParser extends Parser {
 
   val DeclareInt = "HEY CHRISTMAS TREE"
   val SetInitialValue = "YOU SET US UP"
-  val BeginMain = "ITS SHOWTIME"
+  val BeginMain = "IT'S SHOWTIME"
   val PlusOperator = "GET UP"
   val MinusOperator = "GET DOWN"
   val MultiplicationOperator = "YOU'RE FIRED"

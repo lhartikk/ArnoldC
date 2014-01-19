@@ -4,7 +4,7 @@ import org.parboiled.errors.ParsingException
 
 class LogicalTest extends ArnoldGeneratorTest {
   it should "False Or True Evaluate True" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "HEY CHRISTMAS TREE var\n" +
       "YOU SET US UP 0\n" +
       "GET TO THE CHOPPER var\n" +
@@ -18,7 +18,7 @@ class LogicalTest extends ArnoldGeneratorTest {
 
 
   it should "True Or False Evaluate True" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "HEY CHRISTMAS TREE var\n" +
       "YOU SET US UP @I LIED\n" +
       "GET TO THE CHOPPER var\n" +
@@ -31,7 +31,7 @@ class LogicalTest extends ArnoldGeneratorTest {
   }
 
   it should "True Or True Evaluate True" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "HEY CHRISTMAS TREE var\n" +
       "YOU SET US UP @I LIED\n" +
       "GET TO THE CHOPPER var\n" +
@@ -44,7 +44,7 @@ class LogicalTest extends ArnoldGeneratorTest {
   }
 
   it should "False Or False Evaluate False" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "HEY CHRISTMAS TREE var\n" +
       "YOU SET US UP @I LIED\n" +
       "GET TO THE CHOPPER var\n" +
@@ -57,7 +57,7 @@ class LogicalTest extends ArnoldGeneratorTest {
   }
 
   it should "False And True Evaluate False" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "HEY CHRISTMAS TREE var\n" +
       "YOU SET US UP @I LIED\n" +
       "GET TO THE CHOPPER var\n" +
@@ -70,7 +70,7 @@ class LogicalTest extends ArnoldGeneratorTest {
   }
 
   it should "True And False Evaluate False" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "HEY CHRISTMAS TREE var\n" +
       "YOU SET US UP @I LIED\n" +
       "GET TO THE CHOPPER var\n" +
@@ -83,7 +83,7 @@ class LogicalTest extends ArnoldGeneratorTest {
   }
 
   it should "True And True Evaluate True" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "HEY CHRISTMAS TREE var\n" +
       "YOU SET US UP @I LIED\n" +
       "GET TO THE CHOPPER var\n" +
@@ -95,7 +95,7 @@ class LogicalTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("1\n")
   }
   it should "False And False Evaluate False" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "HEY CHRISTMAS TREE var\n" +
       "YOU SET US UP @I LIED\n" +
       "GET TO THE CHOPPER var\n" +
@@ -109,7 +109,7 @@ class LogicalTest extends ArnoldGeneratorTest {
 
   it should "False Equals False evaluates True" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE varfalse\n" +
         "YOU SET US UP @I LIED\n" +
         "HEY CHRISTMAS TREE varfalse2\n" +
@@ -124,7 +124,7 @@ class LogicalTest extends ArnoldGeneratorTest {
   }
   it should "True Equals False evaluates False" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE varfalse\n" +
         "YOU SET US UP @I LIED\n" +
         "HEY CHRISTMAS TREE result\n" +
@@ -140,7 +140,7 @@ class LogicalTest extends ArnoldGeneratorTest {
 
   it should "1 Equals 2 evaluates False" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE one\n" +
         "YOU SET US UP 1\n" +
         "HEY CHRISTMAS TREE two\n" +
@@ -158,7 +158,7 @@ class LogicalTest extends ArnoldGeneratorTest {
 
   it should "2 is greater than 1 evaluates True" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE one\n" +
         "YOU SET US UP 1\n" +
         "HEY CHRISTMAS TREE two\n" +
@@ -176,7 +176,7 @@ class LogicalTest extends ArnoldGeneratorTest {
 
   it should "1 is greater than 2 evaluates False" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE one\n" +
         "YOU SET US UP 1\n" +
         "HEY CHRISTMAS TREE two\n" +
@@ -194,7 +194,7 @@ class LogicalTest extends ArnoldGeneratorTest {
 
   it should "3 is greater than 3 evaluates False" in {
     val code =
-      "ITS SHOWTIME\n" +
+      "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE three\n" +
         "YOU SET US UP 3\n" +
         "HEY CHRISTMAS TREE three2\n" +
@@ -211,7 +211,7 @@ class LogicalTest extends ArnoldGeneratorTest {
   }
 
   it should "detect faulty logical operations" in {
-    val code = "ITS SHOWTIME\n" +
+    val code = "IT'S SHOWTIME\n" +
       "RIGHT? WRONG! VAR\n" +
       "YOU SET US UP @I LIED\n" +
       "GET TO THE CHOPPER VAR\n" +
