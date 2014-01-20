@@ -19,7 +19,7 @@ Although the one-liners of Arnold Schwarzenegger are fairly well know the true s
 	java -jar ArnoldC.jar hello.arnoldc
 	java hello
 
-##Brief Overview of the keywords
+##Brief overview of the keywords
 
 check [wiki](http://github.com/lhartikk/lapacoin/wiki) for more details
 
