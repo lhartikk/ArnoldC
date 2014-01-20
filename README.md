@@ -21,7 +21,7 @@ Although the one-liners of Arnold Schwarzenegger are fairly well know the true s
 
 ##Brief overview of the keywords
 
-check [wiki](http://github.com/lhartikk/lapacoin/wiki) for more details
+Check the [wiki](http://github.com/lhartikk/ArnoldC/wiki) for more details
 
 	False = "I LIED"
 	True = "NO PROBLEMO"
