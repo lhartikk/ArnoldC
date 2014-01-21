@@ -40,7 +40,7 @@ class ArnoldParser extends Parser {
   val NonVoidMethod = "GIVE THESE PEOPLE AIR"
   val AssignVariableFromMethodCall = "GET YOUR ASS TO MARS"
 
-  val EOL = zeroOrMore("\t" | " ") ~ "\n" ~ zeroOrMore("\t" | " " | "\n")
+  val EOL = zeroOrMore("\t" | "\r" | " ") ~ "\n" ~ zeroOrMore("\t" | "\r" | " " | "\n")
   val WhiteSpace = oneOrMore(" " | "\t")
 
   def Root: Rule1[RootNode] = rule {
@@ -69,7 +69,7 @@ class ArnoldParser extends Parser {
   }
 
   def CallMethodStatement: Rule1[StatementNode] = rule {
-    (AssignVariableFromMethodCall ~ WhiteSpace ~ VariableName ~> (v => v) ~ EOL  | "" ~> (v => v)) ~
+    (AssignVariableFromMethodCall ~ WhiteSpace ~ VariableName ~> (v => v) ~ EOL | "" ~> (v => v)) ~
       CallMethod ~ WhiteSpace ~ VariableName ~> (v => v) ~
       zeroOrMore(WhiteSpace ~ Operand) ~ EOL ~~> CallMethodNode
   }
