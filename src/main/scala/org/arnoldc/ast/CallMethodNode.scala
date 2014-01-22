@@ -14,7 +14,7 @@ case class CallMethodNode(returnVar: String, methodName: String, arguments: List
         "EXPECTED: " + argumentsExpected + ", GOT: " + arguments.size)
     }
     arguments.foreach(_.generate(mv, symbolTable))
-    mv.visitMethodInsn(INVOKESTATIC, "Hello", methodName, symbolTable.getMethodDescription(methodName))
+    mv.visitMethodInsn(INVOKESTATIC, symbolTable.getFileName(), methodName, symbolTable.getMethodDescription(methodName))
     handleStackAfterCall
 
     def handleStackAfterCall {

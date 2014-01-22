@@ -7,7 +7,7 @@ import org.arnoldc.{MethodInformation, SymbolTable}
 case class RootNode(methods: List[AbstractMethodNode]) extends AstNode {
 
   def generateByteCode(filename: String): Array[Byte] = {
-    val globalSymbols = storeMethodSignatures()
+    val globalSymbols = storeMethodSignatures(filename)
     generateClass(filename, globalSymbols).toByteArray
   }
 
@@ -15,11 +15,11 @@ case class RootNode(methods: List[AbstractMethodNode]) extends AstNode {
   }
 
 
-  def storeMethodSignatures() = {
+  def storeMethodSignatures(filename: String) = {
     def storeTo(symbols: SymbolTable)(s: MethodSignature) = {
       symbols.putMethod(s.name, new MethodInformation(s.returnsValue, s.args.size))
     }
-    val globalSymbols = new SymbolTable(None, "")
+    val globalSymbols = new SymbolTable(None, filename)
     val methodSignatures = methods.map(_.signature)
     methodSignatures.foreach(storeTo(globalSymbols))
     globalSymbols

@@ -50,7 +50,7 @@ case class SymbolTable(upperLevel: Option[SymbolTable], currentMethod: String) {
     else {
       val method = getMethodInformation(methodName)
       val numberOfArguments = method.numberOfArguments
-      val returnValue = if(method.returnsValue) "I" else "V"
+      val returnValue = if (method.returnsValue) "I" else "V"
       "(" + "I" * numberOfArguments + ")" + returnValue
     }
   }
@@ -67,4 +67,14 @@ case class SymbolTable(upperLevel: Option[SymbolTable], currentMethod: String) {
       upperLevel.get.getMethodInformation(methodName)
     })
   }
+
+  def getFileName(): String = {
+    if (upperLevel.isEmpty) {
+      currentMethod
+    }
+    else {
+      upperLevel.get.getFileName()
+    }
+  }
+
 }
