@@ -181,24 +181,6 @@ class MethodTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("reached codeblock\n")
   }
 
- /* it should "evalute method non void calls" in {
-    val code =
-      "IT'S SHOWTIME\n" +
-        "DO IT NOW minustwo 10\n" +
-        "YOU HAVE BEEN TERMINATED\n" +
-        "LISTEN TO ME VERY CAREFULLY minustwo\n" +
-        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
-        "GIVE THESE PEOPLE AIR\n" +
-        "GET TO THE CHOPPER value\n" +
-        "HERE IS MY INVITATION value\n" +
-        "GET DOWN 2\n" +
-        "ENOUGH TALK\n" +
-        "TALK TO THE HAND value\n" +
-        "I'LL BE BACK value\n" +
-        "HASTA LA VISTA, BABY\n"
-    getOutput(code) should equal("8\n")
-  }
-      */
   it should "evalute void method calls returning from branched statements" in {
     val code =
       "IT'S SHOWTIME\n" +

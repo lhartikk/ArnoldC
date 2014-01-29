@@ -233,8 +233,6 @@ class ArithmeticTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("28\n")
   }
 
-  ////
-
   it should "evaluate when dividing variables" in {
     val code =
       "IT'S SHOWTIME\n" +
