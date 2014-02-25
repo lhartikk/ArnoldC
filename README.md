@@ -52,7 +52,7 @@ PlusOperator `GET UP`
 [Or](http://www.youtube.com/watch?v=RYtQMhnBtTw) `CONSIDER THAT A DIVORCE`
 
 [And](http://www.youtube.com/watch?v=ZQ_Q2b_aXjk) `KNOCK KNOCK`
-   
+
 [DeclareMethod](http://www.youtube.com/watch?v=uCwrOpnyXeo) `LISTEN TO ME VERY CAREFULLY`
 
 [NonVoidMethod](http://www.youtube.com/watch?v=WANa9Oku-JM) `GIVE THESE PEOPLE AIR`
@@ -66,15 +66,15 @@ PlusOperator `GET UP`
 [CallMethod](http://www.youtube.com/watch?v=HGhP3p6lI3U) `DO IT NOW`
 
 [AssignVariableFromMethodCall](http://www.youtube.com/watch?v=HkkibBYm2WI) `GET YOUR ASS TO MARS`
-   
+
 [DeclareInt](http://www.youtube.com/watch?v=PZwwqjcEDUQ) `HEY CHRISTMAS TREE`
 
 [SetInitialue](http://www.youtube.com/watch?v=lwqzA6F7nws) `YOU SET US UP`
 
-[BeginMain](http://www.youtube.com/watch?v=TKTL2EDTFSo) `ITS SHOWTIME`
+[BeginMain](http://www.youtube.com/watch?v=TKTL2EDTFSo) `IT'S SHOWTIME`
 
 [EndMain](http://www.youtube.com/watch?v=iy_BBBGBpqA) `YOU HAVE BEEN TERMINATED`
-   
+
 [Print](http://www.youtube.com/watch?v=dQ6m8ztEzfA) `TALK TO THE HAND`
 
 [AssignVariable](http://www.youtube.com/watch?v=-9-Te-DPbSE) `GET TO THE CHOPPER`
@@ -82,5 +82,5 @@ PlusOperator `GET UP`
 [SetValue](http://www.youtube.com/watch?v=RrPXRkJ_P90) `HERE IS MY INVITATION`
 
 [EndAssignVariable](http://www.youtube.com/watch?v=rk9WHasIZk0) `ENOUGH TALK`
-   
+
 [ParseError](http://www.youtube.com/watch?v=oGcRTJK43OM) `WHAT THE FUCK DID I DO WRONG`
