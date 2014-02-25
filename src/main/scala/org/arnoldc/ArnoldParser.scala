@@ -24,7 +24,7 @@ class ArnoldParser extends Parser {
   val False = "I LIED"
   val True = "NO PROBLEMO"
   val EqualTo = "YOU ARE NOT YOU YOU ARE ME"
-  val GreaterThan = "LET OF SOME STEAM BENNET"
+  val GreaterThan = "LET OFF SOME STEAM BENNET"
   val Or = "CONSIDER THAT A DIVORCE"
   val And = "KNOCK KNOCK"
   val If = "BECAUSE I'M GOING TO SAY PLEASE"
