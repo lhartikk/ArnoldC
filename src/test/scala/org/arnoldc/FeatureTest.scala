@@ -33,7 +33,7 @@ class FeatureTest extends ArnoldGeneratorTest {
       "\tENOUGH TALK\n\t" +
       "\n\tGET TO THE CHOPPER loop\n" +
       "\tHERE IS MY INVITATION limit\n" +
-      "\tLET OF SOME STEAM BENNET index\n" +
+      "\tLET OFF SOME STEAM BENNET index\n" +
       "\tENOUGH TALK\n\t" +
       "\n\tTALK TO THE HAND sum\n" +
       "CHILL\n" +
@@ -58,7 +58,7 @@ class FeatureTest extends ArnoldGeneratorTest {
       "\tYOU SET US UP @I LIED\n" +
       "\tGET TO THE CHOPPER endrecursion\n" +
       "\tHERE IS MY INVITATION 2\n" +
-      "\tLET OF SOME STEAM BENNET val\n" +
+      "\tLET OFF SOME STEAM BENNET val\n" +
       "\tENOUGH TALK\n\n" +
       "\tBECAUSE I'M GOING TO SAY PLEASE endrecursion\n" +
       "\t\tI'LL BE BACK val\t\n" +
@@ -160,7 +160,7 @@ class FeatureTest extends ArnoldGeneratorTest {
       "\tTALK TO THE HAND squared\n\t\n" +
       "\tGET TO THE CHOPPER loop\n" +
       "\tHERE IS MY INVITATION limit\n" +
-      "\tLET OF SOME STEAM BENNET index\n" +
+      "\tLET OFF SOME STEAM BENNET index\n" +
       "\tENOUGH TALK\n\t\n" +
       "\tGET TO THE CHOPPER index\n" +
       "\tHERE IS MY INVITATION index\n" +
