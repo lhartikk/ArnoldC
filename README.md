@@ -69,7 +69,7 @@ PlusOperator `GET UP`
 
 [DeclareInt](http://www.youtube.com/watch?v=PZwwqjcEDUQ) `HEY CHRISTMAS TREE`
 
-[SetInitialue](http://www.youtube.com/watch?v=lwqzA6F7nws) `YOU SET US UP`
+[SetInitialValue](http://www.youtube.com/watch?v=lwqzA6F7nws) `YOU SET US UP`
 
 [BeginMain](http://www.youtube.com/watch?v=TKTL2EDTFSo) `IT'S SHOWTIME`
 
