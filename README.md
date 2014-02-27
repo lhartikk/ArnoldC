@@ -53,6 +53,8 @@ PlusOperator `GET UP`
 
 [And](http://www.youtube.com/watch?v=ZQ_Q2b_aXjk) `KNOCK KNOCK`
 
+[Not operator](http://www.youtube.com/watch?v=p8-HDUBbtgQ) `RIGHT? WRONG!`
+
 [DeclareMethod](http://www.youtube.com/watch?v=uCwrOpnyXeo) `LISTEN TO ME VERY CAREFULLY`
 
 [NonVoidMethod](http://www.youtube.com/watch?v=WANa9Oku-JM) `GIVE THESE PEOPLE AIR`

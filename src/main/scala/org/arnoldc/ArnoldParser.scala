@@ -39,6 +39,7 @@ class ArnoldParser extends Parser {
   val CallMethod = "DO IT NOW"
   val NonVoidMethod = "GIVE THESE PEOPLE AIR"
   val AssignVariableFromMethodCall = "GET YOUR ASS TO MARS"
+  val Not = "RIGHT? WRONG!"
 
   val EOL = zeroOrMore("\t" | "\r" | " ") ~ "\n" ~ zeroOrMore("\t" | "\r" | " " | "\n")
   val WhiteSpace = oneOrMore(" " | "\t")
@@ -57,7 +58,7 @@ class ArnoldParser extends Parser {
 
   def Method: Rule1[AbstractMethodNode] = rule {
     DeclareMethod ~ WhiteSpace ~ VariableName ~> (s => s) ~ EOL ~
-      zeroOrMore((MethodArguments ~ WhiteSpace ~ Variable ~ EOL)) ~
+      zeroOrMore(MethodArguments ~ WhiteSpace ~ Variable ~ EOL) ~
       (NonVoidMethod | "") ~> ((m: String) => m == NonVoidMethod) ~ optional(EOL) ~
       zeroOrMore(Statement) ~ EndMethodDeclaration ~~> MethodNode
   }
@@ -106,23 +107,24 @@ class ArnoldParser extends Parser {
   }
 
   def Expression: Rule1[AstNode] = rule {
-    SetValueExpression ~
-      (zeroOrMore(ArithmeticOperation | LogicalOperation))
+    SetValueExpression ~ zeroOrMore(ArithmeticOperation | LogicalBinaryOperation ) ~ zeroOrMore(LogicalNotOperation)
   }
 
-  def LogicalOperation: ReductionRule1[AstNode, AstNode] = rule {
+  def LogicalBinaryOperation: ReductionRule1[AstNode, AstNode] = rule {
     Or ~ WhiteSpace ~ Operand ~ EOL ~~> OrNode |
       And ~ WhiteSpace ~ Operand ~ EOL ~~> AndNode |
       EqualTo ~ WhiteSpace ~ Operand ~ EOL ~~> EqualToNode |
       GreaterThan ~ WhiteSpace ~ Operand ~ EOL ~~> GreaterThanNode
+  }
 
+  def LogicalNotOperation: ReductionRule1[AstNode, AstNode] = rule {
+    Not ~ EOL ~~> NotNode
   }
 
   def RelationalExpression: ReductionRule1[AstNode, AstNode] = {
     EqualToExpression ~~> EqualToNode |
       GreaterThanExpression ~~> GreaterThanNode
   }
-
 
   def EqualToExpression: Rule1[OperandNode] = {
     EqualTo ~ WhiteSpace ~ Operand ~ EOL
@@ -142,7 +144,6 @@ class ArnoldParser extends Parser {
   def SetValueExpression: Rule1[OperandNode] = rule {
     SetValue ~ WhiteSpace ~ Operand ~ EOL
   }
-
 
   def PlusExpression: Rule1[AstNode] = rule {
     PlusOperator ~ WhiteSpace ~ Operand ~ EOL
