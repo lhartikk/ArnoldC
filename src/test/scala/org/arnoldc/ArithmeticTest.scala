@@ -110,7 +110,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
         "ENOUGH TALK\n" +
         "GET TO THE CHOPPER var\n" +
         "HERE IS MY INVITATION var2\n" +
-        "GET UP var\n" +
+        "GIVE YOU A LIFT var\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND var\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -125,7 +125,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
         "HERE IS MY INVITATION VAR\n" +
-        "GET UP 44\n" +
+        "GIVE YOU A LIFT 44\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND VAR\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -168,7 +168,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
         "YOU SET US UP 22\n" +
         "GET TO THE CHOPPER VAR\n" +
         "HERE IS MY INVITATION VAR\n" +
-        "GET UP -44\n" +
+        "GIVE YOU A LIFT -44\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND VAR\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -299,8 +299,8 @@ class ArithmeticTest extends ArnoldGeneratorTest {
         "GET TO THE CHOPPER VAR\n" +
         "HERE IS MY INVITATION 11\n" +
         "GET DOWN 43\n" +
-        "GET UP 54\n" +
-        "GET UP 44\n" +
+        "GIVE YOU A LIFT 54\n" +
+        "GIVE YOU A LIFT 44\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND VAR\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -315,12 +315,12 @@ class ArithmeticTest extends ArnoldGeneratorTest {
         "GET TO THE CHOPPER VAR\n" +
         "HERE IS MY INVITATION 11\n" +
         "GET DOWN 55\n" +
-        "GET UP 11\n" +
-        "GET UP 22\n" +
-        "GET UP 23\n" +
+        "GIVE YOU A LIFT 11\n" +
+        "GIVE YOU A LIFT 22\n" +
+        "GIVE YOU A LIFT 23\n" +
         "GET DOWN 0\n" +
-        "GET UP 0\n" +
-        "GET UP 1\n" +
+        "GIVE YOU A LIFT 0\n" +
+        "GIVE YOU A LIFT 1\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND VAR\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -337,7 +337,7 @@ class ArithmeticTest extends ArnoldGeneratorTest {
         "GET DOWN 22\n" +
         "HE HAD TO SPLIT -11\n" +
         "YOU'RE FIRED 23\n" +
-        "GET UP 23\n" +
+        "GIVE YOU A LIFT 23\n" +
         "GET DOWN 22\n" +
         "HE HAD TO SPLIT 2\n" +
         "ENOUGH TALK\n" +

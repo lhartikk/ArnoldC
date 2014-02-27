@@ -19,7 +19,7 @@ class FeatureTest extends ArnoldGeneratorTest {
       "\nSTICK AROUND loop\n" +
       "\tGET TO THE CHOPPER sum\n" +
       "\tHERE IS MY INVITATION result\n" +
-      "\tGET UP prev\n" +
+      "\tGIVE YOU A LIFT prev\n" +
       "\tENOUGH TALK\n" +
       "\n\tGET TO THE CHOPPER prev\n" +
       "\tHERE IS MY INVITATION result\n" +
@@ -29,7 +29,7 @@ class FeatureTest extends ArnoldGeneratorTest {
       "\tENOUGH TALK\n\t" +
       "\n\tGET TO THE CHOPPER index\n" +
       "\tHERE IS MY INVITATION index\n" +
-      "\tGET UP 1\n" +
+      "\tGIVE YOU A LIFT 1\n" +
       "\tENOUGH TALK\n\t" +
       "\n\tGET TO THE CHOPPER loop\n" +
       "\tHERE IS MY INVITATION limit\n" +
@@ -81,7 +81,7 @@ class FeatureTest extends ArnoldGeneratorTest {
       "\t\tDO IT NOW fib val\n" +
       "\t\tGET TO THE CHOPPER val\n" +
       "\t\tHERE IS MY INVITATION temp1\n" +
-      "\t\tGET UP temp2\n" +
+      "\t\tGIVE YOU A LIFT temp2\n" +
       "\t\tENOUGH TALK\n" +
       "\t\tI'LL BE BACK val\n" +
       "\t\tYOU HAVE NO RESPECT FOR LOGIC\n\n" +
@@ -164,7 +164,7 @@ class FeatureTest extends ArnoldGeneratorTest {
       "\tENOUGH TALK\n\t\n" +
       "\tGET TO THE CHOPPER index\n" +
       "\tHERE IS MY INVITATION index\n" +
-      "\tGET UP 1\n" +
+      "\tGIVE YOU A LIFT 1\n" +
       "\tENOUGH TALK\n\t\n" +
       "CHILL\n" +
       "YOU HAVE BEEN TERMINATED"
