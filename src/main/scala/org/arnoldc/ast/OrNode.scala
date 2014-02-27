@@ -25,6 +25,6 @@ case class OrNode(expression: AstNode, operand: AstNode) extends ExpressionNode 
     mv.visitInsn(ICONST_1)
     mv.visitJumpInsn(GOTO, conclude)
     mv.visitLabel(conclude)
-    mv.visitFrame(Opcodes.F_FULL, 0, null, 1, Array(INTEGER))
+    mv.visitFrame(F_SAME1, 0, null, 1, Array(INTEGER))
   }
 }
