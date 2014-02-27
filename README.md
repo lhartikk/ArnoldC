@@ -37,7 +37,7 @@ Check the [wiki](http://github.com/lhartikk/ArnoldC/wiki/ArnoldC) for more detai
 
 [EndWhile](http://www.youtube.com/watch?v=R39e30FL37U) `CHILL`
 
-PlusOperator `GET UP`
+[PlusOperator](http://www.youtube.com/watch?v=KDjepDbLYl8) `GIVE YOU A LIFT`
 
 [MinusOperator](http://www.youtube.com/watch?v=7Ox0Ehq-FRQ) `GET DOWN`
 
@@ -52,6 +52,8 @@ PlusOperator `GET UP`
 [Or](http://www.youtube.com/watch?v=RYtQMhnBtTw) `CONSIDER THAT A DIVORCE`
 
 [And](http://www.youtube.com/watch?v=ZQ_Q2b_aXjk) `KNOCK KNOCK`
+
+[Not](http://www.youtube.com/watch?v=p8-HDUBbtgQ) `RIGHT? WRONG!`
 
 [DeclareMethod](http://www.youtube.com/watch?v=uCwrOpnyXeo) `LISTEN TO ME VERY CAREFULLY`
 
