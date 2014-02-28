@@ -208,7 +208,7 @@ class LogicalTest extends ArnoldGeneratorTest {
         "YOU SET US UP @I LIED\n" +
         "GET TO THE CHOPPER var\n" +
         "HERE IS MY INVITATION @I LIED\n" +
-        "RIGHT? WRONG!\n" +
+        "IT'S NOT A TOOMAH!\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND var\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -222,7 +222,7 @@ class LogicalTest extends ArnoldGeneratorTest {
         "YOU SET US UP @I LIED\n" +
         "GET TO THE CHOPPER var\n" +
         "HERE IS MY INVITATION @NO PROBLEMO\n" +
-        "RIGHT? WRONG!\n" +
+        "IT'S NOT A TOOMAH!\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND var\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -238,7 +238,7 @@ class LogicalTest extends ArnoldGeneratorTest {
         "GET TO THE CHOPPER var\n" +
         "HERE IS MY INVITATION @NO PROBLEMO\n" +
         "LET OFF SOME STEAM BENNET 0\n" +
-        "RIGHT? WRONG!\n" +
+        "IT'S NOT A TOOMAH!\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND var\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -253,7 +253,7 @@ class LogicalTest extends ArnoldGeneratorTest {
         "GET TO THE CHOPPER var\n" +
         "HERE IS MY INVITATION @NO PROBLEMO\n" +
         "LET OFF SOME STEAM BENNET 42\n" +
-        "RIGHT? WRONG!\n" +
+        "IT'S NOT A TOOMAH!\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND var\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -267,8 +267,8 @@ class LogicalTest extends ArnoldGeneratorTest {
         "YOU SET US UP @I LIED\n"    +
         "GET TO THE CHOPPER var\n"+
         "HERE IS MY INVITATION @NO PROBLEMO\n"+
-        "RIGHT? WRONG!\n"+
-        "RIGHT? WRONG!\n"+
+        "IT'S NOT A TOOMAH!\n"+
+        "IT'S NOT A TOOMAH!\n"+
         "ENOUGH TALK\n"+
         "TALK TO THE HAND var\n"+
         "YOU HAVE BEEN TERMINATED\n"
@@ -282,8 +282,8 @@ class LogicalTest extends ArnoldGeneratorTest {
         "YOU SET US UP @I LIED\n"+
         "GET TO THE CHOPPER var\n"+
         "HERE IS MY INVITATION @I LIED\n"+
-        "RIGHT? WRONG!\n"+
-        "RIGHT? WRONG!\n"+
+        "IT'S NOT A TOOMAH!\n"+
+        "IT'S NOT A TOOMAH!\n"+
         "ENOUGH TALK\n"+
         "TALK TO THE HAND var\n"+
         "YOU HAVE BEEN TERMINATED\n"

@@ -118,6 +118,20 @@ class ArithmeticTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("830\n")
   }
 
+  it should "evaluate when an integer is incremented and printed (deprecated syntax)" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE VAR\n" +
+        "YOU SET US UP 22\n" +
+        "GET TO THE CHOPPER VAR\n" +
+        "HERE IS MY INVITATION VAR\n" +
+        "GET UP 44\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND VAR\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("66\n")
+  }
+
   it should "evaluate when an integer is incremented and printed" in {
     val code =
       "IT'S SHOWTIME\n" +

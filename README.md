@@ -37,7 +37,7 @@ Check the [wiki](http://github.com/lhartikk/ArnoldC/wiki/ArnoldC) for more detai
 
 [EndWhile](http://www.youtube.com/watch?v=R39e30FL37U) `CHILL`
 
-[PlusOperator](http://www.youtube.com/watch?v=KDjepDbLYl8) `GIVE YOU A LIFT`
+[PlusOperator](http://www.youtube.com/watch?v=KDjepDbLYl8) `GET UP` - deprecated, use `GIVE YOU A LIFT`
 
 [MinusOperator](http://www.youtube.com/watch?v=7Ox0Ehq-FRQ) `GET DOWN`
 
@@ -53,7 +53,7 @@ Check the [wiki](http://github.com/lhartikk/ArnoldC/wiki/ArnoldC) for more detai
 
 [And](http://www.youtube.com/watch?v=ZQ_Q2b_aXjk) `KNOCK KNOCK`
 
-[Not](http://www.youtube.com/watch?v=p8-HDUBbtgQ) `RIGHT? WRONG!`
+[Not](http://www.youtube.com/watch?v=OaTO8_KNcuo) `IT'S NOT A TOOMAH!`
 
 [DeclareMethod](http://www.youtube.com/watch?v=uCwrOpnyXeo) `LISTEN TO ME VERY CAREFULLY`
 

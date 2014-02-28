@@ -12,7 +12,8 @@ class ArnoldParser extends Parser {
   val DeclareInt = "HEY CHRISTMAS TREE"
   val SetInitialValue = "YOU SET US UP"
   val BeginMain = "IT'S SHOWTIME"
-  val PlusOperator = "GIVE YOU A LIFT"
+  val PlusOperator1 = "GIVE YOU A LIFT"
+  val PlusOperator = "GET UP"
   val MinusOperator = "GET DOWN"
   val MultiplicationOperator = "YOU'RE FIRED"
   val DivisionOperator = "HE HAD TO SPLIT"
@@ -39,7 +40,7 @@ class ArnoldParser extends Parser {
   val CallMethod = "DO IT NOW"
   val NonVoidMethod = "GIVE THESE PEOPLE AIR"
   val AssignVariableFromMethodCall = "GET YOUR ASS TO MARS"
-  val Not = "RIGHT? WRONG!"
+  val Not = "IT'S NOT A TOOMAH!"
 
   val EOL = zeroOrMore("\t" | "\r" | " ") ~ "\n" ~ zeroOrMore("\t" | "\r" | " " | "\n")
   val WhiteSpace = oneOrMore(" " | "\t")
@@ -146,7 +147,7 @@ class ArnoldParser extends Parser {
   }
 
   def PlusExpression: Rule1[AstNode] = rule {
-    PlusOperator ~ WhiteSpace ~ Operand ~ EOL
+    (PlusOperator | PlusOperator1) ~ WhiteSpace ~ Operand ~ EOL
   }
 
   def MinusExpression: Rule1[AstNode] = rule {
