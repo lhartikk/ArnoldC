@@ -201,7 +201,7 @@ class LogicalTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("1\n")
   }
 
-  it should "Not(True) evaluates False" in {
+  it should "Not(False) evaluates True" in {
     val code =
       "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE var\n" +
@@ -215,7 +215,7 @@ class LogicalTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("1\n")
   }
 
-  it should "Not(False) evaluates True" in {
+  it should "Not(True) evaluates False" in {
     val code =
       "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE var\n" +
@@ -229,7 +229,8 @@ class LogicalTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("0\n")
   }
 
-  it should "Not(False LogicalBinaryOperation) evaluates True" in {
+
+  it should "Not(True LogicalBinaryOperation) evaluates False" in {
     val code =
       "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE var\n" +
@@ -244,7 +245,7 @@ class LogicalTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("0\n")
   }
 
-  it should "Not(True LogicalBinaryOperation) evaluates False" in {
+  it should "Not(False LogicalBinaryOperation) evaluates True" in {
     val code =
       "IT'S SHOWTIME\n" +
         "HEY CHRISTMAS TREE var\n" +
@@ -259,6 +260,35 @@ class LogicalTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("1\n")
   }
 
+  it should "Not(Not(True))) evaluates True" in {
+    val code =
+      "IT'S SHOWTIME\n"+
+        "HEY CHRISTMAS TREE var\n"+
+        "YOU SET US UP @I LIED\n"    +
+        "GET TO THE CHOPPER var\n"+
+        "HERE IS MY INVITATION @NO PROBLEMO\n"+
+        "RIGHT? WRONG!\n"+
+        "RIGHT? WRONG!\n"+
+        "ENOUGH TALK\n"+
+        "TALK TO THE HAND var\n"+
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("1\n")
+  }
+
+  it should "Not(Not(False))) evaluates False" in {
+    val code =
+      "IT'S SHOWTIME\n"+
+        "HEY CHRISTMAS TREE var\n"+
+        "YOU SET US UP @I LIED\n"+
+        "GET TO THE CHOPPER var\n"+
+        "HERE IS MY INVITATION @I LIED\n"+
+        "RIGHT? WRONG!\n"+
+        "RIGHT? WRONG!\n"+
+        "ENOUGH TALK\n"+
+        "TALK TO THE HAND var\n"+
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("0\n")
+  }
 
   it should "True Equals False evaluates False" in {
     val code =
