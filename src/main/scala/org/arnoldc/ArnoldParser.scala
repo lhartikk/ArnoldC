@@ -108,7 +108,7 @@ class ArnoldParser extends Parser {
   }
 
   def Expression: Rule1[AstNode] = rule {
-    SetValueExpression ~ zeroOrMore(ArithmeticOperation | LogicalBinaryOperation ) ~ zeroOrMore(LogicalNotOperation)
+    SetValueExpression ~ zeroOrMore(ArithmeticOperation | LogicalBinaryOperation | LogicalNotOperation)
   }
 
   def LogicalBinaryOperation: ReductionRule1[AstNode, AstNode] = rule {
