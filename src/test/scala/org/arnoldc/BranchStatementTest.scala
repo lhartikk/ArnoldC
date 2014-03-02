@@ -119,7 +119,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
         "STICK AROUND isLessThan10\n" +
         "GET TO THE CHOPPER n\n" +
         "HERE IS MY INVITATION n\n" +
-        "GET UP 1\n" +
+        "GIVE YOU A LIFT 1\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND n\n" +
         "GET TO THE CHOPPER isLessThan10\n" +
