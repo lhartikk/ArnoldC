@@ -65,7 +65,7 @@ class ArnoldParser extends Parser {
   def Statement: Rule1[StatementNode] = rule {
     DeclareIntStatement | PrintStatement |
       AssignVariableStatement | ConditionStatement |
-      WhileStatement | CallMethodStatement | ReturnStatement
+      WhileStatement | CallMethodStatement | ReturnStatement | Comment
   }
 
   def CallMethodStatement: Rule1[StatementNode] = rule {
@@ -182,6 +182,10 @@ class ArnoldParser extends Parser {
     zeroOrMore(rule {
       !anyOf("\"\\") ~ ANY
     }) ~> StringNode
+  }
+
+  def Comment: Rule1[CommentNode] = rule {
+    "#" ~ rule {zeroOrMore(noneOf("\n\r"))} ~ EOL ~> CommentNode
   }
 
   def parse(expression: String): RootNode = {
