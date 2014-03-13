@@ -39,6 +39,7 @@ class ArnoldParser extends Parser {
   val CallMethod = "DO IT NOW"
   val NonVoidMethod = "GIVE THESE PEOPLE AIR"
   val AssignVariableFromMethodCall = "GET YOUR ASS TO MARS"
+  val Modulo = "I LET HIM GO"
 
   val EOL = zeroOrMore("\t" | "\r" | " ") ~ "\n" ~ zeroOrMore("\t" | "\r" | " " | "\n")
   val WhiteSpace = oneOrMore(" " | "\t")
@@ -136,7 +137,8 @@ class ArnoldParser extends Parser {
     PlusExpression ~~> PlusExpressionNode |
       MinusExpression ~~> MinusExpressionNode |
       MultiplicationExpression ~~> MultiplicationExpressionNode |
-      DivisionExpression ~~> DivisionExpressionNode
+      DivisionExpression ~~> DivisionExpressionNode |
+      ModuloExpression ~~> ModuloExpressionNode
   }
 
   def SetValueExpression: Rule1[OperandNode] = rule {
@@ -158,6 +160,10 @@ class ArnoldParser extends Parser {
 
   def DivisionExpression: Rule1[AstNode] = rule {
     DivisionOperator ~ WhiteSpace ~ Operand ~ EOL
+  }
+
+  def ModuloExpression: Rule1[AstNode] = rule {
+    Modulo ~ WhiteSpace ~ Operand ~ EOL
   }
 
   def Variable: Rule1[VariableNode] = rule {

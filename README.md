@@ -45,6 +45,8 @@ PlusOperator `GET UP`
 
 [DivisionOperator](http://www.youtube.com/watch?v=9VHtuqXZQeo) `HE HAD TO SPLIT`
 
+ModuloOperator `I LET HIM GO`
+
 [EqualTo](http://www.youtube.com/watch?v=A1-wUV0-_JY) `YOU ARE NOT YOU YOU ARE ME`
 
 [GreaterThan](http://www.youtube.com/watch?v=19R2fDXCzcM) `LET OFF SOME STEAM BENNET`
