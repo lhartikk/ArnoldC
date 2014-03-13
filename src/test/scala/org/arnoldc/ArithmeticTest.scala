@@ -291,6 +291,34 @@ class ArithmeticTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("2\n")
   }
 
+  it should "evaluate when calculating modulo variables vol1" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP 1\n" +
+        "GET TO THE CHOPPER var\n" +
+        "HERE IS MY INVITATION var\n" +
+        "I LET HIM GO 2\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("1\n")
+  }
+
+  it should "evaluate when calculating modulo variables vol2" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP 2\n" +
+        "GET TO THE CHOPPER var\n" +
+        "HERE IS MY INVITATION var\n" +
+        "I LET HIM GO 2\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("0\n")
+  }
+
   it should "evaluate using different arithmetic operations" in {
     val code =
       "IT'S SHOWTIME\n" +
