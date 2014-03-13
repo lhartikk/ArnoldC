@@ -45,7 +45,7 @@ PlusOperator `GET UP`
 
 [DivisionOperator](http://www.youtube.com/watch?v=9VHtuqXZQeo) `HE HAD TO SPLIT`
 
-ModuloOperator `I LET HIM GO`
+[ModuloOperator](http://www.youtube.com/watch?v=ybJWKZB0Erk&feature=youtu.be&t=6m59s)  `I LET HIM GO`
 
 [EqualTo](http://www.youtube.com/watch?v=A1-wUV0-_JY) `YOU ARE NOT YOU YOU ARE ME`
 
