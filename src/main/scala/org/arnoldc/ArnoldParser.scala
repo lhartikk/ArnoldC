@@ -18,6 +18,7 @@ class ArnoldParser extends Parser {
   val DivisionOperator = "HE HAD TO SPLIT"
   val EndMain = "YOU HAVE BEEN TERMINATED"
   val Print = "TALK TO THE HAND"
+  val Read = "I WANT TO ASK YOU A BUNCH OF QUESTIONS AND I WANT TO HAVE THEM ANSWERED IMMEDIATELY"
   val AssignVariable = "GET TO THE CHOPPER"
   val SetValue = "HERE IS MY INVITATION"
   val EndAssignVariable = "ENOUGH TALK"
@@ -66,13 +67,18 @@ class ArnoldParser extends Parser {
   def Statement: Rule1[StatementNode] = rule {
     DeclareIntStatement | PrintStatement |
       AssignVariableStatement | ConditionStatement |
-      WhileStatement | CallMethodStatement | ReturnStatement
+      WhileStatement | CallMethodStatement | ReturnStatement | CallReadMethodStatement
   }
 
   def CallMethodStatement: Rule1[StatementNode] = rule {
     (AssignVariableFromMethodCall ~ WhiteSpace ~ VariableName ~> (v => v) ~ EOL | "" ~> (v => v)) ~
       CallMethod ~ WhiteSpace ~ VariableName ~> (v => v) ~
       zeroOrMore(WhiteSpace ~ Operand) ~ EOL ~~> CallMethodNode
+  }
+
+  def CallReadMethodStatement: Rule1[StatementNode] = rule {
+    (AssignVariableFromMethodCall ~ WhiteSpace ~ VariableName ~> (v => v) ~ EOL | "" ~> (v => v)) ~
+      CallMethod ~ EOL ~ Read ~ EOL ~~> CallReadMethodNode
   }
 
   def ConditionStatement: Rule1[ConditionNode] = rule {
