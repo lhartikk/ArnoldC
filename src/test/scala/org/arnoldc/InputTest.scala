@@ -1,7 +1,6 @@
 package org.arnoldc
 import org.scalatest.{Matchers, FlatSpec}
 import java.io._
-import scala.Console
 
 class InputTest extends ArnoldGeneratorTest{
 
@@ -27,15 +26,18 @@ class InputTest extends ArnoldGeneratorTest{
 
     override def getOutput(bytecode: Array[Byte], className: String): String = {
 
-      val originalIn = Console.in
+      val originalIn = System.in
       val outputRedirectionStream = new ByteArrayOutputStream()
       val fileInput = new BufferedInputStream(new FileInputStream(path))
       System.setOut(new PrintStream(outputRedirectionStream))
-      Console.setIn(fileInput)
+      System.setIn(fileInput)
 
-      invokeMainMethod(bytecode, className)
-      System.setOut(originalOutputStream)
-      Console.setIn(originalIn)
+      try {
+        invokeMainMethod(bytecode, className)
+      } finally {
+        System.setOut(originalOutputStream)
+        System.setIn(originalIn)
+      }
       outputRedirectionStream.toString
     }
   }
