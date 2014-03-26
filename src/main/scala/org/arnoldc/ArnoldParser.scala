@@ -3,6 +3,7 @@ package org.arnoldc
 import org.parboiled.scala._
 import org.parboiled.errors.{ErrorUtils, ParsingException}
 import org.arnoldc.ast._
+import org.parboiled.support.Chars
 
 class ArnoldParser extends Parser {
 
@@ -41,9 +42,13 @@ class ArnoldParser extends Parser {
   val NonVoidMethod = "GIVE THESE PEOPLE AIR"
   val AssignVariableFromMethodCall = "GET YOUR ASS TO MARS"
   val Modulo = "I LET HIM GO"
+  val Comment = "%"
 
-  val EOL = zeroOrMore("\t" | "\r" | " ") ~ "\n" ~ zeroOrMore("\t" | "\r" | " " | "\n")
-  val WhiteSpace = oneOrMore(" " | "\t")
+  val indent = Chars.INDENT.toString
+  val dedent = Chars.DEDENT.toString
+
+  val EOL = zeroOrMore("\t" | "\r" | " " |  indent | dedent) ~ "\n" ~ zeroOrMore("\t" | "\r" | " " | "\n" | indent | dedent)
+  val WhiteSpace = oneOrMore(" " | "\t" | indent | dedent)
 
   def Root: Rule1[RootNode] = rule {
     oneOrMore(AbstractMethod) ~ EOI ~~> RootNode
@@ -197,7 +202,7 @@ class ArnoldParser extends Parser {
   }
 
   def parse(expression: String): RootNode = {
-    val parsingResult = ReportingParseRunner(Root).run(expression)
+    val parsingResult = ReportingParseRunner(Root).run(expression.transformIndents(1, Comment))
     parsingResult.result match {
       case Some(root) => root
       case None => throw new ParsingException(ParseError + ":\n" +
