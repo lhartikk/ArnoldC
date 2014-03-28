@@ -16,10 +16,10 @@ object ArnoldC {
   }
 
   def processArguments(args:List[String]) = args match {
-    case Nil => printUsage()
     case "-version" :: Nil => printCompilerVersion()
     case "-run" :: arg :: Nil => compileAndExecute(arg)
     case arg::Nil => compile(arg)
+    case _ => printUsage()
   }
 
   def printUsage(){
