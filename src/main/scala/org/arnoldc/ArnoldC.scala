@@ -3,12 +3,34 @@ package org.arnoldc
 import java.io.FileOutputStream
 
 object ArnoldC {
+  val Version = "0.1"
+
+  val Usage = "Usage: ArnoldC -version\n" +
+    "or ArnoldC FileToSourceCode\n" +
+    "\t(to compile source)\n" +
+    "or ArnoldC -run FileToSourceCode\n" +
+    "\t(to compile and run)"
+
   def main(args: Array[String]) {
-    if (args.length < 1) {
-      println("Usage: ArnoldC [-run] [FileToSourceCode]")
-      return
-    }
-    val filename = getFilNameFromArgs(args)
+    processArguments(args.toList)
+  }
+
+  def processArguments(args:List[String]) = args match {
+    case "-version" :: Nil => printCompilerVersion()
+    case "-run" :: arg :: Nil => compileAndExecute(arg)
+    case arg::Nil => compile(arg)
+    case _ => printUsage()
+  }
+
+  def printUsage(){
+    println(Usage)
+  }
+  
+  def printCompilerVersion(){
+    println(s"ArnoldC version $Version")
+  }
+  
+  def compile(filename:String):String ={
     val sourceCode = scala.io.Source.fromFile(filename).mkString
     val a = new ArnoldGenerator()
     val classFilename = if (filename.contains('.')) {
@@ -22,26 +44,15 @@ object ArnoldC {
     val out = new FileOutputStream(classFilename + ".class")
     out.write(bytecode)
     out.close()
-
-    processOption(getCommandFromArgs(args), classFilename)
-
-  }
-  
-  def getFilNameFromArgs(args:Array[String]):String = args.length match {
-    case 1 => args(0)
-    case 2 => args(1)
-    case _ => throw new RuntimeException("What the fuck did I do wrong!")
+    classFilename
   }
 
-  def getCommandFromArgs(args:Array[String]):String = args.length match {
-    case 2 => args(0)
-    case 1 => ""
-    case _ => throw new RuntimeException("What the fuck did I do wrong!")
+  def execute(filename:String){
+    Executor.execute(filename)
   }
 
-  def processOption(command:String, argFunc: => String):Unit = command match {
-    case "-run" => Executor.execute(argFunc)
-    case _ =>
+  def compileAndExecute(filename:String){
+    execute(compile(filename))
   }
 
 }
