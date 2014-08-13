@@ -79,7 +79,7 @@ PlusOperator `GET UP`
 
 [Print](http://www.youtube.com/watch?v=dQ6m8ztEzfA) `TALK TO THE HAND`
 
-[ReadInteger](https://www.youtube.com/watch?v=1mC9eOqsyTg) `I WANT TO ASK YOU A BUNCH OF QUESTIONS AND I WANT TO HAVE THEM ANSWERED IMMEDIATELY`
+[ReadInteger](https://www.youtube.com/watch?v=1mC9eOqsyTg) `I'M GOING TO ASK YOU A BUNCH OF QUESTIONS AND I WANT TO HAVE THEM ANSWERED IMMEDIATELY`
 
 [AssignVariable](http://www.youtube.com/watch?v=-9-Te-DPbSE) `GET TO THE CHOPPER`
 
