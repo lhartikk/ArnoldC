@@ -18,7 +18,7 @@ class ArnoldParser extends Parser {
   val DivisionOperator = "HE HAD TO SPLIT"
   val EndMain = "YOU HAVE BEEN TERMINATED"
   val Print = "TALK TO THE HAND"
-  val Read = "I WANT TO ASK YOU A BUNCH OF QUESTIONS AND I WANT TO HAVE THEM ANSWERED IMMEDIATELY"
+  val Read = "I'M GOING TO ASK YOU A BUNCH OF QUESTIONS AND I WANT TO HAVE THEM ANSWERED IMMEDIATELY"
   val AssignVariable = "GET TO THE CHOPPER"
   val SetValue = "HERE IS MY INVITATION"
   val EndAssignVariable = "ENOUGH TALK"
