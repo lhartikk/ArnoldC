@@ -52,7 +52,7 @@ class FeatureTest extends ArnoldGeneratorTest {
       "TALK TO THE HAND result\n" +
       "YOU HAVE BEEN TERMINATED\n" +
       "\nLISTEN TO ME VERY CAREFULLY fib\n" +
-      "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE val\n" +
+      "I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE val\n" +
       "GIVE THESE PEOPLE AIR\n" +
       "\tHEY CHRISTMAS TREE endrecursion\n" +
       "\tYOU SET US UP @I LIED\n" +
@@ -115,8 +115,8 @@ class FeatureTest extends ArnoldGeneratorTest {
       "TALK TO THE HAND result4\n" +
       "YOU HAVE BEEN TERMINATED\n" +
       "LISTEN TO ME VERY CAREFULLY modulo\n" +
-      "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE dividend\n" +
-      "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE divisor\n" +
+      "I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE dividend\n" +
+      "I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE divisor\n" +
       "GIVE THESE PEOPLE AIR\n" +
       "HEY CHRISTMAS TREE quotient\n" +
       "YOU SET US UP 0\n" +

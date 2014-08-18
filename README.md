@@ -59,7 +59,7 @@ PlusOperator `GET UP`
 
 [NonVoidMethod](http://www.youtube.com/watch?v=WANa9Oku-JM) `GIVE THESE PEOPLE AIR`
 
-[MethodArguments](http://www.youtube.com/watch?v=FWmH9ylqYYQ) `I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE`
+[MethodArguments](http://www.youtube.com/watch?v=FWmH9ylqYYQ) `I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE`
 
 [Return](http://www.youtube.com/watch?v=-YEG9DgRHhA) `I'LL BE BACK`
 
