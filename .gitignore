@@ -11,3 +11,6 @@ project/plugins/project/
 
 # Scala-IDE specific
 .scala_dependencies
+
+# Hidden file used in OS X in orgnaize icons
+.DS_Store
