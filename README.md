@@ -31,7 +31,7 @@ Check the [wiki](http://github.com/lhartikk/ArnoldC/wiki/ArnoldC) for more detai
 
 [Else](http://www.youtube.com/watch?v=c4psKYpfnYs) `BULLSHIT`
 
-[EndIf](http://www.youtube.com/watch?v=bTr-ahLNf2A) `YOU HAVE NO RESPECT FOR LOGIC`
+[EndIf](http://youtu.be/uGstM8QMCjQ?t=1m23s) `YOU HAVE NO RESPECT FOR LOGIC`
 
 [While](http://www.youtube.com/watch?v=wDztrw_0N8M) `STICK AROUND`
 
@@ -63,7 +63,7 @@ PlusOperator `GET UP`
 
 [Return](http://www.youtube.com/watch?v=-YEG9DgRHhA) `I'LL BE BACK`
 
-[EndMethodDeclaration](http://www.youtube.com/watch?v=KGsTNugVctI) `HASTA LA VISTA, BABY`
+[EndMethodDeclaration](http://www.youtube.com/watch?v=Hhm7aWp8gvc) `HASTA LA VISTA, BABY`
 
 [CallMethod](http://www.youtube.com/watch?v=HGhP3p6lI3U) `DO IT NOW`
 
