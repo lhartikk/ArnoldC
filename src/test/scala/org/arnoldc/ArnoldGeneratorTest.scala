@@ -9,7 +9,7 @@ abstract  class ArnoldGeneratorTest extends FlatSpec with Matchers {
   var className = "Hello"
 
   def getOutput(arnoldCode: String): String = {
-    val bytecode = arnoldGenerator.generate(arnoldCode, className)
+    val (bytecode, root) = arnoldGenerator.generate(arnoldCode, className)
     byteCodeExecutor.getOutput(bytecode, className)
   }
 
