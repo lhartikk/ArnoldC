@@ -19,6 +19,10 @@ Although the one-liners of Arnold Schwarzenegger are fairly well known the true 
 	java -jar ArnoldC.jar hello.arnoldc
 	java hello
 
+To create some "audible" output you can try the -declaim option:
+
+	java -jar ArnoldC.jar -declaim hello.arnoldc
+
 ##Brief overview of the keywords
 
 Check the [wiki](http://github.com/lhartikk/ArnoldC/wiki/ArnoldC) for more details
