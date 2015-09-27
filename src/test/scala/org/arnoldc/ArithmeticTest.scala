@@ -13,6 +13,24 @@ class ArithmeticTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("")
   }
 
+  it should "function when a variable is declared with keyword name" in {
+    val code: String =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE while\n" +
+        "YOU SET US UP 123\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("")
+  }
+
+  it should "function when a variable is declared with keyword name vol2" in {
+    val code: String =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE CHILL\n" +
+        "YOU SET US UP 123\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("")
+  }
+
   it should "function when an integer is printed" in {
     val code: String =
       "IT'S SHOWTIME\n" +
@@ -53,6 +71,14 @@ class ArithmeticTest extends ArnoldGeneratorTest {
         "TALK TO THE HAND \"!!! ??? äöäöäöä@#0123=+-,.\"\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("!!! ??? äöäöäöä@#0123=+-,.\n")
+  }
+
+  it should "evaluate when a string with newlines is printed" in {
+    val code: String =
+      "IT'S SHOWTIME\n" +
+        "TALK TO THE HAND \"line1\nline2\nline3\n\n\"\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("line1\nline2\nline3\n\n\n")
   }
 
   it should "evaluate when an integer is declared and printed" in {
@@ -290,6 +316,21 @@ class ArithmeticTest extends ArnoldGeneratorTest {
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("2\n")
   }
+  it should "evaluate when dividing to fraction and then multiplying back" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP 1\n" +
+        "TALK TO THE HAND var\n" +
+        "GET TO THE CHOPPER var\n" +
+        "HERE IS MY INVITATION var\n" +
+        "HE HAD TO SPLIT 2\n" +
+        "YOU'RE FIRED 2\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("1\n0\n")
+  }
 
   it should "evaluate when calculating modulo variables vol1" in {
     val code =
@@ -317,6 +358,20 @@ class ArithmeticTest extends ArnoldGeneratorTest {
         "TALK TO THE HAND var\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("0\n")
+  }
+
+    it should "evaluate when calculating modulo variables with negative value" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP -3\n" +
+        "GET TO THE CHOPPER var\n" +
+        "HERE IS MY INVITATION var\n" +
+        "I LET HIM GO 2\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("-1\n")
   }
 
   it should "evaluate using different arithmetic operations" in {
@@ -374,6 +429,212 @@ class ArithmeticTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("12\n")
   }
 
+  it should "evaluate short max value on declaration" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP 32767\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("32767\n")
+  }
+
+  it should "evaluate short min value on declaration" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP -32768\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("-32768\n")
+  }
+
+  it should "evaluate short overflow on declaration" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP 32768\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("-32768\n")
+  }
+
+  it should "evaluate short overflow on declaration vol2" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP 65537\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("1\n")
+  }
+
+  it should "evaluate short underflow on declaration" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP -32769\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("32767\n")
+  }
+
+  it should "evaluate short underflow on declaration vol2" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP -65538\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("-2\n")
+  }
+
+  it should "evaluate short overflow on addition" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP 32767\n" +
+        "TALK TO THE HAND var\n" +
+        "GET TO THE CHOPPER var\n" +
+        "HERE IS MY INVITATION var\n" +
+        "GET UP 1\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("32767\n32768\n")
+  }
+
+  it should "evaluate short overflow on addition vol2" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP 32767\n" +
+        "TALK TO THE HAND var\n" +
+        "GET TO THE CHOPPER var\n" +
+        "HERE IS MY INVITATION var\n" +
+        "GET UP 32767\n" +
+        "GET UP 32767\n" +
+        "GET UP 32767\n" +
+        "GET UP 32767\n" +
+        "GET UP 32767\n" +
+        "GET UP 32767\n" +
+        "GET UP 32767\n" +
+        "GET UP 32767\n" +
+        "GET UP 32767\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("32767\n327670\n")
+  }
+
+  it should "evaluate short overflow on multiplication" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP 32767\n" +
+        "TALK TO THE HAND var\n" +
+        "GET TO THE CHOPPER var\n" +
+        "HERE IS MY INVITATION var\n" +
+        "YOU'RE FIRED 32767\n" +
+        "YOU'RE FIRED 32767\n" +
+        "YOU'RE FIRED 32767\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("32767\n2147352577\n")
+  }
+  it should "evaluate short overflow on multiplication vol2" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP 32767\n" +
+        "TALK TO THE HAND var\n" +
+        "GET TO THE CHOPPER var\n" +
+        "HERE IS MY INVITATION var\n" +
+        "YOU'RE FIRED 32767\n" +
+        "YOU'RE FIRED 32767\n" +
+        "YOU'RE FIRED 32767\n" +
+        "YOU'RE FIRED 32767\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("32767\n-2147319809\n")
+  }
+  it should "evaluate short underflow on multiplication" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP -32768\n" +
+        "TALK TO THE HAND var\n" +
+        "GET TO THE CHOPPER var\n" +
+        "HERE IS MY INVITATION var\n" +
+        "YOU'RE FIRED 32767\n" +
+        "YOU'RE FIRED 32767\n" +
+        "YOU'RE FIRED 32767\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("-32768\n1073774592\n")
+  }
+  it should "evaluate short underflow on multiplication vol2" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP -32768\n" +
+        "TALK TO THE HAND var\n" +
+        "GET TO THE CHOPPER var\n" +
+        "HERE IS MY INVITATION var\n" +
+        "YOU'RE FIRED 32767\n" +
+        "YOU'RE FIRED 32767\n" +
+        "YOU'RE FIRED 32767\n" +
+        "YOU'RE FIRED 32767\n" +
+        "YOU'RE FIRED 32767\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("-32768\n-1073709056\n")
+  }
+
+  it should "detect when a string with quote escaped quotes is printed" in {
+    val code: String =
+      "IT'S SHOWTIME\n" +
+        "TALK TO THE HAND \"he said \"\"Hello\"\"\"\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect when a string with backslash escaped quotes is printed" in {
+    val code: String =
+      "IT'S SHOWTIME\n" +
+        "TALK TO THE HAND \"he said \\\"Hello\\\"\"\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect when a string with backslashes is printed" in {
+    val code: String =
+      "IT'S SHOWTIME\n" +
+        "TALK TO THE HAND \"C:\\Temp\\readme.txt\"\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect when a string with backslash escaped backslashes is printed" in {
+    val code: String =
+      "IT'S SHOWTIME\n" +
+        "TALK TO THE HAND \"C:\\\\Temp\\\\readme.txt\"\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
   it should "detect duplicate variable declarations" in {
     val code =
       "IT'S SHOWTIME\n" +
@@ -394,6 +655,22 @@ class ArithmeticTest extends ArnoldGeneratorTest {
         "YOU SET US UP 123\n" +
         "YOU HAVE BEEN TERMINATED\n"
     intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect divide by zero" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE var\n" +
+        "YOU SET US UP @I LIED\n" +
+        "GET TO THE CHOPPER var\n" +
+        "HERE IS MY INVITATION 1\n" +
+        "HE HAD TO SPLIT 0\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND var\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    intercept[java.lang.ArithmeticException] {
       getOutput(code)
     }
   }

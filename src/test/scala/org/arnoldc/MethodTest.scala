@@ -53,6 +53,26 @@ class MethodTest extends ArnoldGeneratorTest {
         "HASTA LA VISTA, BABY"
     getOutput(code) should equal("Hello\n")
   }
+  it should "evalute a plain method call with keyword name" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "DO IT NOW while\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY while\n" +
+        "TALK TO THE HAND \"Hello\"\n" +
+        "HASTA LA VISTA, BABY"
+    getOutput(code) should equal("Hello\n")
+  }
+  it should "evalute a plain method call with keyword name vol2" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "DO IT NOW CHILL\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY CHILL\n" +
+        "TALK TO THE HAND \"Hello\"\n" +
+        "HASTA LA VISTA, BABY"
+    getOutput(code) should equal("Hello\n")
+  }
 
   it should "evalute a method call that takes an argument" in {
     val code =
@@ -64,6 +84,34 @@ class MethodTest extends ArnoldGeneratorTest {
         "LISTEN TO ME VERY CAREFULLY printInteger\n" +
         "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
         "TALK TO THE HAND value\n" +
+        "HASTA LA VISTA, BABY"
+    getOutput(code) should equal("123\n")
+  }
+
+  it should "evalute a method call that takes an argument with keyword as parameter name" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE throw\n" +
+        "YOU SET US UP 123\n" +
+        "DO IT NOW printInteger throw\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY printInteger\n" +
+        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE while\n" +
+        "TALK TO THE HAND while\n" +
+        "HASTA LA VISTA, BABY"
+    getOutput(code) should equal("123\n")
+  }
+
+  it should "evalute a method call that takes an argument with keyword as parameter name vol2" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE BULLSHIT\n" +
+        "YOU SET US UP 123\n" +
+        "DO IT NOW printInteger BULLSHIT\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY printInteger\n" +
+        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE CHILL\n" +
+        "TALK TO THE HAND CHILL\n" +
         "HASTA LA VISTA, BABY"
     getOutput(code) should equal("123\n")
   }
@@ -238,6 +286,101 @@ class MethodTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("49\n")
   }
 
+  it should "evaluate same variable defined in main method and another method" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE vartrue\n" +
+        "YOU SET US UP @NO PROBLEMO\n" +
+        "TALK TO THE HAND vartrue\n" +
+        "DO IT NOW method\n" +
+        "TALK TO THE HAND vartrue\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY method\n" +
+        "HEY CHRISTMAS TREE vartrue\n" +
+        "YOU SET US UP @I LIED\n" +
+        "TALK TO THE HAND vartrue\n" +
+        "HASTA LA VISTA, BABY\n"
+    getOutput(code) should equal("1\n0\n1\n")
+  }
+
+  it should "evaluate same variable defined in two methods" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "DO IT NOW method\n" +
+        "DO IT NOW method2\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY method\n" +
+        "HEY CHRISTMAS TREE vartrue\n" +
+        "YOU SET US UP @NO PROBLEMO\n" +
+        "TALK TO THE HAND vartrue\n" +
+        "HASTA LA VISTA, BABY\n" +
+        "LISTEN TO ME VERY CAREFULLY method2\n" +
+        "HEY CHRISTMAS TREE vartrue\n" +
+        "YOU SET US UP @I LIED\n" +
+        "TALK TO THE HAND vartrue\n" +
+        "HASTA LA VISTA, BABY\n"
+    getOutput(code) should equal("1\n0\n")
+  }
+
+  it should "evaluate variable name is the same as method name" in {
+    val code =
+     "LISTEN TO ME VERY CAREFULLY method\n" +
+        "HEY CHRISTMAS TREE method\n" +
+        "YOU SET US UP 2\n" +
+        "TALK TO THE HAND method\n" +
+        "HASTA LA VISTA, BABY\n" +
+        "IT'S SHOWTIME\n" +
+        "DO IT NOW method\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("2\n")
+  }
+
+  it should "evaluate variable name is the same as method name vol2" in {
+    val code =
+     "LISTEN TO ME VERY CAREFULLY method\n" +
+        "HEY CHRISTMAS TREE method\n" +
+        "YOU SET US UP 2\n" +
+        "TALK TO THE HAND method\n" +
+        "HASTA LA VISTA, BABY\n" +
+        "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE method\n" +
+        "YOU SET US UP 1\n" +
+        "TALK TO THE HAND method\n" +
+        "DO IT NOW method\n" +
+        "TALK TO THE HAND method\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("1\n2\n1\n")
+  }
+  it should "evaluate variable name is the same as method name vol3" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE method\n" +
+        "YOU SET US UP 1\n" +
+        "TALK TO THE HAND method\n" +
+        "DO IT NOW method\n" +
+        "TALK TO THE HAND method\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY method\n" +
+        "HEY CHRISTMAS TREE method\n" +
+        "YOU SET US UP 2\n" +
+        "TALK TO THE HAND method\n" +
+        "HASTA LA VISTA, BABY\n"
+    getOutput(code) should equal("1\n2\n1\n")
+  }
+  it should "evaluate when parameter name is the same as method name" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE method\n" +
+        "YOU SET US UP 123\n" +
+        "DO IT NOW method method\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY method\n" +
+        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE method\n" +
+        "TALK TO THE HAND method\n" +
+        "HASTA LA VISTA, BABY"
+    getOutput(code) should equal("123\n")
+  } 
+
   it should "detect unclosed main method" in {
     val code =
       "IT'S SHOWTIME\n" +
@@ -253,6 +396,68 @@ class MethodTest extends ArnoldGeneratorTest {
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY printHello\n" +
         "TALK TO THE HAND \"Hello\"\n"
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect missing main method" in {
+    val code =
+      "LISTEN TO ME VERY CAREFULLY mymethod\n" +
+        "HASTA LA VISTA, BABY\n"
+    intercept[java.lang.NoSuchMethodException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect duplicate main method" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "IT'S SHOWTIME\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    intercept[java.lang.ClassFormatError] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect duplicate method" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY printHello\n" +
+        "TALK TO THE HAND \"Hello\"\n" +
+        "HASTA LA VISTA, BABY\n" +
+        "LISTEN TO ME VERY CAREFULLY printHello\n" +
+        "TALK TO THE HAND \"Hello\"\n" +
+        "HASTA LA VISTA, BABY\n"
+    intercept[java.lang.ClassFormatError] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect method nested in main method" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "LISTEN TO ME VERY CAREFULLY printHello\n" +
+        "TALK TO THE HAND \"Hello\"\n" +
+        "HASTA LA VISTA, BABY\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect method nested in method" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY printHello\n" +
+        "LISTEN TO ME VERY CAREFULLY printWorld\n" +
+        "TALK TO THE HAND \"World\"\n" +
+        "HASTA LA VISTA, BABY\n" +
+        "TALK TO THE HAND \"Hello\"\n" +
+        "HASTA LA VISTA, BABY\n"
     intercept[ParsingException] {
       getOutput(code)
     }
@@ -291,6 +496,79 @@ class MethodTest extends ArnoldGeneratorTest {
       "I'LL BE BACK\n" +
       "HASTA LA VISTA, BABY\n"
 
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect a void return statement in main method" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "I'LL BE BACK\n" +
+        "TALK TO THE HAND \"Hi\"\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect a nonvoid return statement in main method" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "I'LL BE BACK 0\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect when using variable declared in a method from main" in {
+    val code =
+      "LISTEN TO ME VERY CAREFULLY method\n" +
+        "HEY CHRISTMAS TREE varfalse\n" +
+        "YOU SET US UP @I LIED\n" +
+        "TALK TO THE HAND varfalse\n" +
+        "HASTA LA VISTA, BABY\n" +
+        "IT'S SHOWTIME\n" +
+        "TALK TO THE HAND varfalse\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect when using variable declared in a method from another" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY method\n" +
+        "HEY CHRISTMAS TREE varfalse\n" +
+        "YOU SET US UP @I LIED\n" +
+        "TALK TO THE HAND varfalse\n" +
+        "HASTA LA VISTA, BABY\n" +
+        "LISTEN TO ME VERY CAREFULLY method2\n" +
+        "TALK TO THE HAND varfalse\n" +
+        "HASTA LA VISTA, BABY\n"
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect when variable name is the same as a method parameter name" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE argument\n" +
+        "YOU SET US UP 123\n" +
+        "DO IT NOW printInteger argument\n" +
+        "YOU HAVE BEEN TERMINATED\n" +
+        "LISTEN TO ME VERY CAREFULLY printInteger\n" +
+        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+        "HEY CHRISTMAS TREE value\n" +
+        "YOU SET US UP 321\n" +
+        "TALK TO THE HAND value\n" +
+        "HASTA LA VISTA, BABY"
     intercept[ParsingException] {
       getOutput(code)
     }
