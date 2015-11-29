@@ -27,4 +27,5 @@ libraryDependencies ++= Seq(
 )
 
 resolvers += "Speech" at "http://maven.it.su.se/it.su.se/maven2"
+
 parallelExecution in Test := false
