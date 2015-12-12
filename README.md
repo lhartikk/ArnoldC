@@ -38,18 +38,18 @@ Keywords                                                                        
 [EndWhile](http://www.youtube.com/watch?v=R39e30FL37U)                               |  `CHILL` 
 PlusOperator											                             | `GET UP`
 [MinusOperator](http://www.youtube.com/watch?v=7Ox0Ehq-FRQ)                          | `GET DOWN`
-[MultiplicationOperator](http://www.youtube.com/watch?v=lf3Kyv_iaNs)                 | `YOU'RE FIRED`
+[MultiplicationOperator](https://www.youtube.com/watch?v=23ARFCQlb3M)                | `YOU'RE FIRED`
 [DivisionOperator](http://www.youtube.com/watch?v=9VHtuqXZQeo)                       | `HE HAD TO SPLIT`
 [ModuloOperator](http://www.youtube.com/watch?v=ybJWKZB0Erk&feature=youtu.be&t=6m59s)|`I LET HIM GO`
 [EqualTo](http://www.youtube.com/watch?v=A1-wUV0-_JY)                                | `YOU ARE NOT YOU YOU ARE ME`
 [GreaterThan](http://www.youtube.com/watch?v=19R2fDXCzcM)                            | `LET OFF SOME STEAM BENNET`
 [Or](http://www.youtube.com/watch?v=RYtQMhnBtTw)                                     | `CONSIDER THAT A DIVORCE`
 [And](http://www.youtube.com/watch?v=ZQ_Q2b_aXjk)                                    | `KNOCK KNOCK`
-[DeclareMethod](http://www.youtube.com/watch?v=uCwrOpnyXeo)                          | `LISTEN TO ME VERY CAREFULLY`
+[DeclareMethod](https://youtu.be/1uERz6M5qIg?t=42s)                                  | `LISTEN TO ME VERY CAREFULLY`
 [NonVoidMethod](http://www.youtube.com/watch?v=WANa9Oku-JM)                          | `GIVE THESE PEOPLE AIR`
 [MethodArguments](http://www.youtube.com/watch?v=FWmH9ylqYYQ)                        | `I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE`
 [Return](http://www.youtube.com/watch?v=-YEG9DgRHhA)                                 | `I'LL BE BACK`
-[EndMethodDeclaration](http://www.youtube.com/watch?v=Hhm7aWp8gvc)                   | `HASTA LA VISTA, BABY`
+[EndMethodDeclaration](https://www.youtube.com/watch?v=Q73gUUr8Zlw)                  | `HASTA LA VISTA, BABY`
 [CallMethod](http://www.youtube.com/watch?v=HGhP3p6lI3U)                             | `DO IT NOW`
 [AssignVariableFromMethodCall](http://www.youtube.com/watch?v=HkkibBYm2WI)           | `GET YOUR ASS TO MARS`
 [DeclareInt](http://www.youtube.com/watch?v=PZwwqjcEDUQ)                             |`HEY CHRISTMAS TREE`
