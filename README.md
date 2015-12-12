@@ -37,7 +37,7 @@ Keywords                                                                        
 [While](http://www.youtube.com/watch?v=wDztrw_0N8M)                                  |  `STICK AROUND`
 [EndWhile](http://www.youtube.com/watch?v=R39e30FL37U)                               |  `CHILL` 
 PlusOperator											                             | `GET UP`
-[MinusOperator](http://www.youtube.com/watch?v=7Ox0Ehq-FRQ)                          | `GET DOWN`
+MinusOperator                                                                        | `GET DOWN`
 [MultiplicationOperator](https://www.youtube.com/watch?v=23ARFCQlb3M)                | `YOU'RE FIRED`
 [DivisionOperator](http://www.youtube.com/watch?v=9VHtuqXZQeo)                       | `HE HAD TO SPLIT`
 [ModuloOperator](http://www.youtube.com/watch?v=ybJWKZB0Erk&feature=youtu.be&t=6m59s)|`I LET HIM GO`
