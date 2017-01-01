@@ -110,7 +110,7 @@ class LogicalTest extends ArnoldGeneratorTest {
     getOutput(code) should equal("0\n")
   }
 
-  it should "True and True and True evaluates False" in {
+  it should "True and True and True evaluates True" in {
     val code =
     "IT'S SHOWTIME\n" +
     "HEY CHRISTMAS TREE var\n" +
