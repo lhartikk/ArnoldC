@@ -1,5 +1,7 @@
 package org.arnoldc
 
+import org.parboiled.errors.ParsingException
+
 class BranchStatementTest extends ArnoldGeneratorTest {
   it should "function using simple if statements" in {
     val code =
@@ -129,5 +131,77 @@ class BranchStatementTest extends ArnoldGeneratorTest {
         "CHILL\n" +
         "YOU HAVE BEEN TERMINATED\n"
     getOutput(code) should equal("1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n")
+  }
+
+  it should "function using variable from parent block scope" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE vartrue\n" +
+        "YOU SET US UP @NO PROBLEMO\n" +
+        "BECAUSE I'M GOING TO SAY PLEASE vartrue\n" +
+        "TALK TO THE HAND vartrue\n" +
+        "GET TO THE CHOPPER vartrue\n" +
+        "HERE IS MY INVITATION @I LIED\n" +
+        "ENOUGH TALK\n" +
+        "TALK TO THE HAND vartrue\n" +
+        "YOU HAVE NO RESPECT FOR LOGIC\n" +
+        "TALK TO THE HAND vartrue\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    getOutput(code) should equal("1\n0\n0\n")
+  }
+
+  it should "detect when variable redeclared in child block scope" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE vartrue\n" +
+        "YOU SET US UP @NO PROBLEMO\n" +
+        "TALK TO THE HAND vartrue\n" +
+        "BECAUSE I'M GOING TO SAY PLEASE vartrue\n" +
+        "HEY CHRISTMAS TREE vartrue\n" +
+        "YOU SET US UP @I LIED\n" +
+        "TALK TO THE HAND vartrue\n" +
+        "YOU HAVE NO RESPECT FOR LOGIC\n" +
+        "TALK TO THE HAND vartrue\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect when child block scope variable is redeclared" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE vartrue\n" +
+        "YOU SET US UP @NO PROBLEMO\n" +
+        "BECAUSE I'M GOING TO SAY PLEASE vartrue\n" +
+        "HEY CHRISTMAS TREE varfalse\n" +
+        "YOU SET US UP @I LIED\n" +
+        "TALK TO THE HAND varfalse\n" +
+        "YOU HAVE NO RESPECT FOR LOGIC\n" +
+        "HEY CHRISTMAS TREE varfalse\n" +
+        "YOU SET US UP @I LIED\n" +
+        "TALK TO THE HAND varfalse\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    intercept[ParsingException] {
+      getOutput(code)
+    }
+  }
+
+  it should "detect when using variable declared in a child block scope" in {
+    val code =
+      "IT'S SHOWTIME\n" +
+        "HEY CHRISTMAS TREE vartrue\n" +
+        "YOU SET US UP @NO PROBLEMO\n" +
+        "TALK TO THE HAND vartrue\n" +
+        "BECAUSE I'M GOING TO SAY PLEASE vartrue\n" +
+        "HEY CHRISTMAS TREE varfalse\n" +
+        "YOU SET US UP @I LIED\n" +
+        "TALK TO THE HAND varfalse\n" +
+        "YOU HAVE NO RESPECT FOR LOGIC\n" +
+        "TALK TO THE HAND varfalse\n" +
+        "YOU HAVE BEEN TERMINATED\n"
+    intercept[java.lang.VerifyError] {
+      getOutput(code)
+    }
   }
 }
