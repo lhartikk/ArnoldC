@@ -1,5 +1,7 @@
 # ArnoldC
 
+![Arnold Shwarzenegger's First Visit to New York](http://i.imgur.com/uRd8v5m.jpg)
+
 Programming language based on the one-liners of Arnold Schwarzenegger.
 
 ## Motivation
