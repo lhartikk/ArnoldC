@@ -34,7 +34,7 @@ class ArnoldParser extends Parser {
   val While = "STICK AROUND"
   val EndWhile = "CHILL"
   val DeclareMethod = "LISTEN TO ME VERY CAREFULLY"
-  val MethodArguments = "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE"
+  val MethodArguments = "I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE"
   val Return = "I'LL BE BACK"
   val EndMethodDeclaration = "HASTA LA VISTA, BABY"
   val CallMethod = "DO IT NOW"

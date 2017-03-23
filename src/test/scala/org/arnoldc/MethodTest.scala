@@ -62,7 +62,7 @@ class MethodTest extends ArnoldGeneratorTest {
         "DO IT NOW printInteger argument\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY printInteger\n" +
-        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+        "I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE value\n" +
         "TALK TO THE HAND value\n" +
         "HASTA LA VISTA, BABY"
     getOutput(code) should equal("123\n")
@@ -120,7 +120,7 @@ class MethodTest extends ArnoldGeneratorTest {
       "DO IT NOW printboolean @I LIED\n" +
       "YOU HAVE BEEN TERMINATED\n" +
       "LISTEN TO ME VERY CAREFULLY printboolean\n" +
-      "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+      "I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE value\n" +
       "BECAUSE I'M GOING TO SAY PLEASE value\n" +
       "TALK TO THE HAND \"true\"\n" +
       "I'LL BE BACK\n" +
@@ -139,7 +139,7 @@ class MethodTest extends ArnoldGeneratorTest {
       "DO IT NOW printboolean @I LIED\n" +
       "YOU HAVE BEEN TERMINATED\n" +
       "LISTEN TO ME VERY CAREFULLY printboolean\n" +
-      "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+      "I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE value\n" +
       "BECAUSE I'M GOING TO SAY PLEASE value\n" +
       "TALK TO THE HAND \"true\"\n" +
       "BULLSHIT\n" +
@@ -155,7 +155,7 @@ class MethodTest extends ArnoldGeneratorTest {
       "DO IT NOW printboolean @I LIED\n" +
       "YOU HAVE BEEN TERMINATED\n" +
       "LISTEN TO ME VERY CAREFULLY printboolean\n" +
-      "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+      "I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE value\n" +
       "BECAUSE I'M GOING TO SAY PLEASE value\n" +
       "TALK TO THE HAND \"true\"\n" +
       "BULLSHIT\n" +
@@ -187,7 +187,7 @@ class MethodTest extends ArnoldGeneratorTest {
         "DO IT NOW reverse @NO PROBLEMO\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY reverse\n" +
-        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+        "I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE value\n" +
         "BECAUSE I'M GOING TO SAY PLEASE value\n" +
         "TALK TO THE HAND \"evaluated\"\n" +
         "I'LL BE BACK\n" +
@@ -204,7 +204,7 @@ class MethodTest extends ArnoldGeneratorTest {
         "DO IT NOW reverse @NO PROBLEMO\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY reverse\n" +
-        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+        "I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE value\n" +
         "GIVE THESE PEOPLE AIR\n" +
         "BECAUSE I'M GOING TO SAY PLEASE value\n" +
         "TALK TO THE HAND \"evaluated\"\n" +
@@ -227,7 +227,7 @@ class MethodTest extends ArnoldGeneratorTest {
         "TALK TO THE HAND result\n" +
         "YOU HAVE BEEN TERMINATED\n" +
         "LISTEN TO ME VERY CAREFULLY square\n" +
-        "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+        "I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE value\n" +
         "GIVE THESE PEOPLE AIR\n" +
         "GET TO THE CHOPPER value\n" +
         "HERE IS MY INVITATION value\n" +
@@ -286,7 +286,7 @@ class MethodTest extends ArnoldGeneratorTest {
       "DO IT NOW method 0\n" +
       "YOU HAVE BEEN TERMINATED\n" +
       "LISTEN TO ME VERY CAREFULLY method\n" +
-      "I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE value\n" +
+      "I NEED YOUR CLOTHES, YOUR BOOTS, AND YOUR MOTORCYCLE value\n" +
       "GIVE THESE PEOPLE AIR\n" +
       "I'LL BE BACK\n" +
       "HASTA LA VISTA, BABY\n"
