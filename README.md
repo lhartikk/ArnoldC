@@ -55,6 +55,8 @@ PlusOperator `GET UP`
 
 [GreaterThan](http://www.youtube.com/watch?v=19R2fDXCzcM) `LET OFF SOME STEAM BENNET`
 
+[GreaterThanOrEquals](https://www.youtube.com/watch?v=jC1vAvbGSNw) `YOU'RE LUGGAGE!`
+
 [Or](http://www.youtube.com/watch?v=RYtQMhnBtTw) `CONSIDER THAT A DIVORCE`
 
 [And](http://www.youtube.com/watch?v=ZQ_Q2b_aXjk) `KNOCK KNOCK`
