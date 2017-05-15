@@ -320,7 +320,7 @@ class LogicalTest extends ArnoldGeneratorTest {
         "YOU SET US UP @NO PROBLEMO\n" +
         "GET TO THE CHOPPER result\n" +
         "HERE IS MY INVITATION two\n" +
-        "LET OFF SOME STEAM BENNET one\n" +
+        "LET OFF SOME STEAM BENNETT one\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND result\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -338,7 +338,7 @@ class LogicalTest extends ArnoldGeneratorTest {
         "YOU SET US UP @NO PROBLEMO\n" +
         "GET TO THE CHOPPER result\n" +
         "HERE IS MY INVITATION one\n" +
-        "LET OFF SOME STEAM BENNET two\n" +
+        "LET OFF SOME STEAM BENNETT two\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND result\n" +
         "YOU HAVE BEEN TERMINATED\n"
@@ -356,7 +356,7 @@ class LogicalTest extends ArnoldGeneratorTest {
         "YOU SET US UP @NO PROBLEMO\n" +
         "GET TO THE CHOPPER result\n" +
         "HERE IS MY INVITATION three\n" +
-        "LET OFF SOME STEAM BENNET three2\n" +
+        "LET OFF SOME STEAM BENNETT three2\n" +
         "ENOUGH TALK\n" +
         "TALK TO THE HAND result\n" +
         "YOU HAVE BEEN TERMINATED\n"

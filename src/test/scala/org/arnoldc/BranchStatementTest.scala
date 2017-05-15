@@ -124,7 +124,7 @@ class BranchStatementTest extends ArnoldGeneratorTest {
         "TALK TO THE HAND n\n" +
         "GET TO THE CHOPPER isLessThan10\n" +
         "HERE IS MY INVITATION 10\n" +
-        "LET OFF SOME STEAM BENNET n\n" +
+        "LET OFF SOME STEAM BENNETT n\n" +
         "ENOUGH TALK\n" +
         "CHILL\n" +
         "YOU HAVE BEEN TERMINATED\n"
