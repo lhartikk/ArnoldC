@@ -9,7 +9,7 @@ object ArnoldC {
       println("Usage: ArnoldC [-run|-declaim] [FileToSourceCode]")
       return
     }
-    val filename = getFilNameFromArgs(args)
+    val filename = getFileNameFromArgs(args)
     val sourceCode = scala.io.Source.fromFile(filename).mkString
     val a = new ArnoldGenerator()
     val classFilename = if (filename.contains('.')) {
@@ -28,7 +28,7 @@ object ArnoldC {
 
   }
   
-  def getFilNameFromArgs(args:Array[String]):String = args.length match {
+  def getFileNameFromArgs(args:Array[String]):String = args.length match {
     case 1 => args(0)
     case 2 => args(1)
     case _ => throw new RuntimeException("WHAT THE FUCK DID I DO WRONG!")
