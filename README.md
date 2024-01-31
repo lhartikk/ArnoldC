@@ -39,7 +39,7 @@ Check the [wiki](http://github.com/lhartikk/ArnoldC/wiki/ArnoldC) for more detai
 
 [While](http://www.youtube.com/watch?v=wDztrw_0N8M) `STICK AROUND`
 
-[EndWhile](http://www.youtube.com/watch?v=R39e30FL37U) `CHILL`
+[EndWhile](https://www.youtube.com/watch?v=e58ga6q77gQ) `CHILL`
 
 PlusOperator `GET UP`
 
@@ -65,7 +65,7 @@ PlusOperator `GET UP`
 
 [MethodArguments](http://www.youtube.com/watch?v=FWmH9ylqYYQ) `I NEED YOUR CLOTHES YOUR BOOTS AND YOUR MOTORCYCLE`
 
-[Return](http://www.youtube.com/watch?v=-YEG9DgRHhA) `I'LL BE BACK`
+[Return](https://www.youtube.com/watch?v=SZdVWKM1ILs) `I'LL BE BACK`
 
 [EndMethodDeclaration](http://www.youtube.com/watch?v=Hhm7aWp8gvc) `HASTA LA VISTA, BABY`
 
@@ -83,7 +83,7 @@ PlusOperator `GET UP`
 
 [Print](http://www.youtube.com/watch?v=dQ6m8ztEzfA) `TALK TO THE HAND`
 
-[ReadInteger](https://www.youtube.com/watch?v=1mC9eOqsyTg) `I WANT TO ASK YOU A BUNCH OF QUESTIONS AND I WANT TO HAVE THEM ANSWERED IMMEDIATELY`
+[ReadInteger](https://www.youtube.com/watch?v=w3sLzmmejCA) `I WANT TO ASK YOU A BUNCH OF QUESTIONS AND I WANT TO HAVE THEM ANSWERED IMMEDIATELY`
 
 [AssignVariable](http://www.youtube.com/watch?v=-9-Te-DPbSE) `GET TO THE CHOPPER`
 
